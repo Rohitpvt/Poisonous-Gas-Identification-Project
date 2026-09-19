@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #ECEDEE;
+    color: #232427;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* Custom SprintForge Utility Classes */
+.font-serif-italic {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.card-elevated {
+  background: #FFFFFF;
+  border-radius: 28px;
+  box-shadow: 0 14px 30px -18px rgba(35, 36, 39, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.card-dark {
+  background: #171719;
+  border-radius: 28px;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+}
+
+.floating-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.1);
+}
+
+.stat-pill {
+  background: #FFFFFF;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 16px -8px rgba(35, 36, 39, 0.15);
+}
+
+.btn-primary {
+  background: #171719;
+  color: #FFFFFF;
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 8px 20px -8px rgba(23, 23, 25, 0.4);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  background: #25262a;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 12px 24px -8px rgba(23, 23, 25, 0.5);
+}
+
+.btn-brand {
+  background: #E34A32;
+  color: #FFFFFF;
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 8px 20px -6px rgba(227, 74, 50, 0.5);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-brand:hover {
+  background: #F05A3C;
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 12px 24px -6px rgba(227, 74, 50, 0.6);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #ECEDEE;
+}
+::-webkit-scrollbar-thumb {
+  background: #c5c7ca;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8a8c91;
+}

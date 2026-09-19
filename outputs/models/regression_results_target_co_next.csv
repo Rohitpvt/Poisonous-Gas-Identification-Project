@@ -1,0 +1,5 @@
+Model,Target,RMSE,MAE,R2 Score
+Ridge Regression,target_co_next,0.732,0.325,0.8012
+Random Forest,target_co_next,0.716,0.301,0.8099
+XGBoost,target_co_next,0.703,0.303,0.8166
+LightGBM,target_co_next,0.685,0.3,0.8259

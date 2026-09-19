@@ -1,0 +1,5 @@
+Model,RMSE,MAE,R2 Score
+Ridge Regression,10.806,5.893,0.8462
+Random Forest,11.037,5.881,0.8396
+XGBoost,11.522,5.897,0.8252
+LightGBM,11.696,5.745,0.8199
