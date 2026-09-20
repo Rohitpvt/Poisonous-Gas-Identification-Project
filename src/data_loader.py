@@ -26,8 +26,20 @@ LANDFILL_COORDINATES = {
 
 def load_satellite_plumes(base_dir=BASE_DIR) -> pd.DataFrame:
     """Loads and aggregates all satellite plume CSVs into a standardized DataFrame."""
-    raw_dir = os.path.join(base_dir, "Delhi - Copy")
-    plume_files = glob.glob(os.path.join(raw_dir, "**", "*plume*.csv"), recursive=True)
+    raw_dir_candidates = [
+        os.path.join(base_dir, "Raw Files", "Delhi - Copy"),
+        os.path.join(base_dir, "Raw Files"),
+        os.path.join(base_dir, "Delhi - Copy"),
+        base_dir
+    ]
+    plume_files = []
+    for d in raw_dir_candidates:
+        if os.path.exists(d):
+            found = glob.glob(os.path.join(d, "**", "*plume*.csv"), recursive=True)
+            if found:
+                plume_files = found
+                break
+    
     if not plume_files:
         plume_files = glob.glob(os.path.join(base_dir, "**", "*plume*.csv"), recursive=True)
     
