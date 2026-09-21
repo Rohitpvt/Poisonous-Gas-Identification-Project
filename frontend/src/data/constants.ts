@@ -128,12 +128,48 @@ export const SATELLITE_PLUMES: PlumeObservation[] = [
 ];
 
 export const REGRESSION_METRICS: ModelMetric[] = [
-  { model: 'Ridge Regression (Baseline)', task: 'Regression', target: 'NH3 (1h ahead)', r2Score: 0.8425, rmse: 10.933, mae: 6.002, isBest: true },
-  { model: 'LightGBM Regressor', task: 'Regression', target: 'NH3 (1h ahead)', r2Score: 0.8151, rmse: 11.847, mae: 6.225 },
-  { model: 'XGBoost Regressor', task: 'Regression', target: 'NH3 (1h ahead)', r2Score: 0.8111, rmse: 11.974, mae: 6.657 },
-  { model: 'Random Forest Regressor', task: 'Regression', target: 'NH3 (1h ahead)', r2Score: 0.7870, rmse: 12.716, mae: 7.534 },
-  { model: 'LightGBM Regressor', task: 'Regression', target: 'CO (1h ahead)', r2Score: 0.8203, rmse: 0.696, mae: 0.301, isBest: true },
-  { model: 'Random Forest Regressor', task: 'Regression', target: 'CO (1h ahead)', r2Score: 0.8146, rmse: 0.707, mae: 0.299 },
+  // 1. Ammonia (NH3)
+  { model: 'Ridge Regression (Baseline)', task: 'Regression', target: 'NH3 (1h ahead)', r2Score: 0.8400, rmse: 11.022, mae: 6.206, isBest: true },
+  { model: 'XGBoost Regressor', task: 'Regression', target: 'NH3 (1h ahead)', r2Score: 0.8154, rmse: 11.839, mae: 6.591 },
+  { model: 'LightGBM Regressor', task: 'Regression', target: 'NH3 (1h ahead)', r2Score: 0.8114, rmse: 11.966, mae: 6.565 },
+
+  // 2. Carbon Monoxide (CO)
+  { model: 'LightGBM Regressor', task: 'Regression', target: 'CO (1h ahead)', r2Score: 0.8411, rmse: 0.655, mae: 0.296, isBest: true },
+  { model: 'XGBoost Regressor', task: 'Regression', target: 'CO (1h ahead)', r2Score: 0.8343, rmse: 0.669, mae: 0.299 },
+  { model: 'Ridge Regression (Baseline)', task: 'Regression', target: 'CO (1h ahead)', r2Score: 0.8012, rmse: 0.732, mae: 0.324 },
+
+  // 3. Fine Particulate Matter (PM2.5)
+  { model: 'LightGBM Regressor', task: 'Regression', target: 'PM2.5 (1h ahead)', r2Score: 0.9293, rmse: 36.079, mae: 23.028, isBest: true },
+  { model: 'Ridge Regression (Baseline)', task: 'Regression', target: 'PM2.5 (1h ahead)', r2Score: 0.9277, rmse: 36.489, mae: 23.522 },
+  { model: 'XGBoost Regressor', task: 'Regression', target: 'PM2.5 (1h ahead)', r2Score: 0.9266, rmse: 36.762, mae: 23.263 },
+
+  // 4. Coarse Particulates (PM10)
+  { model: 'LightGBM Regressor', task: 'Regression', target: 'PM10 (1h ahead)', r2Score: 0.8608, rmse: 79.408, mae: 54.271, isBest: true },
+  { model: 'XGBoost Regressor', task: 'Regression', target: 'PM10 (1h ahead)', r2Score: 0.8570, rmse: 80.469, mae: 54.686 },
+  { model: 'Ridge Regression (Baseline)', task: 'Regression', target: 'PM10 (1h ahead)', r2Score: 0.8540, rmse: 81.313, mae: 56.008 },
+
+  // 5. Nitrogen Dioxide (NO2)
+  { model: 'LightGBM Regressor', task: 'Regression', target: 'NO2 (1h ahead)', r2Score: 0.8140, rmse: 20.047, mae: 14.035, isBest: true },
+  { model: 'XGBoost Regressor', task: 'Regression', target: 'NO2 (1h ahead)', r2Score: 0.8045, rmse: 20.553, mae: 14.194 },
+  { model: 'Ridge Regression (Baseline)', task: 'Regression', target: 'NO2 (1h ahead)', r2Score: 0.7822, rmse: 21.692, mae: 14.976 },
+
+  // 6. Benzene (Carcinogenic Landfill VOC)
+  { model: 'Ridge Regression (Baseline)', task: 'Regression', target: 'Benzene (1h ahead)', r2Score: 0.9002, rmse: 1.206, mae: 0.715, isBest: true },
+  { model: 'LightGBM Regressor', task: 'Regression', target: 'Benzene (1h ahead)', r2Score: 0.8924, rmse: 1.252, mae: 0.688 },
+  { model: 'XGBoost Regressor', task: 'Regression', target: 'Benzene (1h ahead)', r2Score: 0.8388, rmse: 1.533, mae: 0.707 },
+
+  // 7. Toluene (Landfill Solvent & Smear Gas)
+  { model: 'Ridge Regression (Baseline)', task: 'Regression', target: 'Toluene (1h ahead)', r2Score: 0.8531, rmse: 13.979, mae: 8.459, isBest: true },
+  { model: 'LightGBM Regressor', task: 'Regression', target: 'Toluene (1h ahead)', r2Score: 0.8481, rmse: 14.217, mae: 8.429 },
+  { model: 'XGBoost Regressor', task: 'Regression', target: 'Toluene (1h ahead)', r2Score: 0.8397, rmse: 14.602, mae: 8.369 },
+
+  // 8. Sulfur Dioxide (SO2)
+  { model: 'Ridge Regression (Baseline)', task: 'Regression', target: 'SO2 (1h ahead)', r2Score: 0.6879, rmse: 11.565, mae: 6.126, isBest: true },
+  { model: 'LightGBM Regressor', task: 'Regression', target: 'SO2 (1h ahead)', r2Score: 0.5479, rmse: 13.921, mae: 7.741 },
+
+  // 9. Ground-Level Ozone (O3)
+  { model: 'Ridge Regression (Baseline)', task: 'Regression', target: 'Ozone (1h ahead)', r2Score: 0.5068, rmse: 8.730, mae: 5.048, isBest: true },
+  { model: 'XGBoost Regressor', task: 'Regression', target: 'Ozone (1h ahead)', r2Score: 0.3644, rmse: 9.910, mae: 5.968 },
 ];
 
 export const CLASSIFICATION_METRICS: ModelMetric[] = [

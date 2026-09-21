@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { RECEPTOR_NEIGHBORHOODS } from '../data/constants';
-import { ShieldAlert, Send, CheckCircle2, Users, MapPin } from 'lucide-react';
+import { ShieldAlert, Send, CheckCircle2, Users, MapPin, ShieldCheck } from 'lucide-react';
 
 export const HealthAdvisory: React.FC = () => {
   const [profile, setProfile] = useState<string>('Asthma & Respiratory Patients');
@@ -76,6 +76,126 @@ export const HealthAdvisory: React.FC = () => {
         <p className="text-text-secondary text-sm mt-1 max-w-2xl">
           Translating complex machine learning gas plume forecasts into actionable clinical advisories, safe-zone routing, and automated resident broadcasts.
         </p>
+      </div>
+
+      {/* Comprehensive Landfill Gas Identification, Human Impact & Protection Matrix */}
+      <div className="card-elevated p-6 space-y-6">
+        <div>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 text-xs font-semibold mb-2">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>Landfill Gas Identification & Clinical Protection Guide</span>
+          </div>
+          <h3 className="text-xl font-bold text-text-primary">
+            Landfill Toxic Gases: Identification, Health Hazards & Rescue Actions
+          </h3>
+          <p className="text-xs text-text-secondary mt-1">
+            Breakdown of all 9 chemical species and particulate pollutants identified in our dataset, their formation mechanisms in the Ghazipur dump yard, clinical symptoms on nearby residents, and emergency protective protocols.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* 1. Methane CH4 */}
+          <div className="p-4 rounded-2xl bg-surface-light border border-border-light space-y-2.5">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-sm text-text-primary">Methane (CH₄)</span>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-red-100 text-red-700">Explosive & Asphyxiant</span>
+            </div>
+            <p className="text-[11px] text-text-secondary">
+              <strong>Source & Identification:</strong> Anaerobic decomposition of organic waste. Identified via NASA EMIT satellite hyperspectral imaging (&gt;4,000 kg/hr plumes).
+            </p>
+            <p className="text-[11px] text-text-secondary">
+              <strong>Human Impact:</strong> Displaces oxygen causing rapid asphyxiation, dizziness, headaches, and subsurface landfill fires.
+            </p>
+            <div className="p-2 rounded-xl bg-emerald-50 text-[11px] text-emerald-900">
+              <strong>Protection:</strong> Install methane soil vapor extraction wells; evacuate low-lying basements during stagnant wind events.
+            </div>
+          </div>
+
+          {/* 2. Ammonia NH3 */}
+          <div className="p-4 rounded-2xl bg-surface-light border border-border-light space-y-2.5">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-sm text-text-primary">Ammonia (NH₃)</span>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-100 text-amber-800">Respiratory Irritant</span>
+            </div>
+            <p className="text-[11px] text-text-secondary">
+              <strong>Source & Identification:</strong> Breakdown of nitrogenous protein waste. Identified via DPCC continuous electrochemical sensors (spikes +74.5% downwind).
+            </p>
+            <p className="text-[11px] text-text-secondary">
+              <strong>Human Impact:</strong> Severe eye, nose, throat burning, pulmonary edema in asthma patients, chronic bronchitis.
+            </p>
+            <div className="p-2 rounded-xl bg-emerald-50 text-[11px] text-emerald-900">
+              <strong>Protection:</strong> Wear wet cloth masks or activated carbon respirators; seal east-facing windows towards dumpsite.
+            </div>
+          </div>
+
+          {/* 3. Carbon Monoxide CO */}
+          <div className="p-4 rounded-2xl bg-surface-light border border-border-light space-y-2.5">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-sm text-text-primary">Carbon Monoxide (CO)</span>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-red-100 text-red-700">Silent Poison</span>
+            </div>
+            <p className="text-[11px] text-text-secondary">
+              <strong>Source & Identification:</strong> Incomplete combustion from deep smoldering subsurface landfill fires. Identified via NDIR sensors.
+            </p>
+            <p className="text-[11px] text-text-secondary">
+              <strong>Human Impact:</strong> Binds to hemoglobin (Carboxyhemoglobin), reducing blood oxygen delivery; causes hypoxia, nausea, and cardiac stress.
+            </p>
+            <div className="p-2 rounded-xl bg-emerald-50 text-[11px] text-emerald-900">
+              <strong>Protection:</strong> Install home CO alarms; deploy medical oxygen in Anand Vihar health clinics during inversion surges.
+            </div>
+          </div>
+
+          {/* 4. Benzene & VOCs */}
+          <div className="p-4 rounded-2xl bg-surface-light border border-border-light space-y-2.5">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-sm text-text-primary">Benzene & Toluene (VOCs)</span>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-purple-100 text-purple-700">Group-1 Carcinogen</span>
+            </div>
+            <p className="text-[11px] text-text-secondary">
+              <strong>Source & Identification:</strong> Discarded industrial solvents, adhesives, and decomposing synthetic polymers. Identified via GC-PID monitors.
+            </p>
+            <p className="text-[11px] text-text-secondary">
+              <strong>Human Impact:</strong> Bone marrow damage, elevated leukemia and aplastic anemia risk, central nervous system depression.
+            </p>
+            <div className="p-2 rounded-xl bg-emerald-50 text-[11px] text-emerald-900">
+              <strong>Protection:</strong> High-efficiency VOC carbon adsorption purifiers; mandatory medical checkups for sanitation workers.
+            </div>
+          </div>
+
+          {/* 5. PM2.5 & PM10 */}
+          <div className="p-4 rounded-2xl bg-surface-light border border-border-light space-y-2.5">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-sm text-text-primary">Particulates (PM₂.₅ & PM₁₀)</span>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-100 text-rose-700">Alveolar Penetration</span>
+            </div>
+            <p className="text-[11px] text-text-secondary">
+              <strong>Source & Identification:</strong> Landfill dust suspension and ash from waste combustion. Identified via beta-attenuation monitors (BAM).
+            </p>
+            <p className="text-[11px] text-text-secondary">
+              <strong>Human Impact:</strong> Fine PM2.5 bypasses nasal hairs into deep alveoli and bloodstream, causing heart attacks, COPD, and stroke.
+            </p>
+            <div className="p-2 rounded-xl bg-emerald-50 text-[11px] text-emerald-900">
+              <strong>Protection:</strong> N95/FFP2 certified masks mandatory; deploy municipal anti-smog water cannons along Ghazipur perimeter.
+            </div>
+          </div>
+
+          {/* 6. Hydrogen Sulfide & SO2 */}
+          <div className="p-4 rounded-2xl bg-surface-light border border-border-light space-y-2.5">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-sm text-text-primary">Sulfur Gases (H₂S & SO₂)</span>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-yellow-100 text-yellow-800">Acidic Rotten Gas</span>
+            </div>
+            <p className="text-[11px] text-text-secondary">
+              <strong>Source & Identification:</strong> Anaerobic breakdown of gypsum drywall and sulfur organics. Characteristic pungent rotten-egg odor.
+            </p>
+            <p className="text-[11px] text-text-secondary">
+              <strong>Human Impact:</strong> Olfactory fatigue (loss of smell), severe bronchospasm, mucosal irritation, acid deposition on skin.
+            </p>
+            <div className="p-2 rounded-xl bg-emerald-50 text-[11px] text-emerald-900">
+              <strong>Protection:</strong> Bio-filter soil capping on dumpsite slopes; temporary relocation of children during nighttime inversion.
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Persona Selection & Health Exposure */}
