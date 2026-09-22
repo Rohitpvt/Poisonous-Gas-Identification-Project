@@ -104,6 +104,30 @@ export const LANDFILL_SITES: LandfillSite[] = [
   }
 ];
 
+export interface EmergencyHospital {
+  id: string;
+  name: string;
+  type: string;
+  distanceKm: number;
+  location: string;
+  emergencyContact: string;
+  oxygenCapacity: string;
+  respiratoryICUBeds: number;
+  status: 'Open 24x7' | 'High Surge Capacity';
+  specialties: string[];
+}
+
+export interface SafeEscapeZone {
+  id: string;
+  name: string;
+  bearing: number;
+  distanceKm: number;
+  exposureReductionPercent: number;
+  greenCoverRating: '5-Star Forest Buffer' | 'Riverbank Wind Corridor' | 'Urban Green Park';
+  recommendedRoute: string;
+  cleanAirIndex: string;
+}
+
 export const RECEPTOR_NEIGHBORHOODS = [
   { name: 'Ghazipur Village Residential Area', lat: 28.6250, lng: 77.3320, distanceKm: 0.6, type: 'High Density Residential', population: 45000, bearing: 72 },
   { name: 'Kaushambi Residential Hub (Ghaziabad)', lat: 28.6380, lng: 77.3240, distanceKm: 1.7, type: 'Residential High-Rise', population: 60000, bearing: 345 },
@@ -111,6 +135,100 @@ export const RECEPTOR_NEIGHBORHOODS = [
   { name: 'Patparganj Industrial Area & Max Hospital', lat: 28.6290, lng: 77.3050, distanceKm: 2.5, type: 'Healthcare & Commercial', population: 35000, bearing: 283 },
   { name: 'Anand Vihar ISBT & Railway Station', lat: 28.6469, lng: 77.3160, distanceKm: 2.8, type: 'Transit Hub & Schools', population: 120000, bearing: 335 },
   { name: 'Mayur Vihar Phase 3 Safe Pocket', lat: 28.6050, lng: 77.3380, distanceKm: 3.4, type: 'Upwind Residential Buffer', population: 50000, bearing: 160 },
+];
+
+export const EMERGENCY_HOSPITALS: EmergencyHospital[] = [
+  {
+    id: 'max_patparganj',
+    name: 'Max Super Speciality Hospital, Patparganj',
+    type: 'Tertiary Care Super Speciality',
+    distanceKm: 2.4,
+    location: '108A, I.P. Extension, Patparganj, Delhi',
+    emergencyContact: '+91-11-43033333',
+    oxygenCapacity: 'Liquid Medical O2 (10,000 L Tank)',
+    respiratoryICUBeds: 42,
+    status: 'Open 24x7',
+    specialties: ['Toxic Inhalation ICU', 'Advanced Pulmonology', 'Hyperbaric Oxygen']
+  },
+  {
+    id: 'lbs_hospital',
+    name: 'Lal Bahadur Shastri Hospital (Govt. of Delhi)',
+    type: 'Government Emergency Hospital',
+    distanceKm: 1.8,
+    location: 'Khichripur, Kalyanpuri, Delhi',
+    emergencyContact: '+91-11-22774145',
+    oxygenCapacity: 'Dedicated PSA Oxygen Plant (500 LPM)',
+    respiratoryICUBeds: 28,
+    status: 'High Surge Capacity',
+    specialties: ['Acute Bronchospasm Ward', 'Free Emergency Triage', 'Ambulance SOS']
+  },
+  {
+    id: 'hedgewar_hospital',
+    name: 'Dr. Hedgewar Arogya Sansthan',
+    type: 'Multi-Speciality Government Hospital',
+    distanceKm: 3.1,
+    location: 'CBD Ground, Karkardooma, Delhi',
+    emergencyContact: '+91-11-22308900',
+    oxygenCapacity: 'Centralized O2 Grid & High-Flow Nasal Cannula',
+    respiratoryICUBeds: 35,
+    status: 'Open 24x7',
+    specialties: ['Pediatric Asthma Emergency', 'CO Poisoning Antidote', 'Burn & Trauma']
+  },
+  {
+    id: 'yashoda_kaushambi',
+    name: 'Yashoda Super Speciality Hospital',
+    type: 'Private Multi-Speciality Hub',
+    distanceKm: 2.2,
+    location: 'Sector 4, Kaushambi, Ghaziabad',
+    emergencyContact: '+91-120-4188000',
+    oxygenCapacity: 'Dual Cryogenic Oxygen Backup',
+    respiratoryICUBeds: 30,
+    status: 'Open 24x7',
+    specialties: ['Critical Care Pulmonology', 'Toxicology & Poison Center', 'Mobile ICU Unit']
+  }
+];
+
+export const SAFE_ESCAPE_ZONES: SafeEscapeZone[] = [
+  {
+    id: 'sanjay_lake',
+    name: 'Sanjay Lake & Green Eco-Park Buffer',
+    bearing: 215,
+    distanceKm: 2.9,
+    exposureReductionPercent: 88,
+    greenCoverRating: '5-Star Forest Buffer',
+    recommendedRoute: 'Take NH-24 Bypass towards Mayur Vihar Phase-2 / Lake Promenade',
+    cleanAirIndex: 'AQI 65 (Clean Air Island)'
+  },
+  {
+    id: 'mayur_vihar_p3',
+    name: 'Mayur Vihar Phase-3 Southern High-Ridge Pocket',
+    bearing: 165,
+    distanceKm: 3.4,
+    exposureReductionPercent: 82,
+    greenCoverRating: 'Urban Green Park',
+    recommendedRoute: 'Southbound along Gazipur Drain Road towards Kondli Canal Buffer',
+    cleanAirIndex: 'AQI 74 (Upwind Shield)'
+  },
+  {
+    id: 'akshardham_riverbank',
+    name: 'Akshardham Yamuna Riverbank Green Corridor',
+    bearing: 245,
+    distanceKm: 4.8,
+    exposureReductionPercent: 94,
+    greenCoverRating: 'Riverbank Wind Corridor',
+    recommendedRoute: 'Direct West via Noida Link Road / Delhi-Meerut Expressway',
+    cleanAirIndex: 'AQI 52 (Optimal Fresh Air Flow)'
+  },
+  {
+    id: 'surajmal_vihar',
+    name: 'Surajmal Vihar / Vivek Vihar District Park Zone',
+    bearing: 310,
+    distanceKm: 4.1,
+    exposureReductionPercent: 78,
+    greenCoverRating: 'Urban Green Park',
+    recommendedRoute: 'Northwest via Master Plan Road towards Shahdara Green Belt',
+    cleanAirIndex: 'AQI 85 (Protected Crosswind Zone)'
+  }
 ];
 
 export const SATELLITE_PLUMES: PlumeObservation[] = [

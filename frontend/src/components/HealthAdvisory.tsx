@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { RECEPTOR_NEIGHBORHOODS } from '../data/constants';
-import { ShieldAlert, Send, CheckCircle2, Users, MapPin, ShieldCheck } from 'lucide-react';
+import { RECEPTOR_NEIGHBORHOODS, EMERGENCY_HOSPITALS, SAFE_ESCAPE_ZONES } from '../data/constants';
+import { ShieldAlert, Send, CheckCircle2, Users, MapPin, ShieldCheck, Compass, Navigation as NavigationIcon, ArrowRight, Hospital, Ambulance, PhoneCall } from 'lucide-react';
 
 export const HealthAdvisory: React.FC = () => {
   const [profile, setProfile] = useState<string>('Asthma & Respiratory Patients');
@@ -356,6 +356,168 @@ export const HealthAdvisory: React.FC = () => {
         </div>
       </div>
 
+      {/* Dynamic Safe Escape Route Navigator (Clean-Air Pockets) */}
+      <div className="card-elevated p-6 space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 text-xs font-semibold mb-1.5">
+              <Compass className="w-3.5 h-3.5" />
+              <span>Dynamic Clean-Air Routing & Exposure Mitigation</span>
+            </div>
+            <h3 className="text-xl font-bold text-text-primary flex items-center gap-2">
+              <span>Dynamic "Safe Escape Route" Navigator</span>
+            </h3>
+            <p className="text-xs text-text-secondary mt-1">
+              Active downwind plume avoidance vectors directing vulnerable populations to certified upwind green buffer zones.
+            </p>
+          </div>
+
+          <div className="stat-pill px-3.5 py-1.5 flex items-center gap-2 self-start text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200">
+            <NavigationIcon className="w-3.5 h-3.5 text-emerald-600" />
+            <span>Optimal Plume Avoidance: South-West Vector (215° - 245°)</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {SAFE_ESCAPE_ZONES.map((zone) => {
+            const angleDiff = Math.abs(windDir - zone.bearing);
+            const minAngle = Math.min(angleDiff, 360 - angleDiff);
+            const isOptimalNow = minAngle > 75;
+
+            return (
+              <div
+                key={zone.id}
+                className={`p-5 rounded-2xl border transition-all space-y-3 ${
+                  isOptimalNow
+                    ? 'bg-emerald-50/60 border-emerald-300 shadow-sm'
+                    : 'bg-surface-light border-border-light'
+                }`}
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h4 className="font-bold text-sm text-text-primary">{zone.name}</h4>
+                      {isOptimalNow && (
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-600 text-white">
+                          ★ Best Live Route
+                        </span>
+                      )}
+                    </div>
+                    <span className="text-[11px] text-text-muted font-medium">
+                      {zone.distanceKm} km from Ghazipur • {zone.bearing}° Vector • {zone.greenCoverRating}
+                    </span>
+                  </div>
+
+                  <div className="text-right">
+                    <span className="text-base font-bold text-emerald-700">-{zone.exposureReductionPercent}%</span>
+                    <div className="text-[10px] text-text-muted uppercase font-semibold">Toxicity Drop</div>
+                  </div>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-white border border-black/5 text-xs space-y-1">
+                  <div className="font-semibold text-text-primary flex items-center gap-1.5">
+                    <ArrowRight className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Evacuation Vector:</span>
+                  </div>
+                  <div className="text-text-secondary text-[11px] leading-relaxed">{zone.recommendedRoute}</div>
+                </div>
+
+                <div className="flex items-center justify-between text-[11px] pt-1">
+                  <span className="px-2.5 py-1 rounded-full bg-emerald-100/80 text-emerald-800 font-semibold">
+                    {zone.cleanAirIndex}
+                  </span>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(zone.name + ' Delhi')}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 font-semibold text-brand-primary hover:underline"
+                  >
+                    <span>View Map Navigation</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Nearby Emergency Hospital & Health Center SOS Directory */}
+      <div className="card-elevated p-6 space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-700 text-xs font-semibold mb-1.5">
+              <Hospital className="w-3.5 h-3.5" />
+              <span>Critical Toxic Exposure & Respiratory Response</span>
+            </div>
+            <h3 className="text-xl font-bold text-text-primary flex items-center gap-2">
+              <span>Nearby Emergency Hospital & Respiratory SOS Directory</span>
+            </h3>
+            <p className="text-xs text-text-secondary mt-1">
+              Geolocated emergency hospitals equipped with liquid medical oxygen (LMO), toxic inhalation ICUs, and 24x7 acute respiratory triage.
+            </p>
+          </div>
+
+          <div className="stat-pill px-3 py-1.5 flex items-center gap-2 self-start text-xs font-semibold text-red-700 bg-red-50 border border-red-200">
+            <Ambulance className="w-3.5 h-3.5 text-red-600" />
+            <span>Emergency Ambulance Hotline: 108 / 102</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {EMERGENCY_HOSPITALS.map((hosp) => (
+            <div key={hosp.id} className="p-5 rounded-2xl bg-surface-light border border-border-light space-y-3.5 hover:shadow-md transition-shadow">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h4 className="font-bold text-sm text-text-primary leading-snug">{hosp.name}</h4>
+                  <div className="flex items-center gap-2 text-[11px] text-text-secondary mt-0.5">
+                    <span className="font-medium text-brand-primary">{hosp.distanceKm} km away</span>
+                    <span>•</span>
+                    <span className="text-text-muted">{hosp.type}</span>
+                  </div>
+                </div>
+                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 whitespace-nowrap">
+                  {hosp.status}
+                </span>
+              </div>
+
+              <div className="space-y-1.5 text-xs text-text-secondary">
+                <div className="flex items-center gap-2">
+                  <PhoneCall className="w-3.5 h-3.5 text-red-600 flex-shrink-0" />
+                  <a href={`tel:${hosp.emergencyContact}`} className="font-mono font-bold text-text-primary hover:text-brand-primary">
+                    {hosp.emergencyContact}
+                  </a>
+                  <span className="text-[10px] text-text-muted">(24/7 SOS Desk)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-text-muted flex-shrink-0" />
+                  <span className="text-[11px] text-text-muted truncate">{hosp.location}</span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 pt-1 border-t border-border-light text-[11px]">
+                <div className="p-2 rounded-xl bg-white border border-black/5">
+                  <div className="text-text-muted text-[10px] font-semibold uppercase">O₂ Supply Capacity</div>
+                  <div className="font-bold text-text-primary text-[11px] mt-0.5 truncate">{hosp.oxygenCapacity}</div>
+                </div>
+                <div className="p-2 rounded-xl bg-white border border-black/5">
+                  <div className="text-text-muted text-[10px] font-semibold uppercase">ICU Respiratory Beds</div>
+                  <div className="font-bold text-brand-primary text-[11px] mt-0.5">{hosp.respiratoryICUBeds} Active Beds</div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {hosp.specialties.map((spec, i) => (
+                  <span key={i} className="px-2 py-0.5 rounded-md bg-surface-dark/5 text-text-secondary text-[10px] font-medium">
+                    {spec}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* SMS Alert Dispatch Simulator */}
       <div className="card-dark p-8 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -401,3 +563,4 @@ export const HealthAdvisory: React.FC = () => {
     </div>
   );
 };
+
