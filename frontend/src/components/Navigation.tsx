@@ -41,8 +41,8 @@ export const Navigation: React.FC<NavigationProps> = ({ activeTab, setActiveTab 
           </div>
         </button>
 
-        {/* Desktop Navigation Tabs (Horizontal Centered Strip) */}
-        <div className="hidden md:flex items-center gap-0.5 bg-[#F4F5F7] p-1 rounded-full border border-black/[0.04] flex-1 justify-center max-w-3xl overflow-x-auto no-scrollbar">
+        {/* Desktop Navigation Tabs (Horizontal Centered Strip - Fixed Natural Width) */}
+        <div className="hidden lg:flex items-center gap-1 bg-[#F4F5F7] p-1 rounded-full border border-black/[0.04]">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
