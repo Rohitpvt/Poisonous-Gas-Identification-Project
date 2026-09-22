@@ -19,36 +19,30 @@ export const Navigation: React.FC<NavigationProps> = ({ activeTab, setActiveTab 
   ];
 
   return (
-    <header className="fixed top-5 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-      <nav className="pointer-events-auto bg-[#FFFFFF]/90 backdrop-blur-2xl px-2.5 py-2 flex items-center justify-between gap-2 max-w-5xl w-full rounded-full border border-white/80 shadow-[0_12px_32px_-12px_rgba(23,23,25,0.18)] transition-all duration-300">
+    <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-3 sm:px-6 pointer-events-none">
+      <nav className="pointer-events-auto bg-white/95 backdrop-blur-xl px-3 py-2 flex items-center justify-between gap-3 max-w-6xl w-full rounded-2xl sm:rounded-full border border-black/5 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.12)] transition-all">
         
-        {/* Brand Logo & Studio Pill */}
+        {/* Brand Logo & Title */}
         <button
           onClick={() => setActiveTab('overview')}
-          className="flex items-center gap-3 pl-2 pr-4 py-1.5 rounded-full hover:bg-black/5 transition-all text-left group flex-shrink-0"
+          className="flex items-center gap-2.5 pl-1 pr-3 py-1 rounded-full hover:bg-black/[0.04] transition-all text-left flex-shrink-0 group"
         >
-          {/* High-Contrast Logo Badge */}
-          <div className="w-9 h-9 rounded-full bg-[#E34A32] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(227,74,50,0.45),inset_0_1px_0_rgba(255,255,255,0.4)] group-hover:scale-105 group-hover:bg-[#F05A3C] transition-all">
-            <Flame className="w-5 h-5 fill-white text-white drop-shadow-sm" />
+          <div className="w-8 h-8 rounded-full bg-[#E34A32] flex items-center justify-center text-white shadow-[0_2px_8px_rgba(227,74,50,0.35)] group-hover:scale-105 transition-transform flex-shrink-0">
+            <Flame className="w-4 h-4 fill-white text-white" />
           </div>
 
-          <div className="flex flex-col justify-center">
-            <div className="flex items-center gap-2">
-              <span className="font-extrabold text-[#171719] text-sm tracking-tight leading-none">
-                LandfillPlume<span className="text-[#E34A32] font-black">AI</span>
-              </span>
-              <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-[#E34A32]/10 text-[#E34A32] rounded-full border border-[#E34A32]/30 leading-none">
-                Ghazipur
-              </span>
-            </div>
-            <span className="text-[10px] text-[#55575c] font-medium tracking-normal mt-0.5 hidden sm:block">
-              Precision Air Intelligence
+          <div className="flex items-center gap-2">
+            <span className="font-extrabold text-[#171719] text-sm tracking-tight whitespace-nowrap">
+              LandfillPlume<span className="text-[#E34A32]">AI</span>
+            </span>
+            <span className="hidden xl:inline-block px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider bg-[#E34A32]/10 text-[#E34A32] rounded-full border border-[#E34A32]/20">
+              Ghazipur
             </span>
           </div>
         </button>
 
-        {/* Animated Sliding Pill Navigation Tabs */}
-        <div className="hidden lg:flex items-center gap-1 bg-[#F4F5F5] p-1 rounded-full border border-black/5 relative">
+        {/* Desktop Navigation Tabs (Horizontal Centered Strip) */}
+        <div className="hidden md:flex items-center gap-0.5 bg-[#F4F5F7] p-1 rounded-full border border-black/[0.04] flex-1 justify-center max-w-3xl overflow-x-auto no-scrollbar">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -56,68 +50,43 @@ export const Navigation: React.FC<NavigationProps> = ({ activeTab, setActiveTab 
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`relative z-10 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors duration-200 select-none ${
+                className={`relative z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 whitespace-nowrap select-none ${
                   isActive
                     ? 'text-white font-semibold'
-                    : 'text-[#55575c] hover:text-[#232427]'
+                    : 'text-[#5A5C63] hover:text-[#171719] hover:bg-black/[0.03]'
                 }`}
               >
-                {/* Active Sliding Background Pill */}
                 {isActive && (
                   <motion.div
                     layoutId="activeNavTab"
-                    className="absolute inset-0 bg-[#171719] rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_4px_12px_rgba(23,23,25,0.3)] z-[-1]"
-                    transition={{ type: 'spring', stiffness: 420, damping: 32 }}
+                    className="absolute inset-0 bg-[#171719] rounded-full shadow-[0_2px_8px_rgba(23,23,25,0.25)] z-[-1]"
+                    transition={{ type: 'spring', stiffness: 450, damping: 35 }}
                   />
                 )}
-                <Icon className={`w-3.5 h-3.5 transition-colors ${isActive ? 'text-brand-accent' : 'text-[#8a8c91]'}`} />
+                <Icon className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? 'text-[#FF7A59]' : 'text-[#7D8087]'}`} />
                 <span>{item.label}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Compact Navigation for Medium Screens (Tablets / Smaller Laptops) */}
-        <div className="hidden md:flex lg:hidden items-center gap-1 bg-[#F4F5F5] p-1 rounded-full border border-black/5 relative">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = activeTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => setActiveTab(item.id)}
-                className={`relative z-10 p-2 rounded-full text-xs font-medium transition-colors duration-200 ${
-                  isActive ? 'text-white' : 'text-[#55575c] hover:text-[#232427]'
-                }`}
-                title={item.label}
-              >
-                {isActive && (
-                  <motion.div
-                    layoutId="activeNavTabTablet"
-                    className="absolute inset-0 bg-[#171719] rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] z-[-1]"
-                    transition={{ type: 'spring', stiffness: 420, damping: 32 }}
-                  />
-                )}
-                <Icon className={`w-4 h-4 ${isActive ? 'text-brand-accent' : 'text-[#8a8c91]'}`} />
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Live Status Pill */}
-        <div className="flex items-center gap-2 pr-1.5">
-          <div className="bg-[#FFFFFF] border border-black/5 rounded-full px-3 py-1.5 flex items-center gap-2 text-[11px] font-medium text-text-secondary shadow-sm">
-            <span className="relative flex h-2 w-2">
+        {/* Live Stream Status Pill */}
+        <div className="flex items-center flex-shrink-0 pl-1">
+          <div className="bg-[#F8F9FA] border border-black/[0.06] rounded-full px-2.5 sm:px-3 py-1.5 flex items-center gap-2 text-[11px] font-medium text-[#4A4D53]">
+            <span className="relative flex h-2 w-2 flex-shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            <span className="hidden sm:inline font-medium text-text-primary">DPCC Stream: <strong className="text-emerald-600 font-semibold">Active</strong></span>
+            <span className="whitespace-nowrap font-medium text-[#1E2024]">
+              <span className="hidden sm:inline">DPCC: </span>
+              <strong className="text-emerald-600 font-semibold">Active</strong>
+            </span>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Floating Bottom Bar */}
-      <div className="md:hidden fixed bottom-4 left-4 right-4 pointer-events-auto bg-[#FFFFFF]/95 backdrop-blur-xl p-1.5 flex justify-around items-center z-50 rounded-full border border-white/80 shadow-[0_12px_30px_rgba(0,0,0,0.18)]">
+      {/* Mobile Bottom Navigation Bar */}
+      <div className="md:hidden fixed bottom-4 left-3 right-3 pointer-events-auto bg-white/95 backdrop-blur-xl p-1.5 flex justify-between items-center z-50 rounded-2xl border border-black/10 shadow-[0_12px_32px_rgba(0,0,0,0.18)]">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeTab === item.id;
@@ -125,19 +94,19 @@ export const Navigation: React.FC<NavigationProps> = ({ activeTab, setActiveTab 
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
-              className={`p-2.5 rounded-full relative transition-all ${
-                isActive ? 'text-white font-bold' : 'text-text-secondary'
+              className={`p-2 rounded-xl relative transition-all flex flex-col items-center flex-1 ${
+                isActive ? 'text-white' : 'text-[#64676E]'
               }`}
               title={item.label}
             >
               {isActive && (
                 <motion.div
                   layoutId="activeNavTabMobile"
-                  className="absolute inset-0 bg-[#171719] rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] z-[-1]"
-                  transition={{ type: 'spring', stiffness: 420, damping: 32 }}
+                  className="absolute inset-0 bg-[#171719] rounded-xl shadow-sm z-[-1]"
+                  transition={{ type: 'spring', stiffness: 450, damping: 35 }}
                 />
               )}
-              <Icon className={`w-4 h-4 ${isActive ? 'text-brand-accent' : ''}`} />
+              <Icon className={`w-4 h-4 ${isActive ? 'text-[#FF7A59]' : ''}`} />
             </button>
           );
         })}
