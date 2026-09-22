@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Flame, Activity, MapPin, BarChart3, Brain, Zap, ShieldAlert, Cpu } from 'lucide-react';
+import { Flame, Activity, MapPin, BarChart3, Brain, Zap, ShieldAlert, Cpu, Award } from 'lucide-react';
 
 interface NavigationProps {
   activeTab: string;
@@ -10,6 +10,7 @@ interface NavigationProps {
 export const Navigation: React.FC<NavigationProps> = ({ activeTab, setActiveTab }) => {
   const navItems = [
     { id: 'overview', label: 'Overview', icon: Activity },
+    { id: 'insights', label: 'Research Insights', icon: Award },
     { id: 'gis-map', label: 'GIS Map', icon: MapPin },
     { id: 'eda', label: 'EDA Studio', icon: BarChart3 },
     { id: 'models', label: 'Benchmarks', icon: Cpu },

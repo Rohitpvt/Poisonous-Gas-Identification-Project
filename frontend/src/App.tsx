@@ -7,6 +7,7 @@ import { ModelBenchmarks } from './components/ModelBenchmarks';
 import { ExplainableAi } from './components/ExplainableAi';
 import { PlumeSimulator } from './components/PlumeSimulator';
 import { HealthAdvisory } from './components/HealthAdvisory';
+import { ResearchInsights } from './components/ResearchInsights';
 import { Flame } from 'lucide-react';
 
 export const App: React.FC = () => {
@@ -25,6 +26,7 @@ export const App: React.FC = () => {
             onExploreMap={() => setActiveTab('gis-map')}
           />
         )}
+        {activeTab === 'insights' && <ResearchInsights />}
         {activeTab === 'gis-map' && <GisMap />}
         {activeTab === 'eda' && <EdaStudio />}
         {activeTab === 'models' && <ModelBenchmarks />}
