@@ -6,6 +6,11 @@
     color: #232427;
     font-family: 'Inter', system-ui, sans-serif;
   }
+
+  ::selection {
+    background-color: #E34A32 !important;
+    color: #FFFFFF !important;
+  }
 }
 
 /* Custom SprintForge Utility Classes */

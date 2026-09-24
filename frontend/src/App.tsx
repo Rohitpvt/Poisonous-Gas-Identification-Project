@@ -14,7 +14,7 @@ export const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('overview');
 
   return (
-    <div className="min-h-screen bg-background text-text-primary flex flex-col justify-between selection:bg-brand-primary selection:text-white">
+    <div className="min-h-screen bg-background text-text-primary flex flex-col justify-between selection:bg-[#E34A32]/25 selection:text-[#171719]">
       {/* Top Floating Navigation */}
       <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
 
