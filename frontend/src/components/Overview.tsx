@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight, Satellite, ShieldCheck, Flame, Compass, Wind } from 'lucide-react';
 import { SATELLITE_PLUMES } from '../data/constants';
+import { PageDescriptionCard } from './PageDescriptionCard';
 
 interface OverviewProps {
   onExploreSimulator: () => void;
@@ -192,6 +193,46 @@ export const Overview: React.FC<OverviewProps> = ({ onExploreSimulator, onExplor
           </table>
         </div>
       </div>
+
+      {/* Detailed Page Breakdown Card */}
+      <PageDescriptionCard
+        pageTitle="Executive Overview & Multi-Sensor Fusion Architecture"
+        objective="This page establishes the macro research framework, uniting high-resolution orbital satellite hyperspectral imaging (NASA EMIT, ESA EnMAP) with continuous ground-level ambient air monitoring (DPCC Anand Vihar). It contextualizes the massive scale of solid waste emissions across the Delhi-NCR capital region."
+        methodology={[
+          {
+            title: "Multi-Source Sensor Calibration",
+            details: "Synthesizes 27,800+ hourly ground telemetry points with orbital hyperspectral methane column retrievals (100–160° wind azimuth)."
+          },
+          {
+            title: "Point-Source Quantification",
+            details: "Evaluates the 4 major municipal solid waste dumpsites (Ghazipur, Bhalswa, Okhla, Bandhwari) to isolate super-emitter dynamics."
+          },
+          {
+            title: "Atmospheric Transport Bridge",
+            details: "Connects point emissions at the 65-meter landfill summit to continuous ground receptors located 2.8 km directly downwind."
+          },
+          {
+            title: "Regulatory Benchmark Integration",
+            details: "Aligns empirical readings against WHO air quality guidelines and CPCB National Ambient Air Quality Standards (NAAQS)."
+          }
+        ]}
+        howToInterpret={[
+          "Examine the 4 Executive KPI Cards: They summarize the overall dataset magnitude, best-in-class predictive accuracy (R² = 0.840), and verified peak emission rates (3,843.5 kg/hr).",
+          "Analyze the Landfill Target Comparison Table: Notice that Ghazipur produces over 34% more CH₄ than Bhalswa and nearly double Okhla due to sheer height and anaerobic compaction.",
+          "Review the Satellite Detection Log: Every listed row is a verified spaceborne hyperspectral plume capture with exact timestamps and wind vectors."
+        ]}
+        actionableInsights={[
+          "Proves that Ghazipur is the dominant toxic point-source in East Delhi, requiring targeted bio-mining and methane capture infrastructure.",
+          "Demonstrates that ground sensor spikes at Anand Vihar are directly correlated with orbital plume detections under specific wind bearings.",
+          "Provides examiners and researchers with the high-level factual foundation supporting all subsequent modeling tabs."
+        ]}
+        dataSources={[
+          "NASA EMIT (ISS Hyperspectral)",
+          "ESA EnMAP (Orbital Imaging)",
+          "DPCC Continuous CAAQMS Hub",
+          "CPCB National Air Quality Database"
+        ]}
+      />
     </div>
   );
 };

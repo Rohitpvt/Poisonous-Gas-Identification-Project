@@ -22,6 +22,7 @@ import {
   HelpCircle,
   Sparkles
 } from 'lucide-react';
+import { PageDescriptionCard } from './PageDescriptionCard';
 
 // Custom Map Marker Icons using Leaflet divIcon
 const createCustomIcon = (color: string, iconSymbol: string, size = 32) => {
@@ -873,6 +874,47 @@ export const GisMap: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Detailed Page Breakdown Card */}
+      <PageDescriptionCard
+        pageTitle="Geospatial Information System (GIS) & Atmospheric Dispersion Tracker"
+        objective="This page provides an interactive geospatial map modeling the physical transport of hazardous gases from Delhi's landfill dumpsites across surrounding residential receptors. It dynamically couples Gaussian dispersion physics with orbital satellite plume observations."
+        methodology={[
+          {
+            title: "Gaussian Plume Geometry & Vector Translation",
+            details: "Calculates an active downwind dispersion polygon (length ~4.8 km, spread ±28°) dynamically oriented along the user-controlled wind azimuth."
+          },
+          {
+            title: "Dynamic Exposure Intersection Engine",
+            details: "Trigonometrically evaluates angular offsets between active wind bearing and receptor coordinates to determine immediate community exposure."
+          },
+          {
+            title: "Multi-Orbit Plume Footprint Integration",
+            details: "Renders verified NASA EMIT and ESA EnMAP hyperspectral methane plume footprints with exact emission fluxes (kg/hr)."
+          },
+          {
+            title: "High-Toxicity Perimeter Buffering",
+            details: "Constructs 1.0 km high-toxicity containment rings and 2.8 km DPCC Anand Vihar receptor distance radii."
+          }
+        ]}
+        howToInterpret={[
+          "Use the Interactive Wind Vector Controller (bottom-left) to rotate wind direction: Watch the red plume cone rotate across East Delhi and Ghaziabad.",
+          "Check the Top Right Layer Toggles: Toggle individual layers (Gaussian Plume, NASA Satellites, Populated Receptors, Safe Corridors, Buffer Rings) to isolate spatial features.",
+          "Inspect the Live Receptor Monitor (right sidebar): See instant updates on which neighborhoods are in direct danger and their estimated gas transit time (e.g. 18 mins at 2.5 m/s).",
+          "Click on any Map Marker: View detailed popups with emission rates, population at risk, coordinates, and safe evacuation directions."
+        ]}
+        actionableInsights={[
+          "Identifies Anand Vihar ISBT (120,000 people) and Kaushambi (60,000 people) as the most frequently impacted hubs under prevailing 110°–150° winds.",
+          "Demonstrates that Sanjay Lake and Akshardham riverbank buffers remain clean-air sanctuaries (>88% exposure drop) even during intense landfill flare-ups.",
+          "Equips municipal disaster response teams with precise geospatial boundary coordinates for emergency perimeter evacuations."
+        ]}
+        dataSources={[
+          "OpenStreetMap & CartoDB Tile Services",
+          "NASA EMIT (Earth Surface Mineral Dust Source Investigation)",
+          "ESA Environmental Mapping and Analysis Program (EnMAP)",
+          "Delhi Municipal Corporation (MCD) Landfill Geocodes"
+        ]}
+      />
     </div>
   );
 };

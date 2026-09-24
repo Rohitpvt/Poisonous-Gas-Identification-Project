@@ -2,6 +2,7 @@ import React from 'react';
 import { SHAP_FEATURE_IMPORTANCE } from '../data/constants';
 import { Brain, Sparkles, BookOpen, Layers } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import { PageDescriptionCard } from './PageDescriptionCard';
 
 export const ExplainableAi: React.FC = () => {
   return (
@@ -97,6 +98,46 @@ export const ExplainableAi: React.FC = () => {
           </ul>
         </div>
       </div>
+
+      {/* Detailed Page Breakdown Card */}
+      <PageDescriptionCard
+        pageTitle="Explainable AI (XAI) & SHAP Feature Attribution Studio"
+        objective="This studio breaks open the machine learning 'black box' using Shapley Game-Theoretic additive feature attributions (SHAP). It rigorously explains *why* the model predicts high toxic gas spikes for any given meteorological scenario."
+        methodology={[
+          {
+            title: "Shapley Additive exPlanations (SHAP)",
+            details: "Computes the exact marginal contribution ϕᵢ of each feature across all possible feature subsets (coalitions), guaranteeing additive efficiency and consistency."
+          },
+          {
+            title: "TreeSHAP Polynomial Acceleration",
+            details: "Applies exact tree-path conditional expectation algorithms to evaluate ensemble decision trees in polynomial time."
+          },
+          {
+            title: "Directional SHAP Value Polarity",
+            details: "Separates positive risk-forcing attributions (+SHAP pushing predictions higher) from negative dispersion factors (-SHAP cleansing ambient air)."
+          },
+          {
+            title: "Meteorology vs Geometry Disentanglement",
+            details: "Quantifies the interaction between ambient temperature gradients, wind direction alignment, and physical dumpsite elevation (65m)."
+          }
+        ]}
+        howToInterpret={[
+          "Analyze the Feature Importance Bar Chart: Features are ranked by mean |SHAP| impact on model predictions.",
+          "Check Ghazipur Plume Alignment: Wind angles aligned with 100°–160° create the single largest positive SHAP force (+34 µg/m³ NH₃).",
+          "Observe Temperature and Boundary Layer Effects: Cold winter nights produce high positive SHAP values due to atmospheric boundary layer inversion.",
+          "Check Wind Speed SHAP Values: Higher wind speeds (>3.5 m/s) produce strong negative SHAP values, indicating rapid turbulent dilution."
+        ]}
+        actionableInsights={[
+          "Proves to environmental regulators and judicial authorities that the ML model relies on sound atmospheric physics rather than spurious background correlation.",
+          "Confirms that wind direction and nocturnal thermal stability are the twin dominant drivers of toxic community exposure.",
+          "Provides municipal engineers with interpretability metrics to explain automated early warning triggers to the public."
+        ]}
+        dataSources={[
+          "TreeSHAP & KernelSHAP Interpretability Packages",
+          "Trained LightGBM & Ridge Regression Model Weights",
+          "IMD Meteorological Reanalysis & DPCC Telemetry"
+        ]}
+      />
     </div>
   );
 };

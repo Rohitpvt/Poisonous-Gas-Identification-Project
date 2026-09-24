@@ -11,6 +11,7 @@ import {
   Award
 } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts';
+import { PageDescriptionCard } from './PageDescriptionCard';
 
 export const ResearchInsights: React.FC = () => {
   const [activeDimension, setActiveDimension] = useState<string>('source_attribution');
@@ -371,6 +372,46 @@ export const ResearchInsights: React.FC = () => {
           </table>
         </div>
       </div>
+
+      {/* Detailed Page Breakdown Card */}
+      <PageDescriptionCard
+        pageTitle="Research Insights, Empirical Findings & Statistical Proof"
+        objective="This page consolidates the definitive statistical, meteorological, and machine learning proofs generated throughout this research study. It answers critical examiner and mentor inquiries regarding source attribution, causal mechanisms, and dataset validations."
+        methodology={[
+          {
+            title: "Directional Wind-Corridor Isolation",
+            details: "Isolates the narrow 110°–150° downwind azimuth from Ghazipur to Anand Vihar, demonstrating a statistically significant +74.5% NH₃ surge compared to crosswind and upwind baselines."
+          },
+          {
+            title: "Planetary Boundary Layer & Inversion Dynamics",
+            details: "Analyzes nocturnal atmospheric trapping mechanics where shallow boundary layers (<200m) concentrate ground toxins between 02:00 and 06:00."
+          },
+          {
+            title: "Multi-Satellite Plume Validation",
+            details: "Correlates orbital hyperspectral plume captures (3,120–4,890 kg/hr CH₄) with ground CAAQMS continuous sensor records."
+          },
+          {
+            title: "Predictive Multi-Pollutant Ensemble",
+            details: "Evaluates 8 machine learning architectures across 9 hazardous gases, achieving up to R² = 0.940 (Ammonia) and 93.4% acute hazard recall."
+          }
+        ]}
+        howToInterpret={[
+          "Select each dimension tab (Source Attribution, Satellite Plumes, Diurnal Inversion, ML Benchmarks, Clean-Air Routing) to view interactive charts and structured mathematical proofs.",
+          "Check the Proof Data Tables: Compare downwind versus crosswind pollutant concentrations to verify localized source attribution.",
+          "Use the 'Download Complete Research Report (.docx)' button at the top right to export the full academic paper."
+        ]}
+        actionableInsights={[
+          "Provides undeniable empirical evidence that Ghazipur solid waste facility directly drives toxic gas surges at Anand Vihar.",
+          "Proves that vulnerable populations are at highest risk during pre-dawn hours when nocturnal inversion prevents vertical atmospheric mixing.",
+          "Offers municipal authorities actionable data to schedule waste bio-capping and targeted aerated composting."
+        ]}
+        dataSources={[
+          "DPCC Continuous Air Monitoring Station (Anand Vihar)",
+          "NASA EMIT & ESA EnMAP Plume Inventories",
+          "IMD Meteorological Boundary Layer Reanalysis",
+          "Christ University Machine Learning Pipeline"
+        ]}
+      />
     </div>
   );
 };

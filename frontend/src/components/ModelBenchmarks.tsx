@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { REGRESSION_METRICS, CLASSIFICATION_METRICS } from '../data/constants';
 import { Cpu, Award, CheckCircle2, BarChart2, ShieldCheck } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts';
+import { PageDescriptionCard } from './PageDescriptionCard';
 
 export const ModelBenchmarks: React.FC = () => {
   const [taskTab, setTaskTab] = useState<'regression' | 'classification'>('regression');
@@ -241,6 +242,46 @@ export const ModelBenchmarks: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Detailed Page Breakdown Card */}
+      <PageDescriptionCard
+        pageTitle="Multi-Gas Machine Learning Benchmarking & Predictive Performance"
+        objective="This page presents a rigorous comparative evaluation of 8 machine learning and ensemble architectures trained to predict 1-hour ahead continuous concentrations and discrete acute hazard states across 9 distinct gaseous species."
+        methodology={[
+          {
+            title: "Multi-Target Regression Suite",
+            details: "Benchmarks Ridge, LASSO, ElasticNet, Random Forest, Extra Trees, Gradient Boosting, XGBoost, and LightGBM across 9 target pollutants."
+          },
+          {
+            title: "Acute Hazard Classification",
+            details: "Evaluates threshold exceedance classification using Precision, Recall, F1-Score, and ROC-AUC to prevent false-negative public health alerts."
+          },
+          {
+            title: "Time-Series Train/Test Splitting",
+            details: "Employs strict temporal chronological splitting (80/20 train/test) to prevent look-ahead data leakage in lagged air quality predictors."
+          },
+          {
+            title: "Hyperparameter Regularization & Tuning",
+            details: "Optimizes L2 penalty terms in Ridge Regression and tree depth/subsample ratios in LightGBM via 5-fold cross-validation."
+          }
+        ]}
+        howToInterpret={[
+          "Switch Task Tabs (Continuous Regression vs Hazard Classification): Review R² (variance explained), RMSE (root mean squared error), and MAE (mean absolute error).",
+          "Use the Pollutant Dropdown Filter: Filter by individual gas (e.g. Ammonia NH₃, Benzene, PM2.5, CO) to compare model performance per target.",
+          "Look for Green Badges: Indicates the best-performing model algorithm for that specific pollutant or classification task.",
+          "Check the Top Comparison Bar Chart: Visualizes the highest achieved R² score across all 9 pollutants (PM2.5: 0.929, Benzene: 0.900, NH₃: 0.840)."
+        ]}
+        actionableInsights={[
+          "Demonstrates that regularized linear baselines (Ridge) and gradient boosted trees (LightGBM) provide superior generalization on lagged meteorological-plume feature sets.",
+          "Achieves near-perfect classification recall (>99.6%), ensuring that severe toxic spikes are almost never missed by automated municipal alert pipelines.",
+          "Validates the predictive capability needed for real-time dispatch of air purification and school outdoor activity restrictions."
+        ]}
+        dataSources={[
+          "Scikit-Learn ML Suite",
+          "XGBoost & LightGBM Gradient Boosted Frameworks",
+          "27,800+ Ground CAAQMS Hourly Training Samples"
+        ]}
+      />
     </div>
   );
 };

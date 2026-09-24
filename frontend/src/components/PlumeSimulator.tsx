@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Zap, Wind, Thermometer, Droplets, AlertTriangle, CheckCircle2, ShieldAlert } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Cell, ReferenceLine } from 'recharts';
+import { PageDescriptionCard } from './PageDescriptionCard';
 
 export const PlumeSimulator: React.FC = () => {
   const [currentNh3, setCurrentNh3] = useState<number>(45.0);
@@ -268,6 +269,45 @@ export const PlumeSimulator: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Detailed Page Breakdown Card */}
+      <PageDescriptionCard
+        pageTitle="Interactive Gaussian Plume Simulation & What-If Inference Engine"
+        objective="This simulator provides an interactive physics-informed inference sandbox. Users can test hypothetical weather conditions, emission fluxes, and ambient temperatures to predict ground-level Ammonia spikes and evaluate real-time SHAP force waterfall attributions."
+        methodology={[
+          {
+            title: "Physics-Informed Gaussian Dispersion Formulation",
+            details: "Simulates downwind toxic gas transport by factoring in plume geometry alignment indices, aerodynamic drag, and exponential wind dilution."
+          },
+          {
+            title: "Real-Time Multi-Feature Inference",
+            details: "Dynamically recalculates expected 1-hour ahead continuous NH₃ concentrations (µg/m³) and probabilistic acute exceedance risk."
+          },
+          {
+            title: "Local SHAP Force Waterfall Decomposition",
+            details: "Decomposes the final prediction into individual feature forces (Lag baseline, Plume alignment, Temperature inversion, Relative humidity)."
+          },
+          {
+            title: "Dynamic Hazard Threshold Classification",
+            details: "Evaluates whether predicted ground concentrations cross the CPCB severe hazard threshold (60 µg/m³)."
+          }
+        ]}
+        howToInterpret={[
+          "Adjust the Left Sidebar Sliders: Tweak Current Ammonia lag, Wind Direction (0°–360°), Wind Speed, Temperature, and Humidity.",
+          "Observe the Predicted Output Box (top right): Shows forecasted 1-hour ahead NH₃ value and a real-time risk gauge (Low / Moderate / Severe Hazard).",
+          "Analyze the Local SHAP Waterfall Chart (bottom right): Red bars push concentrations upward (e.g. 130° Ghazipur wind alignment), while Teal bars pull concentrations down (e.g. high wind speed ventilation)."
+        ]}
+        actionableInsights={[
+          "Enables municipal emergency operators to test 'worst-case' meteorological scenarios (e.g. winter night at 13°C, 1.2 m/s wind, 130° azimuth).",
+          "Demonstrates immediate cause-and-effect between environmental variables and localized ground-level toxicity.",
+          "Provides a practical simulation tool for urban planners designing vegetative green buffer zones around solid waste facilities."
+        ]}
+        dataSources={[
+          "Gaussian Plume Dispersion Physics Formulation",
+          "Trained Ridge & LightGBM Surrogate Models",
+          "CPCB Acute Health Threshold Standards"
+        ]}
+      />
     </div>
   );
 };

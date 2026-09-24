@@ -5,6 +5,7 @@ import {
 } from 'recharts';
 import { DIURNAL_TRENDS } from '../data/constants';
 import { Clock, TrendingUp, Sparkles, Wind } from 'lucide-react';
+import { PageDescriptionCard } from './PageDescriptionCard';
 
 export const EdaStudio: React.FC = () => {
   const [activeSubTab, setActiveSubTab] = useState<'diurnal' | 'downwind' | 'correlation'>('diurnal');
@@ -185,6 +186,45 @@ export const EdaStudio: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Detailed Page Breakdown Card */}
+      <PageDescriptionCard
+        pageTitle="Exploratory Data Analysis (EDA) & Diurnal Dynamics Studio"
+        objective="This studio presents empirical temporal and directional distributions extracted from 27,800+ continuous ground monitoring records. It isolates how atmospheric boundary layer collapses and seasonal thermal inversions modulate ground toxicity."
+        methodology={[
+          {
+            title: "Diurnal Hourly Time-Series Aggregation",
+            details: "Computes 24-hour mean diurnal curves for NH₃, CO, PM2.5, and Benzene to uncover nocturnal trapping cycles."
+          },
+          {
+            title: "Directional Downwind Sector Partitioning",
+            details: "Filters sensor readings by wind direction to contrast the 100°–160° direct Ghazipur plume corridor against background ambient air."
+          },
+          {
+            title: "Inter-Pollutant Cross-Correlation",
+            details: "Constructs Pearson correlation matrices to quantify co-emission synergies among organic volatile compounds, ammonia, and respirable particulates."
+          },
+          {
+            title: "Planetary Boundary Layer Height (PBLH) Profiling",
+            details: "Models vertical dispersion capacity as nocturnal surface cooling caps the atmospheric mixing volume beneath 200 meters."
+          }
+        ]}
+        howToInterpret={[
+          "Switch Sub-Tabs (24-Hour Diurnal Dynamics vs Downwind Plume Sector): Notice the characteristic double-peaked diurnal profile.",
+          "Inspect Diurnal Inversion Peaks: Concentrations spike sharply between 02:00–06:00 AM (NH₃ reaches ~79.6 µg/m³) before solar radiation initiates convective mixing around 11:00 AM.",
+          "Check the Plume Sector Bar Chart: Direct Ghazipur winds trigger a +65.1% increase in NH₃, +58.9% in CO, and +70.5% in Benzene."
+        ]}
+        actionableInsights={[
+          "Confirms that human exposure risk is intensely skewed toward late-night and early morning hours when residents are asleep with windows closed.",
+          "Establishes empirical baselines used as core input features (temporal lags, wind direction, boundary layer height) for the predictive ML models.",
+          "Recommends targeted municipal night misting and perimeter flare mitigations between 10:00 PM and 06:00 AM."
+        ]}
+        dataSources={[
+          "DPCC Continuous Ground Telemetry (2022–2024)",
+          "Central Pollution Control Board (CPCB) Verified Data",
+          "India Meteorological Department (IMD) Boundary Layer Profiler"
+        ]}
+      />
     </div>
   );
 };
