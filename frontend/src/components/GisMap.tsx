@@ -61,11 +61,31 @@ const exposedReceptorIcon = createCustomIcon('#DC2626', '⚠️', 30);
 const satellitePlumeIcon = createCustomIcon('#8B5CF6', '🛰️', 28);
 const safeZoneIcon = createCustomIcon('#10B981', '🛡️', 30);
 
+// Tile Layer Options using Leaflet.js & OpenStreetMap
+const MAP_TILES = {
+  osm: {
+    name: 'OpenStreetMap (Standard)',
+    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors | <a href="https://leafletjs.com/" target="_blank" rel="noopener noreferrer">Leaflet.js</a>'
+  },
+  osmHot: {
+    name: 'OpenStreetMap (Humanitarian Style)',
+    url: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors | Style by HOT | <a href="https://leafletjs.com/" target="_blank" rel="noopener noreferrer">Leaflet.js</a>'
+  },
+  topo: {
+    name: 'OpenTopoMap (Topographical Elevation)',
+    url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+    attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors, SRTM | Map style: &copy; <a href="https://opentopomap.org" target="_blank" rel="noopener noreferrer">OpenTopoMap</a> | <a href="https://leafletjs.com/" target="_blank" rel="noopener noreferrer">Leaflet.js</a>'
+  }
+};
+
 export const GisMap: React.FC = () => {
   // State
   const [selectedSiteId, setSelectedSiteId] = useState<string>('ghazipur');
   const [windAngle, setWindAngle] = useState<number>(130);
   const [windSpeed, setWindSpeed] = useState<number>(2.2); // m/s
+  const [activeTileKey, setActiveTileKey] = useState<keyof typeof MAP_TILES>('osm');
   const [activeScenario, setActiveScenario] = useState<string>('winter_inversion');
   const [showGuide, setShowGuide] = useState<boolean>(true);
 
@@ -288,12 +308,37 @@ export const GisMap: React.FC = () => {
           </button>
         </div>
 
-        {/* Leaflet Engine Badge & Reset Controls */}
-        <div className="flex items-center gap-2 self-end md:self-auto">
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-surface-light border border-border-light text-xs text-text-secondary">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Leaflet.js Standard Tile Engine</span>
-          </div>
+        {/* Map Tile & Reset Controls */}
+        <div className="flex flex-wrap items-center gap-2 self-end md:self-auto">
+          <a
+            href="https://leafletjs.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-emerald-50 text-emerald-800 text-xs font-semibold border border-emerald-200 hover:bg-emerald-100 transition-colors"
+            title="Leaflet.js Official Documentation"
+          >
+            <span>🍃 Leaflet.js</span>
+          </a>
+          <a
+            href="https://www.openstreetmap.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-sky-50 text-sky-800 text-xs font-semibold border border-sky-200 hover:bg-sky-100 transition-colors"
+            title="OpenStreetMap"
+          >
+            <span>🗺️ OpenStreetMap</span>
+          </a>
+          <select
+            value={activeTileKey}
+            onChange={(e) => setActiveTileKey(e.target.value as keyof typeof MAP_TILES)}
+            className="text-xs font-medium bg-surface-light border border-border-light rounded-xl px-2.5 py-1 text-text-primary focus:outline-none focus:ring-1 focus:ring-brand-primary"
+          >
+            {Object.entries(MAP_TILES).map(([k, v]) => (
+              <option key={k} value={k}>
+                {v.name}
+              </option>
+            ))}
+          </select>
           {!showGuide && (
             <button
               onClick={() => setShowGuide(true)}
@@ -317,8 +362,8 @@ export const GisMap: React.FC = () => {
               className="w-full h-full rounded-[20px] z-10"
             >
               <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | <a href="https://leafletjs.com/">Leaflet.js</a>'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution={MAP_TILES[activeTileKey].attribution}
+                url={MAP_TILES[activeTileKey].url}
               />
 
               {/* 1. Ghazipur Buffer Zones (1km Danger Perimeter & 2.8km Station Circle) */}
@@ -951,6 +996,12 @@ export const GisMap: React.FC = () => {
             type: "Button",
             functionality: "Quick 1-click presets: 🚨 Winter Smog Inversion (130° SE), 🛰️ NASA EMIT Overpass (288° NW), 🛡️ Crosswind Evacuation (215° SW).",
             impactOnOutput: "Instantly sets realistic historical weather parameters and adjusts map focus."
+          },
+          {
+            control: "Basemap Selector Dropdown",
+            type: "Dropdown",
+            functionality: "Switches the underlying tile provider between OpenStreetMap (Standard), OpenStreetMap (Humanitarian Style), and OpenTopoMap (Elevation).",
+            impactOnOutput: "Modifies street-level detail, topology, and cartographic rendering powered directly by Leaflet.js & OpenStreetMap."
           }
         ]}
         metricDefinitions={[
@@ -976,9 +1027,10 @@ export const GisMap: React.FC = () => {
           "Equips municipal disaster response teams with precise geospatial boundary coordinates for emergency perimeter evacuations."
         ]}
         dataSources={[
-          "Leaflet.js Official OpenStreetMap Vector Tile Engine",
-          "NASA EMIT (Earth Surface Mineral Dust Source Investigation)",
-          "ESA Environmental Mapping and Analysis Program (EnMAP)",
+          "Leaflet.js Open-Source Interactive Map Engine (v1.9.4)",
+          "OpenStreetMap (OSM) Global Spatial Tile Repository",
+          "OpenTopoMap Topographical Elevation Tiles",
+          "NASA EMIT & ESA EnMAP Satellite Plume Catalogs",
           "Delhi Municipal Corporation (MCD) Landfill Geocodes"
         ]}
       />
