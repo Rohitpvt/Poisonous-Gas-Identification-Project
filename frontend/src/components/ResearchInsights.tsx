@@ -58,9 +58,9 @@ export const ResearchInsights: React.FC = () => {
 
         <div className="flex items-center gap-2 self-start">
           <a
-            href="/PROJECT_REPORT.docx"
+            href={`${import.meta.env.BASE_URL}PROJECT_REPORT.docx`}
             download="PROJECT_REPORT.docx"
-            className="btn-primary px-4 py-2 text-xs font-semibold flex items-center gap-1.5"
+            className="btn-primary px-4 py-2 text-xs font-semibold flex items-center gap-1.5 cursor-pointer shadow-sm hover:opacity-90 active:scale-95 transition-all"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Download Report (.docx)</span>
