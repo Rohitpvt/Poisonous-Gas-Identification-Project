@@ -898,59 +898,87 @@ export const GisMap: React.FC = () => {
         objective="This page provides an interactive geospatial map modeling the physical transport of hazardous gases from Delhi's landfill dumpsites across surrounding residential receptors. It dynamically couples Gaussian dispersion physics with orbital satellite plume observations."
         visualElements={[
           {
-            name: "Interactive Leaflet Geospatial Canvas",
+            name: "Live Plume Hazard Status Banner (Top Header)",
+            type: "Widget",
+            description: "Header status banner displaying the real-time hazard severity badge ('⚠️ X Hubs in Danger Sector' or '✅ Corridor Dispersing Clear') alongside the total calculated exposed population count.",
+            axesOrEncoding: "Pulsing red/green indicator dot and bold numeric resident counter.",
+            whatItShows: "Immediate summary of how many residential hubs and citizens are currently within the active gas dispersion path."
+          },
+          {
+            name: "How to Read This Map Guide Box (4-Step Pipeline)",
+            type: "Panel",
+            description: "Dismissible explanatory banner breaking down the 4-step scientific pipeline: 1. 🔥 Super-Emitter (Ghazipur 3,843 kg/hr), 2. 🛰️ Satellite Footprint (NASA EMIT / ESA EnMAP), 3. 💨 Gaussian Dispersion (Red plume cone), and 4. 🛡️ Safe Clean Corridors (Upwind eco-parks).",
+            axesOrEncoding: "Four-column grid with color-coded step badges and dismissal button.",
+            whatItShows: "Provides users with a clear, step-by-step primer on how to interpret spatial plume dispersion."
+          },
+          {
+            name: "Preset Scenario Bar & Map Tile Provider Selector",
+            type: "Control",
+            description: "Interactive toolbar with 3 preset scenario buttons (🚨 Winter Smog Inversion 130° SE, 🛰️ NASA EMIT Overpass 288° NW, 🛡️ Crosswind Evacuation 215° SW), official Leaflet.js and OpenStreetMap links, and a tile style dropdown.",
+            axesOrEncoding: "Dropdown tile options: OpenStreetMap (Standard), OpenStreetMap (Humanitarian Style), OpenTopoMap (Topographical Elevation).",
+            whatItShows: "Enables instant 1-click simulation of historical weather events and switching of cartographic basemaps."
+          },
+          {
+            name: "Interactive Leaflet Geospatial Map Canvas",
             type: "Map",
-            description: "Full-bleed interactive vector tile map centered on East Delhi and Ghaziabad (28.628°N, 77.308°E), rendering landfill coordinates, ground stations, and plume polygons.",
-            axesOrEncoding: "OpenStreetMap Standard, OpenStreetMap Humanitarian Style, and OpenTopoMap elevation tile layers with dynamic SVG & Leaflet marker layers.",
-            whatItShows: "Real-time geographic spatial distribution of landfill emission sources and downwind receptors."
+            description: "Full-bleed interactive vector tile map centered on East Delhi and Ghaziabad (28.628°N, 77.308°E), rendering landfill coordinates, ground monitoring stations, plume polygons, and receptor markers.",
+            axesOrEncoding: "OpenStreetMap and OpenTopoMap tile layers with interactive pan/zoom, popups, and dynamic SVG marker overlays.",
+            whatItShows: "Geographic spatial distribution of landfill emission sources, ground stations, residential hubs, and satellite footprints."
           },
           {
             name: "Dynamic Gaussian Dispersion Plume Cone",
             type: "Diagram",
-            description: "A semi-transparent red triangular polygon anchored at Ghazipur's coordinates, extending 4.8 km downwind with a ±28° spread angle.",
-            axesOrEncoding: "Red boundary with 32% crimson fill, dynamically recalculating corner vertices as the wind slider rotates.",
-            whatItShows: "Visualizes the atmospheric corridor where airborne toxic concentrations (NH₃, CO, VOCs) exceed safe ambient background levels."
+            description: "A semi-transparent red triangular polygon anchored at Ghazipur's coordinates (28.6238°N, 77.3284°E), extending 4.8 km downwind with a ±28° spread angle.",
+            axesOrEncoding: "Red boundary with 32% crimson fill, dynamically recalculating corner vertices as the wind azimuth changes.",
+            whatItShows: "Visualizes the physical atmospheric corridor where airborne toxic concentrations (NH₃, CO, VOCs) exceed safe ambient background levels."
           },
           {
-            name: "Buffer Perimeter Rings (1.0 km & 2.8 km)",
+            name: "Ghazipur Buffer Perimeter Rings (1.0 km & 2.8 km)",
             type: "Diagram",
-            description: "Concentric dashed circles around Ghazipur representing critical safety and monitoring milestones.",
-            axesOrEncoding: "Inner dashed red circle = 1.0 km High-Toxicity Zone; Outer orange circle = 2.8 km Anand Vihar Ground Station radius.",
-            whatItShows: "Demarcates the immediate lethal containment zone and distance to continuous regulatory monitoring instruments."
+            description: "Concentric dashed circles around Ghazipur representing critical safety perimeters and monitoring baselines.",
+            axesOrEncoding: "Inner dashed red circle = 1.0 km High-Toxicity Perimeter; Outer dashed orange circle = 2.8 km DPCC Anand Vihar Ground Station radius.",
+            whatItShows: "Demarcates the immediate high-toxicity danger zone and the spatial baseline distance to the continuous regulatory ground station."
           },
           {
-            name: "Floating Layer Visibility Control Panel",
+            name: "Floating Map Layer Toggles Overlay (Top-Right of Map)",
             type: "Widget",
             description: "Top-right glassmorphic panel with 5 interactive eye-toggle pills.",
             axesOrEncoding: "Pills: Gaussian Plume Cone, NASA/ESA Satellites, Populated Receptors, Safe Clean Corridors, Buffer Rings (1km / 2.8km).",
-            whatItShows: "Allows users to isolate individual spatial layers to prevent visual clutter."
+            whatItShows: "Allows users to independently toggle individual spatial layers on or off to isolate specific data views."
           },
           {
-            name: "Interactive Wind Vector Controller (Slider)",
+            name: "Interactive Wind Vector Controller (Bottom-Left of Map)",
             type: "Control",
-            description: "Bottom-left glassmorphic control with an azimuth slider (0°–360°), wind speed readout (1.8 m/s), and calculated transit time (~26 mins).",
-            axesOrEncoding: "Azimuth slider with compass ticks (0° N, 90° E, 130° SE Anand Vihar, 270° W, 360° N).",
-            whatItShows: "Enables interactive simulation of changing weather patterns and instant observation of which neighborhoods become exposed."
+            description: "Bottom-left glassmorphic control with an azimuth slider (0°–360°), wind speed readout (2.2 m/s), and calculated gas transit time to Anand Vihar (~21 mins).",
+            axesOrEncoding: "Azimuth slider with compass ticks (0° N, 90° E, 130° SE Anand Vihar, 270° W, 360° N) and active corridor badge.",
+            whatItShows: "Enables interactive simulation of changing wind direction and immediate recalculation of which residential colonies become exposed."
           },
           {
-            name: "Live Receptor Exposure Monitor (Right Sidebar)",
+            name: "Map Legend & Symbol Key Bar (Below Map)",
             type: "Panel",
-            description: "Live scrolling list of 6 receptor neighborhoods with real-time exposure badges, population counts, and travel times.",
+            description: "A 6-column legend bar below the map defining all map marker symbols.",
+            axesOrEncoding: "Grid of 6 items: 🔥 Ghazipur Landfill, 📡 DPCC Station, 🛰️ NASA Plumes, ⚠️ Exposed Hub, 🛡️ Safe Eco-Park, 🌋 Other Dumpsites (Bhalswa & Okhla).",
+            whatItShows: "Quick reference key identifying every facility and marker rendered on the interactive map."
+          },
+          {
+            name: "Selected Spatial Entity Profile & Quick Jump Panel (Right Column)",
+            type: "Panel",
+            description: "Interactive entity inspector displaying selected facility name, operational status, latitude/longitude, description, methane emission flux, and 4 quick jump buttons (Ghazipur, Anand Vihar Station, Bhalswa, Okhla).",
+            axesOrEncoding: "Card with coordinates, CH₄ flux readout, and facility selector buttons.",
+            whatItShows: "Detailed operational profile and regulatory status of solid waste infrastructure across Delhi."
+          },
+          {
+            name: "Live Receptor Exposure Monitor (Right Column)",
+            type: "Panel",
+            description: "Live scrolling list of 6 receptor neighborhoods with real-time exposure badges, distance, bearing, population counts, and gas travel times.",
             axesOrEncoding: "Red '🚨 Impacted' badge versus green '✅ Clear' badge based on angular difference (|θ_wind - θ_receptor| ≤ 34°).",
-            whatItShows: "Instant calculation of human exposure burden (e.g. 155,000 residents in danger zone under 130° wind)."
+            whatItShows: "Real-time calculation of human exposure burden (e.g. 155,000 residents in danger sector under 130° SE wind)."
           },
           {
-            name: "Selected Spatial Entity Profile & Quick Jump Bar",
-            type: "Panel",
-            description: "Interactive entity inspector displaying selected facility name, operational status, coordinates (Lat/Lng), description, and methane emission flux.",
-            axesOrEncoding: "Displays selected site details with quick jump buttons for Ghazipur Landfill, DPCC Anand Vihar Station, Bhalswa Landfill, and Okhla Landfill.",
-            whatItShows: "Detailed facility attributes and regulatory status across Delhi's solid waste landscape."
-          },
-          {
-            name: "Recommended Safe Air Corridor Card",
+            name: "Recommended Safe Air Corridor Card (Right Column)",
             type: "Panel",
             description: "Actionable evacuation haven card highlighting Sanjay Lake & Eco-Park (2.9 km SW) with route directives.",
-            axesOrEncoding: "Green gradient card displaying route: NH-24 Bypass towards Mayur Vihar Phase-2, offering up to 88% gas exposure reduction.",
+            axesOrEncoding: "Green gradient card displaying evacuation route: NH-24 Bypass towards Mayur Vihar Phase-2, offering up to 88% gas exposure reduction.",
             whatItShows: "Optimal crosswind evacuation destination during severe Ghazipur landfill flaring episodes."
           }
         ]}
@@ -1016,6 +1044,12 @@ export const GisMap: React.FC = () => {
             type: "Dropdown",
             functionality: "Switches the underlying tile provider between OpenStreetMap (Standard), OpenStreetMap (Humanitarian Style), and OpenTopoMap (Elevation).",
             impactOnOutput: "Modifies street-level detail, topology, and cartographic rendering powered directly by Leaflet.js & OpenStreetMap."
+          },
+          {
+            control: "Layer Visibility Toggles",
+            type: "Toggle",
+            functionality: "Turns individual map layers (Plume Cone, Satellites, Receptors, Safe Corridors, Buffer Rings) on or off.",
+            impactOnOutput: "Shows or hides the corresponding SVG markers and polygons on the Leaflet canvas."
           }
         ]}
         metricDefinitions={[
