@@ -61,31 +61,11 @@ const exposedReceptorIcon = createCustomIcon('#DC2626', '⚠️', 30);
 const satellitePlumeIcon = createCustomIcon('#8B5CF6', '🛰️', 28);
 const safeZoneIcon = createCustomIcon('#10B981', '🛡️', 30);
 
-// Tile Layer Options for Map
-const MAP_TILES = {
-  cartoLight: {
-    name: 'Carto Light (Clear View)',
-    url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; CartoDB & OpenStreetMap contributors'
-  },
-  osm: {
-    name: 'OpenStreetMap (Standard)',
-    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    attribution: '&copy; OpenStreetMap contributors'
-  },
-  cartoDark: {
-    name: 'Carto Dark (Night Contrast)',
-    url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; CartoDB'
-  }
-};
-
 export const GisMap: React.FC = () => {
   // State
   const [selectedSiteId, setSelectedSiteId] = useState<string>('ghazipur');
   const [windAngle, setWindAngle] = useState<number>(130);
   const [windSpeed, setWindSpeed] = useState<number>(2.2); // m/s
-  const [activeTileKey, setActiveTileKey] = useState<keyof typeof MAP_TILES>('cartoLight');
   const [activeScenario, setActiveScenario] = useState<string>('winter_inversion');
   const [showGuide, setShowGuide] = useState<boolean>(true);
 
@@ -308,20 +288,12 @@ export const GisMap: React.FC = () => {
           </button>
         </div>
 
-        {/* Map Tile & Reset Controls */}
+        {/* Leaflet Engine Badge & Reset Controls */}
         <div className="flex items-center gap-2 self-end md:self-auto">
-          <span className="text-xs text-text-muted">Basemap:</span>
-          <select
-            value={activeTileKey}
-            onChange={(e) => setActiveTileKey(e.target.value as keyof typeof MAP_TILES)}
-            className="text-xs font-medium bg-surface-light border border-border-light rounded-xl px-2.5 py-1 text-text-primary focus:outline-none focus:ring-1 focus:ring-brand-primary"
-          >
-            {Object.entries(MAP_TILES).map(([k, v]) => (
-              <option key={k} value={k}>
-                {v.name}
-              </option>
-            ))}
-          </select>
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-surface-light border border-border-light text-xs text-text-secondary">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>Leaflet.js Standard Tile Engine</span>
+          </div>
           {!showGuide && (
             <button
               onClick={() => setShowGuide(true)}
@@ -345,8 +317,8 @@ export const GisMap: React.FC = () => {
               className="w-full h-full rounded-[20px] z-10"
             >
               <TileLayer
-                attribution={MAP_TILES[activeTileKey].attribution}
-                url={MAP_TILES[activeTileKey].url}
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | <a href="https://leafletjs.com/">Leaflet.js</a>'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
 
               {/* 1. Ghazipur Buffer Zones (1km Danger Perimeter & 2.8km Station Circle) */}
@@ -979,12 +951,6 @@ export const GisMap: React.FC = () => {
             type: "Button",
             functionality: "Quick 1-click presets: 🚨 Winter Smog Inversion (130° SE), 🛰️ NASA EMIT Overpass (288° NW), 🛡️ Crosswind Evacuation (215° SW).",
             impactOnOutput: "Instantly sets realistic historical weather parameters and adjusts map focus."
-          },
-          {
-            control: "Basemap Selector Dropdown",
-            type: "Dropdown",
-            functionality: "Switches the underlying tile provider between Carto Light (Clear), OpenStreetMap (Standard), and Carto Dark (Night Contrast).",
-            impactOnOutput: "Modifies map contrast and street-level detail without affecting data layers."
           }
         ]}
         metricDefinitions={[
@@ -1010,7 +976,7 @@ export const GisMap: React.FC = () => {
           "Equips municipal disaster response teams with precise geospatial boundary coordinates for emergency perimeter evacuations."
         ]}
         dataSources={[
-          "OpenStreetMap & CartoDB Tile Services",
+          "Leaflet.js Official OpenStreetMap Vector Tile Engine",
           "NASA EMIT (Earth Surface Mineral Dust Source Investigation)",
           "ESA Environmental Mapping and Analysis Program (EnMAP)",
           "Delhi Municipal Corporation (MCD) Landfill Geocodes"
