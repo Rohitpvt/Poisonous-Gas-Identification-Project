@@ -379,40 +379,67 @@ export const ResearchInsights: React.FC = () => {
         objective="This page consolidates the definitive statistical, meteorological, and machine learning proofs generated throughout this research study. It answers critical examiner and mentor inquiries regarding source attribution, causal mechanisms, and dataset validations."
         visualElements={[
           {
-            name: "Dimension Navigation Tab Bar (5 Focus Areas)",
+            name: "Six-Pillar Research Navigation Bar (6 Tabs)",
             type: "Control",
-            description: "Top selection tabs allowing users to switch between the 5 core scientific proof pillars: Source Attribution, Satellite Plumes, Diurnal Inversion, ML Benchmarks, and Clean-Air Routing.",
-            axesOrEncoding: "Active pill highlighted with brand crimson accent.",
-            whatItShows: "Enables granular inspection of empirical proof for each distinct scientific research question."
+            description: "Six interactive navigation buttons switching between: 1. Source Attribution, 2. Satellite Plumes, 3. Diurnal Night Trap, 4. Multi-Gas ML, 5. SHAP XAI Proof, and 6. Clinical Escape.",
+            axesOrEncoding: "Active button switches from grey to solid white with elevation shadow.",
+            whatItShows: "Organizes the research defense into 6 distinct empirical and methodological proof chapters."
           },
           {
-            name: "Downwind vs Crosswind Sector Bar Chart",
+            name: "Downwind vs Crosswind Sector Bar Chart (Tab 1)",
             type: "Chart",
-            description: "A grouped bar chart comparing Ammonia (NH₃) and Carbon Monoxide (CO) across 3 distinct directional wind sectors.",
-            axesOrEncoding: "X-Axis: Downwind Corridor (110°–150°), Crosswind Sector (0°–90°), Upwind Baseline (270°–330°). Y-Axis: Concentration (µg/m³ for NH₃, mg/m³ for CO).",
+            description: "A grouped bar chart comparing Ammonia (NH₃ in crimson) and Carbon Monoxide (CO in dark slate) across 3 directional sectors.",
+            axesOrEncoding: "X-Axis: Downwind Corridor (110°–150°), Crosswind Sector (0°–90°), Upwind Baseline (270°–330°). Y-Axis: 0 to 80 µg/m³.",
             whatItShows: "Empirical proof of localized source attribution: NH₃ spikes by +74.5% (68.4 µg/m³) strictly when the wind blows from Ghazipur to Anand Vihar."
           },
           {
-            name: "Diurnal Inversion Peak Table & Metric Cards",
-            type: "Table",
-            description: "A chronological 5-stage time matrix tracking nocturnal boundary layer trapping from Midnight (00:00) to Night (20:00).",
-            axesOrEncoding: "Columns: Time of Day, NH₃ Mean, PM2.5 Mean, Atmospheric Inversion State.",
-            whatItShows: "Proves that peak toxic accumulation occurs between 02:00 AM and 06:00 AM (NH₃ reaches 79.8 µg/m³) when nocturnal boundary layer height falls below 200m."
+            name: "Satellite Plume Remote Sensing Cards (Tab 2)",
+            type: "Widget",
+            description: "Three metric summary cards displaying NASA EMIT peak plume (4,890.2 kg/hr), model false alarm drop (-41.2%), and mapped landfill count (4).",
+            axesOrEncoding: "Large bold typography with empirical observation metadata.",
+            whatItShows: "Validates that landfills are episodic super-emitters and demonstrates the utility of satellite-ground fusion."
           },
           {
-            name: "Executive Proof Matrix (Summary Table)",
+            name: "Diurnal Inversion Peak Chronology Table (Tab 3)",
             type: "Table",
-            description: "A comprehensive summary table at the bottom synthesizing the 5 core scientific findings with mathematical proof metrics.",
-            axesOrEncoding: "Columns: Scientific Focus Area, Core Hypothesis/Finding, Empirical Metric & Statistical Proof.",
+            description: "A 5-row time matrix tracking nocturnal boundary layer trapping at Midnight (00:00), Peak Trap (04:00), Morning (08:00), Afternoon (14:00), and Night (20:00).",
+            axesOrEncoding: "Columns: Time Period, Mean NH₃ (µg/m³), Mean PM2.5 (µg/m³), Boundary Layer Dynamic.",
+            whatItShows: "Proves that peak toxic accumulation occurs between 02:00 AM and 06:00 AM (NH₃ reaches 79.8 µg/m³) due to nocturnal ground cooling."
+          },
+          {
+            name: "Multi-Gas ML Benchmark Metrics Grid & Table (Tab 4)",
+            type: "Table",
+            description: "Four champion accuracy cards (PM2.5 R² 0.9293, Benzene R² 0.9002, NH₃ R² 0.8400, F1 0.9995) plus complete model comparison table.",
+            axesOrEncoding: "Model algorithm, test R², RMSE error, and operational status.",
+            whatItShows: "Demonstrates that stacked gradient boosters outperform ordinary linear regression by +32.8%."
+          },
+          {
+            name: "SHAP Feature Driver Attribution Chart (Tab 5)",
+            type: "Chart",
+            description: "Horizontal bar chart ranking the 6 key physical drivers: 15-min Lag (42.8%), 130° Plume Alignment (18.5%), Dispersion Index (14.2%), Ambient Temp (10.9%), Solar Convection (8.1%), Humidity (5.5%).",
+            axesOrEncoding: "X-Axis: Feature Driver. Y-Axis: Attribution Weight (%). Crimson bars.",
+            whatItShows: "Quantifies the exact contribution of each physical feature in driving toxic gas spikes."
+          },
+          {
+            name: "Executive Proof Matrix Summary Table (Bottom)",
+            type: "Table",
+            description: "A comprehensive summary table synthesizing the 5 core scientific findings with mathematical proof metrics.",
+            axesOrEncoding: "Columns: Scientific Focus Area, Core Scientific Finding, Data & Mathematical Proof.",
             whatItShows: "Provides examiners with quick, bulletproof citations proving landfill attribution, satellite emission rates, and 94% clean-air routing effectiveness."
           }
         ]}
         symbolsAndIcons={[
           {
             symbol: "🧭",
-            label: "Directional Wind Corridor",
+            label: "Source Attribution Indicator",
             category: "Icon",
             meaning: "Represents the 110°–150° azimuth line connecting Ghazipur dumpsite directly to the Anand Vihar receptor station."
+          },
+          {
+            symbol: "🛰️",
+            label: "Satellite Plumes Indicator",
+            category: "Icon",
+            meaning: "Signifies spaceborne remote sensing detection of point-source methane plumes."
           },
           {
             symbol: "🌙",
@@ -421,53 +448,59 @@ export const ResearchInsights: React.FC = () => {
             meaning: "Signifies pre-dawn meteorological conditions where radiational ground cooling creates a thermal ceiling trapping toxic landfill fumes."
           },
           {
-            symbol: "🧠",
-            label: "Machine Learning Intelligence",
+            symbol: "📈",
+            label: "Multi-Gas ML Benchmarks",
             category: "Icon",
-            meaning: "Denotes ensemble predictive models (Ridge Regression, LightGBM, XGBoost) evaluating 1-hour ahead gas concentrations."
+            meaning: "Denotes machine learning model evaluation across continuous regression and hazard classification."
+          },
+          {
+            symbol: "🧠",
+            label: "SHAP XAI Feature Proof",
+            category: "Icon",
+            meaning: "Denotes game-theoretic Shapley feature importance attributions."
           },
           {
             symbol: "🛡️",
-            label: "Clean-Air Safe Havens",
-            category: "Badge",
+            label: "Clinical Escape Havens",
+            category: "Icon",
             meaning: "Marks certified urban green buffer zones (e.g. Sanjay Lake, Akshardham) where exposure is reduced by up to 94%."
           },
           {
             symbol: "📥",
-            label: "Report Download Action",
+            label: "Download Report Button",
             category: "Icon",
-            meaning: "Triggers immediate direct client-side generation and download of the complete 7-page academic research paper (.docx)."
+            meaning: "Triggers immediate direct download of the complete 7-page academic research paper (.docx)."
           }
         ]}
         interactiveControls={[
           {
-            control: "Research Dimension Selector Tabs",
+            control: "Six-Pillar Research Navigation Bar",
             type: "Tab",
-            functionality: "Toggles the active proof panel between 5 core research dimensions.",
+            functionality: "Toggles between the 6 distinct research dimension panels.",
             impactOnOutput: "Dynamically renders relevant empirical data tables, statistical evidence cards, and bar charts."
           },
           {
-            control: "Download Research Paper Button",
+            control: "Download Report (.docx) Button",
             type: "Button",
-            functionality: "Packages all empirical findings, statistical tables, and methodology into a structured Word (.docx) document.",
-            impactOnOutput: "Instantly downloads 'Landfill_Gas_Identification_Research_Paper.docx' to the user's computer."
+            functionality: "Initiates download of the full academic research report document.",
+            impactOnOutput: "Downloads 'PROJECT_REPORT.docx' directly to the client device."
           }
         ]}
         metricDefinitions={[
           {
             term: "Surge Delta (%)",
             unit: "Percentage",
-            definition: "The percentage increase in ground gas concentration observed under direct downwind conditions relative to upwind baseline levels."
+            definition: "The percentage increase in ground gas concentration observed under direct downwind conditions (+74.5% NH₃) relative to upwind baseline levels."
+          },
+          {
+            term: "P-Value",
+            unit: "< 0.001",
+            definition: "Statistical significance metric confirming the downwind concentration difference is non-random with 99.9% confidence."
           },
           {
             term: "PBLH",
             unit: "Meters (m)",
-            definition: "Planetary Boundary Layer Height — the depth of the lowest atmospheric layer directly influenced by Earth's surface heating and cooling."
-          },
-          {
-            term: "Pearson r",
-            unit: "-1.0 to +1.0",
-            definition: "Correlation coefficient measuring the linear relationship between satellite emission rates and ground sensor concentration spikes."
+            definition: "Planetary Boundary Layer Height — the depth of the lowest atmospheric layer directly influenced by surface heating and cooling."
           }
         ]}
         actionableInsights={[

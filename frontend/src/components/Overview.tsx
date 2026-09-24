@@ -200,77 +200,70 @@ export const Overview: React.FC<OverviewProps> = ({ onExploreSimulator, onExplor
         objective="This page establishes the macro research framework, uniting high-resolution orbital satellite hyperspectral imaging (NASA EMIT, ESA EnMAP) with continuous ground-level ambient air monitoring (DPCC Anand Vihar). It contextualizes the massive scale of solid waste emissions across the Delhi-NCR capital region."
         visualElements={[
           {
-            name: "Hero Research Banner & Quick Actions",
+            name: "Hero Intelligence Banner & Quick Action Buttons",
             type: "Panel",
-            description: "Top high-contrast dark card highlighting the project title, subtitle, and primary call-to-action buttons for direct scenario testing.",
-            axesOrEncoding: "Deep charcoal gradient with crimson ambient radial glow.",
-            whatItShows: "Immediate system overview and one-click navigation to the Plume Simulator and GIS Spatial Engine."
+            description: "Deep charcoal header card featuring the 'Multimodal NASA EMIT & DPCC Continuous Ground Fusion' badge, project title, and two direct action buttons.",
+            axesOrEncoding: "Deep charcoal card with ambient crimson radial glow. Action buttons: 'Launch Plume Simulator' (brand red) and 'Explore Interactive Map' (translucent white).",
+            whatItShows: "Immediate system overview and one-click navigation to the interactive Gaussian Plume Simulator and Leaflet GIS Map."
           },
           {
-            name: "Executive KPI Metrics Matrix (4 Cards)",
+            name: "Executive Live KPI Metrics Grid (4 Metric Counters)",
             type: "Widget",
-            description: "Four elevated metric summary cards providing high-level dataset and model performance figures at a glance.",
-            axesOrEncoding: "Large bold typography with category micro-labels (Total Ground Readings, Landfills Monitored, Peak Methane Plume, Best R²).",
-            whatItShows: "Summarizes the empirical scale: 27,800+ hourly sensor readings, 4 major dumpsites, 3,843.5 kg/hr peak methane emission, and R² = 0.8400 accuracy."
+            description: "Four elevated live summary metric cards embedded in the hero banner displaying dataset size and model benchmarks.",
+            axesOrEncoding: "Card 1: 70,176 DPCC Ground Records (15-min continuous time series); Card 2: 23 Satellite Plumes Tracked (NASA EMIT & ESA EnMAP); Card 3: 0.8425 Forecasting R² Score (1-Hour Ahead NH₃/CO); Card 4: 0.9995 Episode Alert F1 (ROC-AUC 1.000).",
+            whatItShows: "Quantifies the empirical dataset scale (70,176 15-min records), 23 spaceborne plume captures, and peak predictive performance."
           },
           {
-            name: "Three-Pillar Architectural Framework",
-            type: "Diagram",
-            description: "Three structured cards outlining the end-to-end data pipeline from orbital detection to ground validation.",
-            axesOrEncoding: "Card 1 (Satellite Remote Sensing), Card 2 (Atmospheric Transport), Card 3 (Ground CAAQMS Station).",
-            whatItShows: "How spaceborne observations connect mathematically with downwind wind vectors to validate continuous DPCC ground spikes."
+            name: "Three Core Scientific Highlight Cards",
+            type: "Panel",
+            description: "Three structured cards outlining the primary empirical phenomena governing Delhi landfill pollution.",
+            axesOrEncoding: "Card 1 (🔥 Ghazipur Corridor): 100°–160° azimuth alignment, 130.0° SE direct corridor, +35% to +65% toxic gas surge; Card 2 (💨 Nocturnal Trapping): Boundary layer compression 10:00 PM – 6:00 AM, Peak hours 02:00–05:00 IST; Card 3 (🛡️ Explainable SHAP): Shapley force values with live waterfall decomposition.",
+            whatItShows: "Explains how wind geometry, nighttime thermal inversions, and game-theoretic AI drive toxic gas accumulation."
           },
           {
-            name: "Landfill Super-Emitter Facility Registry",
+            name: "Satellite Hyperspectral Plume Overpass Feed Table",
             type: "Table",
-            description: "Comparative facility cards detailing Ghazipur, Bhalswa, Okhla, and Bandhwari dumpsites.",
-            axesOrEncoding: "Site name, operational status pill, peak CH₄ flux, coordinates, and physical elevation characteristics.",
-            whatItShows: "Proves that Ghazipur is the dominant super-emitter in East Delhi due to its 65m height and anaerobic decomposition mass."
-          },
-          {
-            name: "Satellite Plume Detection Log Matrix",
-            type: "Table",
-            description: "A 6-column historical register of verified spaceborne hyperspectral methane plume observations.",
-            axesOrEncoding: "Columns: Observation UTC Timestamp, Landfill Target, Measured CH₄ Flux (kg/hr), Wind Vector (Speed @ Azimuth), Sensor Instrument, Target Gas.",
+            description: "A 6-column historical register displaying verified spaceborne hyperspectral methane plume observations with a '23 Point Source Detections' badge.",
+            axesOrEncoding: "Columns: Observation Time (UTC), Landfill Site (Ghazipur / Bhalswa / Okhla), CH₄ Emission Rate (kg/hr in bold crimson), Wind Vector (Speed @ Azimuth), Sensor Instrument (NASA EMIT / ESA EnMAP), Target Gas (CH₄ in green).",
             whatItShows: "Direct physical proof of spaceborne methane captures ranging from 1,850 kg/hr to over 4,890 kg/hr across Delhi dumpsites."
           }
         ]}
         symbolsAndIcons={[
           {
             symbol: "🔥",
-            label: "Ghazipur Landfill Focus",
-            category: "Marker",
-            meaning: "Identifies the primary active super-emitter solid waste mountain (over 65 meters high, emitting ~3,843.5 kg/hr CH₄)."
+            label: "Ghazipur Corridor Indicator",
+            category: "Icon",
+            meaning: "Identifies the primary active super-emitter dumpsite (65m height) and its direct 130° SE alignment towards Anand Vihar."
           },
           {
-            symbol: "🌋",
-            label: "Secondary Landfill Dumpsites",
-            category: "Marker",
-            meaning: "Marks other major municipal solid waste dumpsites in Delhi-NCR (Bhalswa in North Delhi, Okhla in South Delhi, Bandhwari in Gurugram)."
+            symbol: "💨",
+            label: "Nocturnal Inversion Wind",
+            category: "Icon",
+            meaning: "Represents boundary layer contraction and calm surface winds (<2.0 m/s) trapping gas near ground level."
+          },
+          {
+            symbol: "🛡️",
+            label: "Explainable AI Shield",
+            category: "Icon",
+            meaning: "Signifies algorithmic transparency and mathematical SHAP validation of model predictions."
           },
           {
             symbol: "📡",
-            label: "DPCC Ground Station",
+            label: "Ground Telemetry Node",
             category: "Marker",
-            meaning: "Represents the Delhi Pollution Control Committee Continuous Ambient Air Quality Monitoring Station (CAAQMS) at Anand Vihar (2.8 km from Ghazipur)."
+            meaning: "Represents DPCC continuous ambient ground monitoring station (CAAQMS) recording 70,176 readings."
           },
           {
             symbol: "🛰️",
-            label: "Orbital Hyperspectral Sensor",
+            label: "Satellite Plume Feed",
             category: "Icon",
-            meaning: "Denotes spaceborne hyperspectral infrared imaging instruments (NASA EMIT on the ISS and Germany's ESA EnMAP satellite)."
+            meaning: "Denotes spaceborne hyperspectral imaging spectrometers (NASA EMIT on ISS and German ESA EnMAP satellite)."
           },
           {
             symbol: "🟢",
-            label: "Green Methane Identifier",
+            label: "Pure Methane CH₄ Badge",
             category: "Badge",
-            meaning: "Highlights verified pure methane (CH₄) gas column absorption signatures retrieved from satellite spectrometers."
-          },
-          {
-            symbol: "⚡",
-            label: "Active Super-Emitter Status",
-            category: "Status",
-            meaning: "Designates landfill sites whose methane emission flux regularly exceeds the international super-emitter threshold (>1,000 kg/hr)."
+            meaning: "Highlights verified pure methane (CH₄) gas column absorption signatures retrieved from orbital infrared spectra."
           }
         ]}
         interactiveControls={[
@@ -281,32 +274,32 @@ export const Overview: React.FC<OverviewProps> = ({ onExploreSimulator, onExplor
             impactOnOutput: "Loads real-time sliders for wind speed, temperature, and atmospheric stability."
           },
           {
-            control: "Explore GIS Spatial Engine CTA",
+            control: "Explore Interactive Map CTA",
             type: "Button",
-            functionality: "Navigates directly to the high-resolution GIS map view.",
+            functionality: "Navigates directly to the Leaflet.js & OpenStreetMap GIS map view.",
             impactOnOutput: "Opens the 2D geospatial map centered on the Ghazipur-Anand Vihar dispersion corridor."
           }
         ]}
         metricDefinitions={[
+          {
+            term: "DPCC Ground Records",
+            unit: "70,176 Samples",
+            definition: "Continuous 15-minute ambient air telemetry collected by the Delhi Pollution Control Committee station at Anand Vihar."
+          },
           {
             term: "kg/hr",
             unit: "Mass Flux",
             definition: "Kilograms of methane emitted per hour from the landfill surface into the atmospheric boundary layer."
           },
           {
-            term: "R² (Score)",
-            unit: "0.00 – 1.00",
-            definition: "Coefficient of determination quantifying the proportion of variance in ground toxic gas concentrations successfully predicted by the ML model."
+            term: "Forecasting R²",
+            unit: "0.8425",
+            definition: "Coefficient of determination quantifying the proportion of ground toxic gas variance predicted 1 hour ahead."
           },
           {
-            term: "Azimuth (°)",
-            unit: "Degrees",
-            definition: "Compass direction from which the wind is blowing (e.g. 130° represents a direct Southeast-to-Northwest vector from Ghazipur to Anand Vihar)."
-          },
-          {
-            term: "CAAQMS",
-            unit: "Ground Hub",
-            definition: "Continuous Ambient Air Quality Monitoring Station operating 24x7 automated regulatory gas analyzers."
+            term: "Episode Alert F1",
+            unit: "0.9995",
+            definition: "Harmonic mean of precision and recall for classifying acute hazardous exceedance states (ROC-AUC 1.000)."
           }
         ]}
         actionableInsights={[

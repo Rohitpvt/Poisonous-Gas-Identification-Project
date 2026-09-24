@@ -901,14 +901,14 @@ export const GisMap: React.FC = () => {
             name: "Interactive Leaflet Geospatial Canvas",
             type: "Map",
             description: "Full-bleed interactive vector tile map centered on East Delhi and Ghaziabad (28.628°N, 77.308°E), rendering landfill coordinates, ground stations, and plume polygons.",
-            axesOrEncoding: "OpenStreetMap, CartoDB Positron, and Dark Voyager tile layers with dynamic SVG marker layers.",
+            axesOrEncoding: "OpenStreetMap Standard, OpenStreetMap Humanitarian Style, and OpenTopoMap elevation tile layers with dynamic SVG & Leaflet marker layers.",
             whatItShows: "Real-time geographic spatial distribution of landfill emission sources and downwind receptors."
           },
           {
             name: "Dynamic Gaussian Dispersion Plume Cone",
             type: "Diagram",
             description: "A semi-transparent red triangular polygon anchored at Ghazipur's coordinates, extending 4.8 km downwind with a ±28° spread angle.",
-            axesOrEncoding: "Red boundary with 35% crimson fill, dynamically recalculating corner vertices as the wind slider rotates.",
+            axesOrEncoding: "Red boundary with 32% crimson fill, dynamically recalculating corner vertices as the wind slider rotates.",
             whatItShows: "Visualizes the atmospheric corridor where airborne toxic concentrations (NH₃, CO, VOCs) exceed safe ambient background levels."
           },
           {
@@ -922,22 +922,36 @@ export const GisMap: React.FC = () => {
             name: "Floating Layer Visibility Control Panel",
             type: "Widget",
             description: "Top-right glassmorphic panel with 5 interactive eye-toggle pills.",
-            axesOrEncoding: "Pills: Gaussian Plume Cone, NASA/ESA Satellites, Populated Receptors, Safe Clean Corridors, Buffer Rings.",
+            axesOrEncoding: "Pills: Gaussian Plume Cone, NASA/ESA Satellites, Populated Receptors, Safe Clean Corridors, Buffer Rings (1km / 2.8km).",
             whatItShows: "Allows users to isolate individual spatial layers to prevent visual clutter."
           },
           {
             name: "Interactive Wind Vector Controller (Slider)",
             type: "Control",
-            description: "Bottom-left glassmorphic control with an azimuth slider (0°–360°), wind speed readout, and calculated transit time.",
-            axesOrEncoding: "Azimuth slider with compass ticks (0° N, 90° E, 130° SE, 270° W, 360° N).",
+            description: "Bottom-left glassmorphic control with an azimuth slider (0°–360°), wind speed readout (1.8 m/s), and calculated transit time (~26 mins).",
+            axesOrEncoding: "Azimuth slider with compass ticks (0° N, 90° E, 130° SE Anand Vihar, 270° W, 360° N).",
             whatItShows: "Enables interactive simulation of changing weather patterns and instant observation of which neighborhoods become exposed."
           },
           {
             name: "Live Receptor Exposure Monitor (Right Sidebar)",
             type: "Panel",
             description: "Live scrolling list of 6 receptor neighborhoods with real-time exposure badges, population counts, and travel times.",
-            axesOrEncoding: "Red '🚨 In Plume Path' badge versus green '✅ Clear' badge based on angular difference (|θ_wind - θ_receptor| ≤ 34°).",
+            axesOrEncoding: "Red '🚨 Impacted' badge versus green '✅ Clear' badge based on angular difference (|θ_wind - θ_receptor| ≤ 34°).",
             whatItShows: "Instant calculation of human exposure burden (e.g. 155,000 residents in danger zone under 130° wind)."
+          },
+          {
+            name: "Selected Spatial Entity Profile & Quick Jump Bar",
+            type: "Panel",
+            description: "Interactive entity inspector displaying selected facility name, operational status, coordinates (Lat/Lng), description, and methane emission flux.",
+            axesOrEncoding: "Displays selected site details with quick jump buttons for Ghazipur Landfill, DPCC Anand Vihar Station, Bhalswa Landfill, and Okhla Landfill.",
+            whatItShows: "Detailed facility attributes and regulatory status across Delhi's solid waste landscape."
+          },
+          {
+            name: "Recommended Safe Air Corridor Card",
+            type: "Panel",
+            description: "Actionable evacuation haven card highlighting Sanjay Lake & Eco-Park (2.9 km SW) with route directives.",
+            axesOrEncoding: "Green gradient card displaying route: NH-24 Bypass towards Mayur Vihar Phase-2, offering up to 88% gas exposure reduction.",
+            whatItShows: "Optimal crosswind evacuation destination during severe Ghazipur landfill flaring episodes."
           }
         ]}
         symbolsAndIcons={[
@@ -975,7 +989,7 @@ export const GisMap: React.FC = () => {
             symbol: "🛡️",
             label: "Safe Clean-Air Eco-Park",
             category: "Zone",
-            meaning: "Certified green buffer zone (e.g. Sanjay Lake, Akshardham corridor) offering up to 94% lower gas exposure for evacuation."
+            meaning: "Certified green buffer zone (e.g. Sanjay Lake, Akshardham corridor) offering up to 88% lower gas exposure for evacuation."
           },
           {
             symbol: "🌋",

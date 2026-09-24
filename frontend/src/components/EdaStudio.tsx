@@ -190,35 +190,42 @@ export const EdaStudio: React.FC = () => {
       {/* Detailed Page Breakdown Card */}
       <PageDescriptionCard
         pageTitle="Exploratory Data Analysis (EDA) & Diurnal Dynamics Studio"
-        objective="This studio presents empirical temporal and directional distributions extracted from 27,800+ continuous ground monitoring records. It isolates how atmospheric boundary layer collapses and seasonal thermal inversions modulate ground toxicity."
+        objective="This studio presents empirical temporal and directional distributions extracted from 70,176 continuous ground monitoring records. It isolates how atmospheric boundary layer collapses and nocturnal thermal inversions modulate ground toxicity."
         visualElements={[
           {
-            name: "Sub-Tab Category Switcher (3 Perspectives)",
+            name: "Sub-Navigation Pill Switcher (2 Analysis Modes)",
             type: "Control",
-            description: "Top toggle pills switching between 24-Hour Diurnal Dynamics, Downwind Plume Sector, and Multi-Pollutant Correlation Matrix.",
-            axesOrEncoding: "Selected tab highlighted in dark charcoal with active glow.",
-            whatItShows: "Enables multi-angle exploratory analysis across diurnal, directional, and chemical synergy domains."
+            description: "Top toggle pills switching between 'Diurnal Inversion Cycles' and 'Downwind Plume Impact' exploratory views.",
+            axesOrEncoding: "Active mode highlighted in solid dark charcoal with smooth fade-in transition.",
+            whatItShows: "Enables focused inspection between 24-hour temporal diurnal cycles and 360° directional plume advection."
           },
           {
-            name: "24-Hour Diurnal Area Chart",
+            name: "24-Hour Diurnal Continuous Area Chart (Diurnal Tab)",
             type: "Chart",
-            description: "Smooth multi-series area chart tracking hourly mean concentrations of Ammonia (NH₃), Carbon Monoxide (CO), PM2.5, and Benzene from 00:00 to 23:00.",
-            axesOrEncoding: "X-Axis: Hour of Day (0 to 23). Y-Axis: Concentration (µg/m³ for NH₃/PM2.5/Benzene, mg/m³ for CO). Crimson/slate gradients with shaded area fill.",
-            whatItShows: "Reveals the signature double-peak diurnal pattern: severe pre-dawn trapping (02:00–06:00 AM) and late evening accumulation (21:00–01:00 AM) driven by boundary layer contraction."
+            description: "Smooth multi-series area chart tracking hourly mean concentrations of Ammonia (NH₃) in crimson (#E34A32) and PM2.5 in emerald (#2a9d8f) from 0:00 to 23:00 IST.",
+            axesOrEncoding: "X-Axis: Hour of Day (0:00 to 23:00). Y-Axis: Concentration (µg/m³). Shaded area fills with Cartesian grid and dark tooltip.",
+            whatItShows: "Reveals the signature nocturnal accumulation peak between 02:00 and 06:00 IST due to planetary boundary layer compression."
           },
           {
-            name: "Downwind Plume Sector Comparison (Bar Chart)",
+            name: "Atmospheric Mechanism Finding Cards (2 Cards in Diurnal Tab)",
+            type: "Panel",
+            description: "Two analytical cards below the diurnal chart explaining the physical meteorological mechanisms.",
+            axesOrEncoding: "Card 1: 'Atmospheric Stagnation Mechanism' (00:00–06:00 radiative cooling & boundary layer collapse); Card 2: 'Daytime Convective Ventilation' (12:00–16:00 thermal expansion >1,200m diluting gas by >55%).",
+            whatItShows: "Connects hourly statistical curves directly to atmospheric boundary layer physics."
+          },
+          {
+            name: "Downwind Plume Sector Comparison Bar Chart (Downwind Tab)",
             type: "Chart",
-            description: "Grouped bar chart contrasting average pollutant levels under direct Ghazipur downwind conditions (100°–160°) against all other wind directions.",
-            axesOrEncoding: "X-Axis: NH₃, CO, PM2.5, Benzene. Y-Axis: Concentration. Crimson bars = Downwind; Grey bars = Other Sectors.",
-            whatItShows: "Quantifies the localized plume delta: +65.1% NH₃, +58.9% CO, +48.3% PM2.5, and +70.5% Benzene surges caused specifically by landfill transport."
+            description: "Grouped bar chart contrasting average pollutant concentrations under Ghazipur direct path (100°–160° SE) versus other wind sectors across 4 key pollutants.",
+            axesOrEncoding: "X-Axis: Pollutants (NH₃, CO, PM2.5, Benzene). Y-Axis: Concentration. Grey bars (#8a8c91) = Other Wind Sectors; Crimson bars (#E34A32) = Direct Ghazipur Corridor (100°–160°).",
+            whatItShows: "Quantifies the localized plume delta: NH₃ (48.2 vs 79.6 µg/m³), CO (1.85 vs 2.94 mg/m³), PM2.5 (154.2 vs 228.7 µg/m³), Benzene (3.4 vs 5.8 µg/m³)."
           },
           {
-            name: "Metric Delta Highlight Cards (4 Cards)",
+            name: "Metric Plume Surge Highlight Cards (4 Cards in Downwind Tab)",
             type: "Widget",
-            description: "Four summary cards below the bar chart displaying exact percentage increases under direct plume exposure.",
-            axesOrEncoding: "Large crimson percentage typography with pollutant name micro-headers.",
-            whatItShows: "Instant statistical summary of localized chemical amplification under direct landfill wind vectors."
+            description: "Four summary cards below the bar chart displaying the exact empirical percentage increase under direct plume exposure.",
+            axesOrEncoding: "Ammonia (+65.1%), Carbon Monoxide (+58.9%), PM2.5 (+48.3%), Benzene (+70.5%) in bold crimson typography.",
+            whatItShows: "Instant numerical confirmation of severe chemical amplification caused specifically by landfill plume transport."
           }
         ]}
         symbolsAndIcons={[
@@ -236,23 +243,23 @@ export const EdaStudio: React.FC = () => {
           },
           {
             symbol: "🔴",
-            label: "Direct Downwind Plume Bar",
+            label: "Ghazipur Direct Path (100°-160°)",
             category: "Badge",
-            meaning: "Represents air quality measurements taken strictly when wind azimuth was aligned between 100° and 160°."
+            meaning: "Represents air quality measurements taken strictly when wind azimuth was aligned between 100° and 160° directly towards Anand Vihar."
           },
           {
             symbol: "⚪",
-            label: "Background Sector Bar",
+            label: "Other Wind Sectors",
             category: "Badge",
             meaning: "Represents baseline urban air quality measurements recorded when wind blew from all other non-landfill directions."
           }
         ]}
         interactiveControls={[
           {
-            control: "Analysis Sub-Tab Bar",
+            control: "Analysis Sub-Tab Bar (Diurnal vs Downwind)",
             type: "Tab",
-            functionality: "Toggles between 24-Hour Diurnal Dynamics and Downwind Plume Sector analysis views.",
-            impactOnOutput: "Switches the primary chart display between the 24-hour continuous area chart and the comparative sector bar chart."
+            functionality: "Toggles between 24-Hour Diurnal Dynamics and Downwind Plume Sector comparison views.",
+            impactOnOutput: "Switches the display between the continuous hourly area chart and the comparative sector bar chart with delta cards."
           }
         ]}
         metricDefinitions={[
@@ -267,18 +274,18 @@ export const EdaStudio: React.FC = () => {
             definition: "Milligrams of pollutant per cubic meter of air (used for higher-volume gases like Carbon Monoxide CO)."
           },
           {
-            term: "Diurnal Cycle",
-            unit: "24-Hour",
-            definition: "A daily recurring meteorological cycle driven by solar radiation, surface temperature, and atmospheric stability."
+            term: "Boundary Layer Height",
+            unit: "Meters (m)",
+            definition: "Vertical thickness of the troposphere in direct thermal contact with Earth's surface; compresses to <200m at night and expands to >1,200m by day."
           }
         ]}
         actionableInsights={[
-          "Confirms that human exposure risk is intensely skewed toward late-night and early morning hours when residents are asleep with windows closed.",
+          "Confirms that human exposure risk is intensely skewed toward late-night and early morning hours (02:00 to 06:00 IST) when boundary layer compression is severe.",
           "Establishes empirical baselines used as core input features (temporal lags, wind direction, boundary layer height) for the predictive ML models.",
           "Recommends targeted municipal night misting and perimeter flare mitigations between 10:00 PM and 06:00 AM."
         ]}
         dataSources={[
-          "DPCC Continuous Ground Telemetry (2022–2024)",
+          "DPCC Continuous Ground Telemetry (70,176 samples)",
           "Central Pollution Control Board (CPCB) Verified Data",
           "India Meteorological Department (IMD) Boundary Layer Profiler"
         ]}

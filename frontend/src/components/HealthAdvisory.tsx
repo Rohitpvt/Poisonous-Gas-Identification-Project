@@ -565,41 +565,48 @@ export const HealthAdvisory: React.FC = () => {
       {/* Detailed Page Breakdown Card */}
       <PageDescriptionCard
         pageTitle="Public Health Early Warning, Emergency Hospital SOS & Safe Escape Routing"
-        objective="This decision-support hub translates complex multi-gas ML forecasts into immediate life-saving public health interventions, demographic-specific clinical guidance, nearby tertiary hospital directory routing, and automated SMS broadcast payloads."
+        objective="This decision-support hub translates complex multi-gas ML forecasts into immediate life-saving public health interventions, demographic-specific clinical guidance, nearby tertiary hospital SOS routing, and automated SMS broadcast payloads."
         visualElements={[
           {
-            name: "Clinical Hazard Score Gauge & Demographics Selector",
+            name: "Landfill Toxic Gases Identification & Clinical Protection Matrix (6 Gas Cards)",
+            type: "Panel",
+            description: "Six detailed chemical hazard cards categorizing every toxic pollutant emitted by the Ghazipur landfill: Methane (CH₄), Ammonia (NH₃), Carbon Monoxide (CO), Benzene & Toluene (VOCs), Particulates (PM₂.₅ & PM₁₀), and Sulfur Gases (H₂S & SO₂).",
+            axesOrEncoding: "Each card specifies: Gas Name, Toxicity Category Badge, Formation Mechanism & Sensor Identification, Clinical Human Health Impact, and Certified Rescue / Protective Protocol.",
+            whatItShows: "Equips healthcare workers and residents with actionable clinical identification and mitigation strategies for every chemical species in our dataset."
+          },
+          {
+            name: "Vulnerability Persona Selector & 0–100 Toxicity Exposure Index",
             type: "Widget",
-            description: "Top interactive panel with demographic profile buttons (General Public, Asthmatics, Children, Elderly, Outdoor Workers) and a dynamic 0–100 Clinical Risk Gauge.",
-            axesOrEncoding: "Risk gauge bar: 0–40 (Green Low), 40–70 (Amber Elevated), 70–100 (Red Critical Emergency).",
-            whatItShows: "Demonstrates that respiratory patients and children reach emergency triage thresholds at significantly lower toxic exposures due to physiological susceptibility."
+            description: "Interactive panel with 5 demographic profile choices (General Public, Asthmatics, Children, Elderly, Outdoor Workers) coupled with NH₃ and Wind sliders and a dynamic 0–100 Toxicity Exposure Index.",
+            axesOrEncoding: "Gauge levels: 🔴 Severe Toxic Emergency (≥80), 🟠 High Health Risk (60–79), 🟢 Moderate Safe Status (<60). Includes 3 sub-score metric cards (NH₃, CO, PM2.5).",
+            whatItShows: "Demonstrates that asthmatics (1.35x) and the elderly (1.30x) reach emergency triage thresholds at significantly lower toxic exposure levels."
           },
           {
-            name: "Clinical Intervention Actions Matrix",
-            type: "Panel",
-            description: "Four structured guidance cards detailing Masking & Barrier Protocols, Medical Countermeasures, Indoor Air Filtration, and Outdoor Activity Ceilings.",
-            axesOrEncoding: "Categorized actionable check-lists with clinical icons.",
-            whatItShows: "Prescribes exact medical protocols (N95/FFP3 masking, bronchodilator pre-loading, HEPA filtration) based on current gas levels."
-          },
-          {
-            name: "Nearby Emergency Hospital & SOS Directory (4 Cards)",
+            name: "Surrounding Neighborhood Plume Threat Ranking Table & Safe Zones List",
             type: "Table",
-            description: "Detailed catalog of 4 nearby emergency hospitals: Max Super Speciality, Lal Bahadur Shastri Govt Hospital, Dr. Hedgewar Arogya Sansthan, Yashoda Hospital.",
-            axesOrEncoding: "Cards display: Hospital Name, Travel Distance, 24x7 Emergency Contact, Oxygen Plant Capacity, Dedicated Respiratory ICU Beds, and Clinical Specialties.",
-            whatItShows: "Enables instant 1-click emergency hospital routing for acute toxic gas inhalation casualties."
+            description: "A 5-column spatial exposure table ranking 6 residential hubs (Anand Vihar, Kaushambi, Ghazipur Village, Mayur Vihar P3, Vaishali, Patparganj) alongside an identified safe zones panel.",
+            axesOrEncoding: "Columns: Neighborhood Name, Distance (km), Plume Threat (%), Zone Status (🔴 Direct Plume Threat, 🟠 Elevated Dispersion, 🟢 Safe Upwind Buffer), Population.",
+            whatItShows: "Calculates live downwind exposure burden and dynamically isolates upwind safe zones based on current wind azimuth."
           },
           {
-            name: "Dynamic 'Safe Escape Route' Navigator (4 Havens)",
+            name: "Dynamic 'Safe Escape Route' Navigator (4 Clean-Air Havens)",
             type: "Panel",
-            description: "Interactive cards displaying 4 verified clean-air evacuation havens (Sanjay Lake, Mayur Vihar P3, Akshardham Riverbank, Surajmal Vihar).",
-            axesOrEncoding: "Cards display: Safe Zone Name, Bearing, Distance, Exposure Drop % (-88% to -94%), Green Cover Rating, and Step-by-Step Highway Route.",
-            whatItShows: "Provides residents in the downwind plume corridor with clear, verified escape routes toward fresh air pockets."
+            description: "Interactive evacuation cards for 4 verified green buffer havens: Sanjay Lake Eco-Park (-88% toxicity drop), Mayur Vihar Pocket-1 (-91%), Akshardham Riverfront (-94%), and Surajmal Vihar (-82%).",
+            axesOrEncoding: "Cards display: Haven Name, Distance, Vector Bearing, Green Cover Rating, Toxicity Drop %, Evacuation Route, and Google Maps Navigation link.",
+            whatItShows: "Provides downwind residents with verified, step-by-step escape corridors towards clean-air vegetative sanctuaries."
+          },
+          {
+            name: "Nearby Emergency Hospital & Respiratory SOS Directory (4 Hospital Cards)",
+            type: "Table",
+            description: "Emergency hospital cards for 4 major tertiary centers: Max Super Speciality Patparganj, Lal Bahadur Shastri Hospital, Dr. Hedgewar Arogya Sansthan, and Yashoda Super Speciality Kaushambi.",
+            axesOrEncoding: "Cards display: Hospital Name, Distance (km), 24/7 SOS Phone Hotline, Location, Liquid O₂ Supply Capacity, Active Respiratory ICU Bed Count, and Clinical Specialties.",
+            whatItShows: "Enables instant 1-click hospital triage and ambulance routing for acute toxic gas inhalation casualties."
           },
           {
             name: "Automated Emergency Broadcast SMS Dispatcher",
             type: "Control",
-            description: "A live CAP-compliant SMS broadcast generator with interactive recipient phone input and dispatch button.",
-            axesOrEncoding: "Monospace text payload box with timestamp, affected zone, pollutant spikes, and emergency helpline.",
+            description: "Live CAP-compliant emergency broadcast generator with recipient telephone input, live SMS preview box, and instant dispatch simulation button.",
+            axesOrEncoding: "Monospace text payload displaying risk score, forecasted NH₃ spikes, downwind plume warning, and clinical directives with green confirmation toast.",
             whatItShows: "Simulates automated municipal early warning broadcast delivery directly to community mobile devices."
           }
         ]}
@@ -608,28 +615,28 @@ export const HealthAdvisory: React.FC = () => {
             symbol: "🏥",
             label: "Emergency Healthcare Facility",
             category: "Icon",
-            meaning: "Designates hospitals equipped with dedicated toxic inhalation wards and centralized oxygen infrastructure."
+            meaning: "Designates hospitals equipped with dedicated toxic inhalation wards, liquid medical oxygen, and 24x7 triage."
           },
           {
             symbol: "🚑",
-            label: "Respiratory ICU Beds",
+            label: "Ambulance Hotline (108 / 102)",
             category: "Icon",
-            meaning: "Count of available intensive care beds with mechanical ventilators for acute bronchospasm management."
+            meaning: "Direct emergency dispatch hotline for immediate respiratory patient transport."
           },
           {
             symbol: "🛡️",
             label: "Safe Clean-Air Haven",
             category: "Zone",
-            meaning: "Designates upwind or riverbank green corridors offering significant atmospheric ventilation (>80% exposure reduction)."
+            meaning: "Designates upwind or riverbank green corridors offering up to 94% lower gas exposure during active emissions."
           },
           {
             symbol: "🚨",
             label: "Severe Toxicity Alert",
             category: "Status",
-            meaning: "Health risk score >= 80, indicating hazardous acute conditions requiring immediate outdoor evacuation and masking."
+            meaning: "Health risk score ≥ 80, indicating hazardous acute conditions requiring immediate window sealing and N95 masking."
           },
           {
-            symbol: "📲",
+            symbol: "📱",
             label: "Emergency Broadcast Dispatch",
             category: "Icon",
             meaning: "Automated transmission of early warning SMS payloads via public safety telecom gateways."
@@ -637,10 +644,16 @@ export const HealthAdvisory: React.FC = () => {
         ]}
         interactiveControls={[
           {
-            control: "Vulnerable Demographic Selector",
-            type: "Button",
-            functionality: "Applies clinical vulnerability multipliers (Asthma: 1.35x, Elderly: 1.30x, Children: 1.25x).",
-            impactOnOutput: "Recalculates the final composite Clinical Risk Score and adjusts recommended medical interventions."
+            control: "Vulnerability Persona Selector",
+            type: "Dropdown",
+            functionality: "Applies clinical vulnerability multipliers (Asthma: 1.35x, Elderly: 1.30x, Children: 1.25x, Workers: 1.20x).",
+            impactOnOutput: "Recalculates the composite Toxicity Exposure Index and updates clinical protection directives."
+          },
+          {
+            control: "Simulated NH₃ & Wind Direction Sliders",
+            type: "Slider",
+            functionality: "Adjusts simulated ambient ammonia concentration (10–180 µg/m³) and wind azimuth (0°–360°).",
+            impactOnOutput: "Re-ranks neighborhood threat scores and activates optimal escape routes."
           },
           {
             control: "SMS Recipient Input & Dispatch Button",
@@ -651,12 +664,12 @@ export const HealthAdvisory: React.FC = () => {
         ]}
         metricDefinitions={[
           {
-            term: "Health Hazard Score",
+            term: "Toxicity Exposure Index",
             unit: "0 – 100",
-            definition: "Composite toxicological index synthesizing NH₃ (35%), CO (35%), and PM2.5 (30%) concentrations against WHO health limits."
+            definition: "Composite toxicological index synthesizing NH₃ (35%), CO (35%), and PM2.5 (30%) concentrations multiplied by clinical demographic vulnerability."
           },
           {
-            term: "Exposure Drop (%)",
+            term: "Toxicity Drop (%)",
             unit: "Percentage",
             definition: "The percentage reduction in toxic gas concentration measured at the safe escape haven compared to the downwind plume epicenter."
           }

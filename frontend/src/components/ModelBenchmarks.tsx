@@ -246,97 +246,104 @@ export const ModelBenchmarks: React.FC = () => {
       {/* Detailed Page Breakdown Card */}
       <PageDescriptionCard
         pageTitle="Multi-Gas Machine Learning Benchmarking & Predictive Performance"
-        objective="This page presents a rigorous comparative evaluation of 8 machine learning and ensemble architectures trained to predict 1-hour ahead continuous concentrations and discrete acute hazard states across 9 distinct gaseous species."
+        objective="This page presents a rigorous comparative evaluation of machine learning architectures (Ridge Regression, Random Forest, XGBoost, LightGBM, Logistic Regression) trained on 70,176 records to predict 1-hour ahead continuous concentrations and acute hazard classification episodes across 9 gaseous species."
         visualElements={[
           {
-            name: "Task Switcher Tabs & Gas Filter Dropdown",
+            name: "Task Switcher Tabs (Regression vs Classification)",
             type: "Control",
-            description: "Top control bar allowing users to switch between Regression (Continuous Forecasts) and Classification (Hazard State Detection), with an interactive gas filter dropdown.",
-            axesOrEncoding: "Dropdown options: All Gases, Ammonia (NH₃), Carbon Monoxide (CO), PM2.5, PM10, Benzene, Toluene, NO2, SO2, Ozone.",
-            whatItShows: "Filters the benchmark leaderboard to evaluate specific model performance across individual chemical targets."
+            description: "Top toggle buttons switching between 'Regression (1h Ahead Gas Forecasting)' and 'Classification (Hazardous Risk Episodes)'.",
+            axesOrEncoding: "Selected task highlighted in dark charcoal background with smooth active state transitions.",
+            whatItShows: "Separates continuous numerical concentration forecasting from binary acute toxic episode alert classification."
           },
           {
-            name: "Highest Achieved R² by Pollutant Bar Chart",
+            name: "Multi-Gas 1h Ahead Forecasting Accuracy Bar Chart (Regression Tab)",
             type: "Chart",
-            description: "A horizontal/vertical bar chart ranking all 9 pollutants by their highest achieved R² variance score across the ML suite.",
-            axesOrEncoding: "X-Axis: Gas Name. Y-Axis: Best R² Score (0.00 to 1.00). Brand crimson bars with algorithm labels (e.g. LightGBM, Ridge).",
-            whatItShows: "Highlights which pollutants are most predictable from meteorological-plume feature sets (PM2.5: 0.929, Benzene: 0.900, NH₃: 0.840)."
+            description: "Bar chart ranking all 9 gaseous pollutants by their highest achieved R² score across tested models.",
+            axesOrEncoding: "X-Axis: Gas Name (PM2.5, Benzene, PM10, Toluene, CO, NH3, NO2, SO2, Ozone). Y-Axis: R² Score (0.00 to 1.00). Charcoal bars (#171719) with hover tooltips displaying champion model.",
+            whatItShows: "Demonstrates peak predictability: PM2.5 (R² 0.9293 via LightGBM), Benzene (R² 0.9002 via Ridge), CO (R² 0.8411 via LightGBM), and NH₃ (R² 0.8400 via Ridge)."
           },
           {
-            name: "Regression Benchmark Leaderboard Table",
+            name: "Regression Benchmark Leaderboard Table with Gas Filter",
             type: "Table",
-            description: "A 6-column benchmarking matrix detailing Model Algorithm, Target Gas, R² Score, RMSE, MAE, and Best Model indicator.",
-            axesOrEncoding: "Columns: Model Algorithm, Target Task, R², RMSE, MAE, Best Model Badge. Green highlight rows = top performer.",
-            whatItShows: "Direct empirical comparison showing Ridge Regression and LightGBM outperforming complex deep networks due to L2 regularization."
+            description: "A 6-column benchmarking table with an interactive 'Filter Gas' dropdown (All Gases, NH3, CO, PM2.5, PM10, NO2, Benzene, Toluene, SO2, Ozone).",
+            axesOrEncoding: "Columns: Model Algorithm, Forecast Target, R² Score (Variance), RMSE Error, MAE Error, Status (★ Champion Model badge with green background).",
+            whatItShows: "Complete evaluation showing regularized Ridge Regression and LightGBM achieving optimal generalization across diverse gas dynamics."
           },
           {
-            name: "Classification Evaluation Radar / Bar Chart",
+            name: "Classification Metrics Bar Chart (Classification Tab)",
             type: "Chart",
-            description: "Multi-metric bar chart comparing Random Forest, XGBoost, and LightGBM across Precision, Recall, and F1-Score.",
-            axesOrEncoding: "X-Axis: Model Name. Y-Axis: Score (0.00 to 1.00). Teal = Precision, Orange = Recall, Crimson = F1-Score.",
-            whatItShows: "Proves that ensemble classifiers achieve >99.6% recall, meaning almost zero false negatives during acute toxic surges."
+            description: "Grouped bar chart comparing Random Forest, XGBoost, LightGBM, and Logistic Regression across F1-Score, Precision, and Recall.",
+            axesOrEncoding: "X-Axis: Algorithm. Y-Axis: Score (0.60 to 1.05). Crimson (#E34A32) = F1 Score, Emerald (#2a9d8f) = Precision, Amber (#f4a261) = Recall.",
+            whatItShows: "Random Forest achieves 0.9995 F1 (0.9990 Precision, 1.0000 Recall), ensuring zero missed toxic emergency episodes."
+          },
+          {
+            name: "Classification Benchmark Results Table (Classification Tab)",
+            type: "Table",
+            description: "A 6-column benchmarking table summarizing discrete acute episode detection across the 4 classifiers.",
+            axesOrEncoding: "Columns: Model Algorithm, Accuracy (%), Precision, Recall, F1 Score (in bold crimson), ROC-AUC (in bold green).",
+            whatItShows: "Validates that ensemble decision trees achieve near-perfect ROC-AUC (1.0000 for Random Forest, 0.9995 for XGBoost)."
           }
         ]}
         symbolsAndIcons={[
           {
-            symbol: "🏆",
-            label: "Best-in-Class Performer",
+            symbol: "★",
+            label: "Champion Model Badge",
             category: "Badge",
-            meaning: "Identifies the highest-ranked ML algorithm for a specific pollutant according to R² score or F1-Score."
+            meaning: "Highlights the highest-performing machine learning architecture for that specific pollutant or classification task."
           },
           {
-            symbol: "✅",
+            symbol: "✓",
             label: "Optimal Model Checkmark",
             category: "Icon",
-            meaning: "Green checkmark highlighting the recommended production model row in the leaderboard table."
+            meaning: "Green checkmark designating verified production-ready classifiers with near-zero false negative rates."
           },
           {
-            symbol: "⚡",
-            label: "Gradient Boosted Tree",
+            symbol: "💻",
+            label: "Machine Learning CPU Engine",
             category: "Icon",
-            meaning: "Denotes decision tree ensemble algorithms (LightGBM, XGBoost, Random Forest) utilizing gradient boosting."
+            meaning: "Signifies algorithmic model inference and hyperparameter-tuned training pipelines."
           },
           {
-            symbol: "📉",
-            label: "Linear Regularized Baseline",
+            symbol: "🛡️",
+            label: "Hazardous Alert Classifier",
             category: "Icon",
-            meaning: "Represents L1/L2 penalized linear models (Ridge, LASSO, ElasticNet) evaluated as robust baseline benchmarks."
+            meaning: "Represents binary classification models flagging acute toxic air episodes (NH₃ > 80 µg/m³ or CO > 2.0 mg/m³)."
           }
         ]}
         interactiveControls={[
           {
-            control: "Task Mode Toggle (Regression vs Classification)",
+            control: "Task Switcher Tabs",
             type: "Tab",
-            functionality: "Switches between continuous numeric concentration predictions and binary acute hazard classification benchmarks.",
-            impactOnOutput: "Updates the primary leaderboard table to show R²/RMSE/MAE for Regression or Accuracy/Precision/Recall/ROC-AUC for Classification."
+            functionality: "Toggles between continuous regression forecasts and binary acute hazard classification benchmarks.",
+            impactOnOutput: "Updates the charts and tables to display task-specific metrics (R²/RMSE/MAE vs Precision/Recall/F1/ROC-AUC)."
           },
           {
-            control: "Gas Target Filter Dropdown",
+            control: "Filter Gas Dropdown (Regression Tab)",
             type: "Dropdown",
-            functionality: "Filters the regression leaderboard to display only the selected gaseous pollutant.",
-            impactOnOutput: "Isolates the 8 algorithms competing specifically on that target gas."
+            functionality: "Filters the regression leaderboard table to display evaluations for a specific gas or all 9 gases simultaneously.",
+            impactOnOutput: "Dynamically filters the table rows to compare model performance on the selected chemical target."
           }
         ]}
         metricDefinitions={[
           {
             term: "R² (R-Squared)",
             unit: "0.00 – 1.00",
-            definition: "Coefficient of determination measuring the percentage of variance explained (e.g. 0.8400 means 84.0% of ground NH₃ variation is explained by model features)."
+            definition: "Coefficient of determination measuring the percentage of ground gas variance explained by meteorological and plume features."
           },
           {
             term: "RMSE",
             unit: "µg/m³ or mg/m³",
-            definition: "Root Mean Squared Error — penalizes large prediction outliers, measuring the standard deviation of model residuals."
+            definition: "Root Mean Squared Error — penalizes large forecast outliers, measuring residual standard deviation."
           },
           {
             term: "MAE",
             unit: "µg/m³ or mg/m³",
-            definition: "Mean Absolute Error — the average magnitude of absolute forecasting errors."
+            definition: "Mean Absolute Error — average linear magnitude of forecasting errors across test samples."
           },
           {
             term: "ROC-AUC",
             unit: "0.00 – 1.00",
-            definition: "Area Under the Receiver Operating Characteristic Curve — evaluates classifier discrimination power across all decision thresholds."
+            definition: "Area Under the Receiver Operating Characteristic Curve — evaluates classifier discrimination across all alert thresholds."
           }
         ]}
         actionableInsights={[
@@ -347,7 +354,7 @@ export const ModelBenchmarks: React.FC = () => {
         dataSources={[
           "Scikit-Learn ML Suite",
           "XGBoost & LightGBM Gradient Boosted Frameworks",
-          "27,800+ Ground CAAQMS Hourly Training Samples"
+          "70,176 DPCC Continuous Ground Telemetry Records"
         ]}
       />
     </div>
