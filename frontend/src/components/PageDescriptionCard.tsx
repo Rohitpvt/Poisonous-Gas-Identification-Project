@@ -48,8 +48,8 @@ export interface PageDescriptionProps {
   objective: string;
   // Core Figures, Charts & Visual Elements Breakdown
   visualElements: VisualElementItem[];
-  // Complete Symbols & Icons Glossary
-  symbolsAndIcons: SymbolGlossaryItem[];
+  // Complete Symbols & Icons Glossary (Only on pages with actual map/marker symbols)
+  symbolsAndIcons?: SymbolGlossaryItem[];
   // Interactive Controls & Parameters
   interactiveControls?: ControlParameterItem[];
   // Metrics & Mathematical Terms
@@ -85,7 +85,7 @@ export const PageDescriptionCard: React.FC<PageDescriptionProps> = ({
           <h3 className="text-xl sm:text-2xl font-bold text-text-primary tracking-tight flex items-center gap-2">
             <span>{pageTitle}</span>
             <span className="text-xs font-serif-italic font-normal text-brand-primary hidden md:inline">
-              — Detailed Visual, Symbol & Mathematical Guide
+              — Detailed Visual, Component & Mathematical Guide
             </span>
           </h3>
         </div>
@@ -159,45 +159,47 @@ export const PageDescriptionCard: React.FC<PageDescriptionProps> = ({
             </div>
           </div>
 
-          {/* 3. Symbols, Icons, Emojis & UI Badges Glossary */}
-          <div className="space-y-3">
-            <div className="font-bold text-text-primary flex items-center justify-between text-xs uppercase tracking-wider text-text-muted">
-              <span className="flex items-center gap-2">
-                <Tag className="w-4 h-4 text-brand-primary" />
-                <span>Symbols, Icons & UI Badges Glossary (Exact Meaning of Emojis & Markers)</span>
-              </span>
-              <span className="font-mono text-[10px] text-brand-primary font-bold">
-                {symbolsAndIcons.length} Defined Symbols
-              </span>
-            </div>
+          {/* 3. Symbols, Icons, Emojis & UI Badges Glossary (Only rendered if page actually contains symbols/markers) */}
+          {symbolsAndIcons && symbolsAndIcons.length > 0 && (
+            <div className="space-y-3">
+              <div className="font-bold text-text-primary flex items-center justify-between text-xs uppercase tracking-wider text-text-muted">
+                <span className="flex items-center gap-2">
+                  <Tag className="w-4 h-4 text-brand-primary" />
+                  <span>Map Markers & Spatial Symbols Glossary</span>
+                </span>
+                <span className="font-mono text-[10px] text-brand-primary font-bold">
+                  {symbolsAndIcons.length} Defined Symbols
+                </span>
+              </div>
 
-            <div className="overflow-x-auto rounded-2xl border border-border-light bg-white/80">
-              <table className="w-full text-left text-xs">
-                <thead>
-                  <tr className="bg-surface-light text-text-muted border-b border-border-light uppercase text-[10px] tracking-wider font-semibold">
-                    <th className="py-2.5 px-3 w-14 text-center">Symbol</th>
-                    <th className="py-2.5 px-3 w-44">Label / Name</th>
-                    <th className="py-2.5 px-3 w-28">Category</th>
-                    <th className="py-2.5 px-3">Meaning & Clinical / Spatial Representation</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border-light/70">
-                  {symbolsAndIcons.map((sym, idx) => (
-                    <tr key={idx} className="hover:bg-surface-light/40 transition-colors">
-                      <td className="py-2.5 px-3 text-center text-base font-bold select-none">{sym.symbol}</td>
-                      <td className="py-2.5 px-3 font-semibold text-text-primary">{sym.label}</td>
-                      <td className="py-2.5 px-3">
-                        <span className="px-2 py-0.5 rounded-md bg-surface-light text-text-secondary text-[10px] font-mono border border-border-light">
-                          {sym.category}
-                        </span>
-                      </td>
-                      <td className="py-2.5 px-3 text-text-secondary leading-relaxed">{sym.meaning}</td>
+              <div className="overflow-x-auto rounded-2xl border border-border-light bg-white/80">
+                <table className="w-full text-left text-xs">
+                  <thead>
+                    <tr className="bg-surface-light text-text-muted border-b border-border-light uppercase text-[10px] tracking-wider font-semibold">
+                      <th className="py-2.5 px-3 w-14 text-center">Symbol</th>
+                      <th className="py-2.5 px-3 w-44">Label / Name</th>
+                      <th className="py-2.5 px-3 w-28">Category</th>
+                      <th className="py-2.5 px-3">Meaning & Spatial Representation</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-border-light/70">
+                    {symbolsAndIcons.map((sym, idx) => (
+                      <tr key={idx} className="hover:bg-surface-light/40 transition-colors">
+                        <td className="py-2.5 px-3 text-center text-base font-bold select-none">{sym.symbol}</td>
+                        <td className="py-2.5 px-3 font-semibold text-text-primary">{sym.label}</td>
+                        <td className="py-2.5 px-3">
+                          <span className="px-2 py-0.5 rounded-md bg-surface-light text-text-secondary text-[10px] font-mono border border-border-light">
+                            {sym.category}
+                          </span>
+                        </td>
+                        <td className="py-2.5 px-3 text-text-secondary leading-relaxed">{sym.meaning}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* 4. Interactive Controls & Parameters Guide (if available) */}
           {interactiveControls && interactiveControls.length > 0 && (

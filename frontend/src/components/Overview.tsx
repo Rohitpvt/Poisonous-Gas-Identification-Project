@@ -228,44 +228,6 @@ export const Overview: React.FC<OverviewProps> = ({ onExploreSimulator, onExplor
             whatItShows: "Direct physical proof of spaceborne methane captures ranging from 1,850 kg/hr to over 4,890 kg/hr across Delhi dumpsites."
           }
         ]}
-        symbolsAndIcons={[
-          {
-            symbol: "🔥",
-            label: "Ghazipur Corridor Indicator",
-            category: "Icon",
-            meaning: "Identifies the primary active super-emitter dumpsite (65m height) and its direct 130° SE alignment towards Anand Vihar."
-          },
-          {
-            symbol: "💨",
-            label: "Nocturnal Inversion Wind",
-            category: "Icon",
-            meaning: "Represents boundary layer contraction and calm surface winds (<2.0 m/s) trapping gas near ground level."
-          },
-          {
-            symbol: "🛡️",
-            label: "Explainable AI Shield",
-            category: "Icon",
-            meaning: "Signifies algorithmic transparency and mathematical SHAP validation of model predictions."
-          },
-          {
-            symbol: "📡",
-            label: "Ground Telemetry Node",
-            category: "Marker",
-            meaning: "Represents DPCC continuous ambient ground monitoring station (CAAQMS) recording 70,176 readings."
-          },
-          {
-            symbol: "🛰️",
-            label: "Satellite Plume Feed",
-            category: "Icon",
-            meaning: "Denotes spaceborne hyperspectral imaging spectrometers (NASA EMIT on ISS and German ESA EnMAP satellite)."
-          },
-          {
-            symbol: "🟢",
-            label: "Pure Methane CH₄ Badge",
-            category: "Badge",
-            meaning: "Highlights verified pure methane (CH₄) gas column absorption signatures retrieved from orbital infrared spectra."
-          }
-        ]}
         interactiveControls={[
           {
             control: "Launch Plume Simulator CTA",

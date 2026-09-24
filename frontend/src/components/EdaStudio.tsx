@@ -228,32 +228,6 @@ export const EdaStudio: React.FC = () => {
             whatItShows: "Instant numerical confirmation of severe chemical amplification caused specifically by landfill plume transport."
           }
         ]}
-        symbolsAndIcons={[
-          {
-            symbol: "📈",
-            label: "Diurnal Temporal Trend",
-            category: "Icon",
-            meaning: "Represents 24-hour cyclical hourly fluctuations governed by solar heating and nocturnal radiation cooling."
-          },
-          {
-            symbol: "💨",
-            label: "Plume Wind Vector",
-            category: "Icon",
-            meaning: "Signifies directional atmospheric advection carrying concentrated gases from the landfill to the ground sensor."
-          },
-          {
-            symbol: "🔴",
-            label: "Ghazipur Direct Path (100°-160°)",
-            category: "Badge",
-            meaning: "Represents air quality measurements taken strictly when wind azimuth was aligned between 100° and 160° directly towards Anand Vihar."
-          },
-          {
-            symbol: "⚪",
-            label: "Other Wind Sectors",
-            category: "Badge",
-            meaning: "Represents baseline urban air quality measurements recorded when wind blew from all other non-landfill directions."
-          }
-        ]}
         interactiveControls={[
           {
             control: "Analysis Sub-Tab Bar (Diurnal vs Downwind)",

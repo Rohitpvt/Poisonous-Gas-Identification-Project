@@ -610,38 +610,6 @@ export const HealthAdvisory: React.FC = () => {
             whatItShows: "Simulates automated municipal early warning broadcast delivery directly to community mobile devices."
           }
         ]}
-        symbolsAndIcons={[
-          {
-            symbol: "🏥",
-            label: "Emergency Healthcare Facility",
-            category: "Icon",
-            meaning: "Designates hospitals equipped with dedicated toxic inhalation wards, liquid medical oxygen, and 24x7 triage."
-          },
-          {
-            symbol: "🚑",
-            label: "Ambulance Hotline (108 / 102)",
-            category: "Icon",
-            meaning: "Direct emergency dispatch hotline for immediate respiratory patient transport."
-          },
-          {
-            symbol: "🛡️",
-            label: "Safe Clean-Air Haven",
-            category: "Zone",
-            meaning: "Designates upwind or riverbank green corridors offering up to 94% lower gas exposure during active emissions."
-          },
-          {
-            symbol: "🚨",
-            label: "Severe Toxicity Alert",
-            category: "Status",
-            meaning: "Health risk score ≥ 80, indicating hazardous acute conditions requiring immediate window sealing and N95 masking."
-          },
-          {
-            symbol: "📱",
-            label: "Emergency Broadcast Dispatch",
-            category: "Icon",
-            meaning: "Automated transmission of early warning SMS payloads via public safety telecom gateways."
-          }
-        ]}
         interactiveControls={[
           {
             control: "Vulnerability Persona Selector",

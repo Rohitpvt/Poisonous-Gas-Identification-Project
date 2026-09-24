@@ -304,32 +304,6 @@ export const PlumeSimulator: React.FC = () => {
             whatItShows: "Explains step-by-step why the model generated the specific prediction, showing which physical factor contributed most to the gas spike."
           }
         ]}
-        symbolsAndIcons={[
-          {
-            symbol: "⚡",
-            label: "Real-Time Inference Engine",
-            category: "Icon",
-            meaning: "Signifies active sub-millisecond forward-pass computation from the surrogate ML model."
-          },
-          {
-            symbol: "🛡️",
-            label: "Critical Plume Alert Shield",
-            category: "Icon",
-            meaning: "Active when risk probability exceeds 60%, warning that wind vector is directly carrying Ghazipur dump yard emissions towards Anand Vihar and Kaushambi."
-          },
-          {
-            symbol: "⚠️",
-            label: "Moderate Advisory Warning",
-            category: "Icon",
-            meaning: "Active when risk probability is between 35% and 60%, indicating elevated stagnation potential during upcoming nocturnal hours."
-          },
-          {
-            symbol: "✓",
-            label: "Safe Status Checkmark",
-            category: "Icon",
-            meaning: "Active when risk probability is below 35%, confirming adequate ventilation and crosswind dispersion."
-          }
-        ]}
         interactiveControls={[
           {
             control: "Wind Direction Slider (0°–360°)",

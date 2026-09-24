@@ -428,50 +428,6 @@ export const ResearchInsights: React.FC = () => {
             whatItShows: "Provides examiners with quick, bulletproof citations proving landfill attribution, satellite emission rates, and 94% clean-air routing effectiveness."
           }
         ]}
-        symbolsAndIcons={[
-          {
-            symbol: "🧭",
-            label: "Source Attribution Indicator",
-            category: "Icon",
-            meaning: "Represents the 110°–150° azimuth line connecting Ghazipur dumpsite directly to the Anand Vihar receptor station."
-          },
-          {
-            symbol: "🛰️",
-            label: "Satellite Plumes Indicator",
-            category: "Icon",
-            meaning: "Signifies spaceborne remote sensing detection of point-source methane plumes."
-          },
-          {
-            symbol: "🌙",
-            label: "Nocturnal Inversion Trap",
-            category: "Icon",
-            meaning: "Signifies pre-dawn meteorological conditions where radiational ground cooling creates a thermal ceiling trapping toxic landfill fumes."
-          },
-          {
-            symbol: "📈",
-            label: "Multi-Gas ML Benchmarks",
-            category: "Icon",
-            meaning: "Denotes machine learning model evaluation across continuous regression and hazard classification."
-          },
-          {
-            symbol: "🧠",
-            label: "SHAP XAI Feature Proof",
-            category: "Icon",
-            meaning: "Denotes game-theoretic Shapley feature importance attributions."
-          },
-          {
-            symbol: "🛡️",
-            label: "Clinical Escape Havens",
-            category: "Icon",
-            meaning: "Marks certified urban green buffer zones (e.g. Sanjay Lake, Akshardham) where exposure is reduced by up to 94%."
-          },
-          {
-            symbol: "📥",
-            label: "Download Report Button",
-            category: "Icon",
-            meaning: "Triggers immediate direct download of the complete 7-page academic research paper (.docx)."
-          }
-        ]}
         interactiveControls={[
           {
             control: "Six-Pillar Research Navigation Bar",

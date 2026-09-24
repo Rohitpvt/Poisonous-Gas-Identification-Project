@@ -126,32 +126,6 @@ export const ExplainableAi: React.FC = () => {
             whatItShows: "Translates abstract game-theoretic numbers into concrete atmospheric and public health insights."
           }
         ]}
-        symbolsAndIcons={[
-          {
-            symbol: "🧠",
-            label: "Explainable AI Engine",
-            category: "Icon",
-            meaning: "Signifies algorithmic interpretability frameworks (TreeSHAP / KernelSHAP) auditing model decision boundaries."
-          },
-          {
-            symbol: "ϕᵢ",
-            label: "Shapley Attribution Value",
-            category: "Metric",
-            meaning: "The fair marginal contribution of feature i to the difference between actual prediction f(x) and expected baseline E[f(x)]."
-          },
-          {
-            symbol: "🔴",
-            label: "Positive Risk-Forcing SHAP (+)",
-            category: "Badge",
-            meaning: "A feature value that pushes the predicted gas concentration higher than the baseline (e.g. 130° wind direction or low boundary layer)."
-          },
-          {
-            symbol: "🟢",
-            label: "Negative Cleansing SHAP (-)",
-            category: "Badge",
-            meaning: "A feature value that reduces predicted toxicity (e.g. high wind speed > 3.5 m/s causing turbulent ventilation)."
-          }
-        ]}
         metricDefinitions={[
           {
             term: "Mean |SHAP|",

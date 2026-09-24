@@ -284,32 +284,6 @@ export const ModelBenchmarks: React.FC = () => {
             whatItShows: "Validates that ensemble decision trees achieve near-perfect ROC-AUC (1.0000 for Random Forest, 0.9995 for XGBoost)."
           }
         ]}
-        symbolsAndIcons={[
-          {
-            symbol: "★",
-            label: "Champion Model Badge",
-            category: "Badge",
-            meaning: "Highlights the highest-performing machine learning architecture for that specific pollutant or classification task."
-          },
-          {
-            symbol: "✓",
-            label: "Optimal Model Checkmark",
-            category: "Icon",
-            meaning: "Green checkmark designating verified production-ready classifiers with near-zero false negative rates."
-          },
-          {
-            symbol: "💻",
-            label: "Machine Learning CPU Engine",
-            category: "Icon",
-            meaning: "Signifies algorithmic model inference and hyperparameter-tuned training pipelines."
-          },
-          {
-            symbol: "🛡️",
-            label: "Hazardous Alert Classifier",
-            category: "Icon",
-            meaning: "Represents binary classification models flagging acute toxic air episodes (NH₃ > 80 µg/m³ or CO > 2.0 mg/m³)."
-          }
-        ]}
         interactiveControls={[
           {
             control: "Task Switcher Tabs",
