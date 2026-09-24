@@ -120,6 +120,8 @@ export interface EmergencyHospital {
 export interface SafeEscapeZone {
   id: string;
   name: string;
+  lat: number;
+  lng: number;
   bearing: number;
   distanceKm: number;
   exposureReductionPercent: number;
@@ -192,6 +194,8 @@ export const SAFE_ESCAPE_ZONES: SafeEscapeZone[] = [
   {
     id: 'sanjay_lake',
     name: 'Sanjay Lake & Green Eco-Park Buffer',
+    lat: 28.6110,
+    lng: 77.3030,
     bearing: 215,
     distanceKm: 2.9,
     exposureReductionPercent: 88,
@@ -202,6 +206,8 @@ export const SAFE_ESCAPE_ZONES: SafeEscapeZone[] = [
   {
     id: 'mayur_vihar_p3',
     name: 'Mayur Vihar Phase-3 Southern High-Ridge Pocket',
+    lat: 28.6050,
+    lng: 77.3380,
     bearing: 165,
     distanceKm: 3.4,
     exposureReductionPercent: 82,
@@ -212,6 +218,8 @@ export const SAFE_ESCAPE_ZONES: SafeEscapeZone[] = [
   {
     id: 'akshardham_riverbank',
     name: 'Akshardham Yamuna Riverbank Green Corridor',
+    lat: 28.6120,
+    lng: 77.2770,
     bearing: 245,
     distanceKm: 4.8,
     exposureReductionPercent: 94,
@@ -222,6 +230,8 @@ export const SAFE_ESCAPE_ZONES: SafeEscapeZone[] = [
   {
     id: 'surajmal_vihar',
     name: 'Surajmal Vihar / Vivek Vihar District Park Zone',
+    lat: 28.6570,
+    lng: 77.3020,
     bearing: 310,
     distanceKm: 4.1,
     exposureReductionPercent: 78,
