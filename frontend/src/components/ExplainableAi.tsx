@@ -103,29 +103,71 @@ export const ExplainableAi: React.FC = () => {
       <PageDescriptionCard
         pageTitle="Explainable AI (XAI) & SHAP Feature Attribution Studio"
         objective="This studio breaks open the machine learning 'black box' using Shapley Game-Theoretic additive feature attributions (SHAP). It rigorously explains *why* the model predicts high toxic gas spikes for any given meteorological scenario."
-        methodology={[
+        visualElements={[
           {
-            title: "Shapley Additive exPlanations (SHAP)",
-            details: "Computes the exact marginal contribution ϕᵢ of each feature across all possible feature subsets (coalitions), guaranteeing additive efficiency and consistency."
+            name: "Global Mean |SHAP| Feature Importance Bar Chart",
+            type: "Chart",
+            description: "A horizontal ranking of the top 8 predictive features sorted by their mean absolute SHAP value impact on the target output.",
+            axesOrEncoding: "X-Axis: Mean |SHAP Value| (average marginal impact in µg/m³). Y-Axis: Feature Name. Color-coded by feature domain.",
+            whatItShows: "Proves that Wind Direction Alignment (100°–160°) and Lagged NH₃ Concentration are the twin dominant predictors of ground toxicity."
           },
           {
-            title: "TreeSHAP Polynomial Acceleration",
-            details: "Applies exact tree-path conditional expectation algorithms to evaluate ensemble decision trees in polynomial time."
+            name: "Shapley Game-Theoretic Formulation Box",
+            type: "Diagram",
+            description: "High-contrast dark card displaying the exact mathematical equation for Shapley values with combinatorial subset weighting.",
+            axesOrEncoding: "Formula: ϕᵢ(f, x) = ∑ [ |S|! (|F| - |S| - 1)! / |F|! ] · [ f(S ∪ {i}) - f(S) ].",
+            whatItShows: "Establishes the mathematical guarantees of efficiency, symmetry, and monotonicity required for legal/environmental auditability."
           },
           {
-            title: "Directional SHAP Value Polarity",
-            details: "Separates positive risk-forcing attributions (+SHAP pushing predictions higher) from negative dispersion factors (-SHAP cleansing ambient air)."
-          },
-          {
-            title: "Meteorology vs Geometry Disentanglement",
-            details: "Quantifies the interaction between ambient temperature gradients, wind direction alignment, and physical dumpsite elevation (65m)."
+            name: "Physical Dumpsite Behavioral Findings Card",
+            type: "Panel",
+            description: "Structured card summarizing three key environmental phenomena discovered through SHAP attributions.",
+            axesOrEncoding: "Pill bullet points: Ghazipur Plume Alignment (+34 µg/m³), Temperature Negative Gradient (nocturnal trapping), and Wind Speed Cleansing (>3.5 m/s dilution).",
+            whatItShows: "Translates abstract game-theoretic numbers into concrete atmospheric and public health insights."
           }
         ]}
-        howToInterpret={[
-          "Analyze the Feature Importance Bar Chart: Features are ranked by mean |SHAP| impact on model predictions.",
-          "Check Ghazipur Plume Alignment: Wind angles aligned with 100°–160° create the single largest positive SHAP force (+34 µg/m³ NH₃).",
-          "Observe Temperature and Boundary Layer Effects: Cold winter nights produce high positive SHAP values due to atmospheric boundary layer inversion.",
-          "Check Wind Speed SHAP Values: Higher wind speeds (>3.5 m/s) produce strong negative SHAP values, indicating rapid turbulent dilution."
+        symbolsAndIcons={[
+          {
+            symbol: "🧠",
+            label: "Explainable AI Engine",
+            category: "Icon",
+            meaning: "Signifies algorithmic interpretability frameworks (TreeSHAP / KernelSHAP) auditing model decision boundaries."
+          },
+          {
+            symbol: "ϕᵢ",
+            label: "Shapley Attribution Value",
+            category: "Metric",
+            meaning: "The fair marginal contribution of feature i to the difference between actual prediction f(x) and expected baseline E[f(x)]."
+          },
+          {
+            symbol: "🔴",
+            label: "Positive Risk-Forcing SHAP (+)",
+            category: "Badge",
+            meaning: "A feature value that pushes the predicted gas concentration higher than the baseline (e.g. 130° wind direction or low boundary layer)."
+          },
+          {
+            symbol: "🟢",
+            label: "Negative Cleansing SHAP (-)",
+            category: "Badge",
+            meaning: "A feature value that reduces predicted toxicity (e.g. high wind speed > 3.5 m/s causing turbulent ventilation)."
+          }
+        ]}
+        metricDefinitions={[
+          {
+            term: "Mean |SHAP|",
+            unit: "µg/m³",
+            definition: "The average absolute magnitude of a feature's effect on model predictions across all dataset observations."
+          },
+          {
+            term: "Coalition (S)",
+            unit: "Subset",
+            definition: "A specific subset of input features evaluated during combinatorial Shapley value computation."
+          },
+          {
+            term: "Additivity",
+            unit: "Property",
+            definition: "The mathematical rule that the sum of all feature SHAP values equals the total deviation from base value: ∑ ϕᵢ = f(x) - E[f(x)]."
+          }
         ]}
         actionableInsights={[
           "Proves to environmental regulators and judicial authorities that the ML model relies on sound atmospheric physics rather than spurious background correlation.",

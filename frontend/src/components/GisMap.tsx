@@ -879,29 +879,130 @@ export const GisMap: React.FC = () => {
       <PageDescriptionCard
         pageTitle="Geospatial Information System (GIS) & Atmospheric Dispersion Tracker"
         objective="This page provides an interactive geospatial map modeling the physical transport of hazardous gases from Delhi's landfill dumpsites across surrounding residential receptors. It dynamically couples Gaussian dispersion physics with orbital satellite plume observations."
-        methodology={[
+        visualElements={[
           {
-            title: "Gaussian Plume Geometry & Vector Translation",
-            details: "Calculates an active downwind dispersion polygon (length ~4.8 km, spread ±28°) dynamically oriented along the user-controlled wind azimuth."
+            name: "Interactive Leaflet Geospatial Canvas",
+            type: "Map",
+            description: "Full-bleed interactive vector tile map centered on East Delhi and Ghaziabad (28.628°N, 77.308°E), rendering landfill coordinates, ground stations, and plume polygons.",
+            axesOrEncoding: "OpenStreetMap, CartoDB Positron, and Dark Voyager tile layers with dynamic SVG marker layers.",
+            whatItShows: "Real-time geographic spatial distribution of landfill emission sources and downwind receptors."
           },
           {
-            title: "Dynamic Exposure Intersection Engine",
-            details: "Trigonometrically evaluates angular offsets between active wind bearing and receptor coordinates to determine immediate community exposure."
+            name: "Dynamic Gaussian Dispersion Plume Cone",
+            type: "Diagram",
+            description: "A semi-transparent red triangular polygon anchored at Ghazipur's coordinates, extending 4.8 km downwind with a ±28° spread angle.",
+            axesOrEncoding: "Red boundary with 35% crimson fill, dynamically recalculating corner vertices as the wind slider rotates.",
+            whatItShows: "Visualizes the atmospheric corridor where airborne toxic concentrations (NH₃, CO, VOCs) exceed safe ambient background levels."
           },
           {
-            title: "Multi-Orbit Plume Footprint Integration",
-            details: "Renders verified NASA EMIT and ESA EnMAP hyperspectral methane plume footprints with exact emission fluxes (kg/hr)."
+            name: "Buffer Perimeter Rings (1.0 km & 2.8 km)",
+            type: "Diagram",
+            description: "Concentric dashed circles around Ghazipur representing critical safety and monitoring milestones.",
+            axesOrEncoding: "Inner dashed red circle = 1.0 km High-Toxicity Zone; Outer orange circle = 2.8 km Anand Vihar Ground Station radius.",
+            whatItShows: "Demarcates the immediate lethal containment zone and distance to continuous regulatory monitoring instruments."
           },
           {
-            title: "High-Toxicity Perimeter Buffering",
-            details: "Constructs 1.0 km high-toxicity containment rings and 2.8 km DPCC Anand Vihar receptor distance radii."
+            name: "Floating Layer Visibility Control Panel",
+            type: "Widget",
+            description: "Top-right glassmorphic panel with 5 interactive eye-toggle pills.",
+            axesOrEncoding: "Pills: Gaussian Plume Cone, NASA/ESA Satellites, Populated Receptors, Safe Clean Corridors, Buffer Rings.",
+            whatItShows: "Allows users to isolate individual spatial layers to prevent visual clutter."
+          },
+          {
+            name: "Interactive Wind Vector Controller (Slider)",
+            type: "Control",
+            description: "Bottom-left glassmorphic control with an azimuth slider (0°–360°), wind speed readout, and calculated transit time.",
+            axesOrEncoding: "Azimuth slider with compass ticks (0° N, 90° E, 130° SE, 270° W, 360° N).",
+            whatItShows: "Enables interactive simulation of changing weather patterns and instant observation of which neighborhoods become exposed."
+          },
+          {
+            name: "Live Receptor Exposure Monitor (Right Sidebar)",
+            type: "Panel",
+            description: "Live scrolling list of 6 receptor neighborhoods with real-time exposure badges, population counts, and travel times.",
+            axesOrEncoding: "Red '🚨 In Plume Path' badge versus green '✅ Clear' badge based on angular difference (|θ_wind - θ_receptor| ≤ 34°).",
+            whatItShows: "Instant calculation of human exposure burden (e.g. 155,000 residents in danger zone under 130° wind)."
           }
         ]}
-        howToInterpret={[
-          "Use the Interactive Wind Vector Controller (bottom-left) to rotate wind direction: Watch the red plume cone rotate across East Delhi and Ghaziabad.",
-          "Check the Top Right Layer Toggles: Toggle individual layers (Gaussian Plume, NASA Satellites, Populated Receptors, Safe Corridors, Buffer Rings) to isolate spatial features.",
-          "Inspect the Live Receptor Monitor (right sidebar): See instant updates on which neighborhoods are in direct danger and their estimated gas transit time (e.g. 18 mins at 2.5 m/s).",
-          "Click on any Map Marker: View detailed popups with emission rates, population at risk, coordinates, and safe evacuation directions."
+        symbolsAndIcons={[
+          {
+            symbol: "🔥",
+            label: "Ghazipur Super-Emitter Marker",
+            category: "Marker",
+            meaning: "Location of Ghazipur solid waste facility (28.6238°N, 77.3284°E) — primary source of the simulated gas plume."
+          },
+          {
+            symbol: "📡",
+            label: "DPCC Ground Station Marker",
+            category: "Marker",
+            meaning: "Continuous air monitoring station at Anand Vihar ISBT (28.6469°N, 77.3160°E) measuring empirical ground-level spikes."
+          },
+          {
+            symbol: "🛰️",
+            label: "Satellite Plume Footprint",
+            category: "Marker",
+            meaning: "Verified spaceborne methane column retrieval footprint from NASA EMIT or ESA EnMAP hyperspectral instruments."
+          },
+          {
+            symbol: "⚠️",
+            label: "Exposed Receptor Hub",
+            category: "Marker",
+            meaning: "Residential colony or transit hub currently located directly inside the active ±28° dispersion cone."
+          },
+          {
+            symbol: "🏘️",
+            label: "Safe Receptor Hub",
+            category: "Marker",
+            meaning: "Populated neighborhood currently located outside the direct downwind gas plume corridor."
+          },
+          {
+            symbol: "🛡️",
+            label: "Safe Clean-Air Eco-Park",
+            category: "Zone",
+            meaning: "Certified green buffer zone (e.g. Sanjay Lake, Akshardham corridor) offering up to 94% lower gas exposure for evacuation."
+          },
+          {
+            symbol: "🌋",
+            label: "Other Landfill Dumpsites",
+            category: "Marker",
+            meaning: "Bhalswa (North Delhi) and Okhla (South Delhi) municipal dumpsites."
+          }
+        ]}
+        interactiveControls={[
+          {
+            control: "Wind Azimuth Slider (0°–360°)",
+            type: "Slider",
+            functionality: "Rotates the downwind Gaussian dispersion polygon in real time around Ghazipur.",
+            impactOnOutput: "Triggers immediate recalculation of exposed neighborhoods, total exposed population, and gas travel times."
+          },
+          {
+            control: "Preset Scenario Tabs",
+            type: "Button",
+            functionality: "Quick 1-click presets: 🚨 Winter Smog Inversion (130° SE), 🛰️ NASA EMIT Overpass (288° NW), 🛡️ Crosswind Evacuation (215° SW).",
+            impactOnOutput: "Instantly sets realistic historical weather parameters and adjusts map focus."
+          },
+          {
+            control: "Basemap Selector Dropdown",
+            type: "Dropdown",
+            functionality: "Switches the underlying tile provider between Carto Light (Clear), OpenStreetMap (Standard), and Carto Dark (Night Contrast).",
+            impactOnOutput: "Modifies map contrast and street-level detail without affecting data layers."
+          }
+        ]}
+        metricDefinitions={[
+          {
+            term: "Dispersion Length",
+            unit: "4.8 km",
+            definition: "Effective downwind reach where landfill-generated gases remain significantly elevated above urban background levels."
+          },
+          {
+            term: "Cone Spread Angle",
+            unit: "±28°",
+            definition: "Lateral plume standard deviation angle (θ) parameterized by Pasquill-Gifford atmospheric stability class."
+          },
+          {
+            term: "Transit Time",
+            unit: "Minutes",
+            definition: "Estimated duration for gas molecules leaving Ghazipur crest to reach the receptor at current wind velocity: t = Distance / Wind Speed."
+          }
         ]}
         actionableInsights={[
           "Identifies Anand Vihar ISBT (120,000 people) and Kaushambi (60,000 people) as the most frequently impacted hubs under prevailing 110°–150° winds.",

@@ -274,28 +274,86 @@ export const PlumeSimulator: React.FC = () => {
       <PageDescriptionCard
         pageTitle="Interactive Gaussian Plume Simulation & What-If Inference Engine"
         objective="This simulator provides an interactive physics-informed inference sandbox. Users can test hypothetical weather conditions, emission fluxes, and ambient temperatures to predict ground-level Ammonia spikes and evaluate real-time SHAP force waterfall attributions."
-        methodology={[
+        visualElements={[
           {
-            title: "Physics-Informed Gaussian Dispersion Formulation",
-            details: "Simulates downwind toxic gas transport by factoring in plume geometry alignment indices, aerodynamic drag, and exponential wind dilution."
+            name: "Interactive Meteorological Parameter Sliders (Left Panel)",
+            type: "Control",
+            description: "Six adjustable range inputs: Current Ammonia Baseline (µg/m³), Carbon Monoxide (mg/m³), Ambient Temperature (°C), Wind Velocity (m/s), Wind Direction (0°–360°), and Relative Humidity (%).",
+            axesOrEncoding: "Continuous numeric sliders with real-time numeric value pills.",
+            whatItShows: "Allows arbitrary parameter tweaking to simulate cold winter smog nights, summer monsoon ventilation, or calm inversion trapping."
           },
           {
-            title: "Real-Time Multi-Feature Inference",
-            details: "Dynamically recalculates expected 1-hour ahead continuous NH₃ concentrations (µg/m³) and probabilistic acute exceedance risk."
+            name: "Real-Time 1-Hour Ahead Prediction Gauge (Top Right)",
+            type: "Widget",
+            description: "An animated gauge displaying forecasted Ammonia (NH₃) concentration (µg/m³) alongside an acute exceedance risk percentage.",
+            axesOrEncoding: "Large bold typography with color-coded status badges: 🟢 Low Baseline (<35), 🟡 Moderate Warning (35–60), 🔴 Critical Hazard (>60 µg/m³).",
+            whatItShows: "Instant prediction of whether the simulated weather conditions will trigger a severe violation of clean air thresholds."
           },
           {
-            title: "Local SHAP Force Waterfall Decomposition",
-            details: "Decomposes the final prediction into individual feature forces (Lag baseline, Plume alignment, Temperature inversion, Relative humidity)."
-          },
-          {
-            title: "Dynamic Hazard Threshold Classification",
-            details: "Evaluates whether predicted ground concentrations cross the CPCB severe hazard threshold (60 µg/m³)."
+            name: "Local SHAP Force Decomposition Waterfall Bar Chart",
+            type: "Chart",
+            description: "A bar chart breaking down the contribution of each individual slider input to the final predicted concentration.",
+            axesOrEncoding: "X-Axis: Feature Contribution Forces (Base Expected Value, Lag Baseline, Plume Alignment, Temperature Gradient, Humidity). Y-Axis: Contribution (µg/m³). Charcoal = Base; Crimson = Positive Force (+); Teal = Negative Reduction (-).",
+            whatItShows: "Explains step-by-step why the model generated the specific prediction, showing which physical factor contributed most to the gas spike."
           }
         ]}
-        howToInterpret={[
-          "Adjust the Left Sidebar Sliders: Tweak Current Ammonia lag, Wind Direction (0°–360°), Wind Speed, Temperature, and Humidity.",
-          "Observe the Predicted Output Box (top right): Shows forecasted 1-hour ahead NH₃ value and a real-time risk gauge (Low / Moderate / Severe Hazard).",
-          "Analyze the Local SHAP Waterfall Chart (bottom right): Red bars push concentrations upward (e.g. 130° Ghazipur wind alignment), while Teal bars pull concentrations down (e.g. high wind speed ventilation)."
+        symbolsAndIcons={[
+          {
+            symbol: "⚡",
+            label: "Real-Time Inference Engine",
+            category: "Icon",
+            meaning: "Signifies active sub-millisecond forward-pass computation from the surrogate ML model."
+          },
+          {
+            symbol: "🔴",
+            label: "Critical Hazard Status",
+            category: "Status",
+            meaning: "Indicates that forecasted ground concentrations exceed 60 µg/m³, triggering immediate public health precautions."
+          },
+          {
+            symbol: "🟡",
+            label: "Moderate Warning Status",
+            category: "Status",
+            meaning: "Indicates concentrations between 35–60 µg/m³ — sensitive demographic advisories recommended."
+          },
+          {
+            symbol: "🟢",
+            label: "Low Baseline Status",
+            category: "Status",
+            meaning: "Concentrations remain below 35 µg/m³ — safe ambient conditions."
+          }
+        ]}
+        interactiveControls={[
+          {
+            control: "Wind Direction Slider (0°–360°)",
+            type: "Slider",
+            functionality: "Changes the simulated wind blow angle.",
+            impactOnOutput: "Aligning near 130° (Ghazipur corridor) immediately adds up to +34.5 µg/m³ to the predicted ground concentration."
+          },
+          {
+            control: "Wind Speed Slider (0.5 – 10.0 m/s)",
+            type: "Slider",
+            functionality: "Adjusts horizontal ventilation speed.",
+            impactOnOutput: "Speeds > 3.5 m/s exponentially reduce predicted concentrations via aerodynamic dilution."
+          },
+          {
+            control: "Temperature Slider (5°C – 45°C)",
+            type: "Slider",
+            functionality: "Adjusts ambient surface temperature.",
+            impactOnOutput: "Temperatures < 15°C trigger positive SHAP additions representing shallow boundary layer trapping."
+          }
+        ]}
+        metricDefinitions={[
+          {
+            term: "Plume Index",
+            unit: "0.0 – 1.0",
+            definition: "Trigonometric alignment metric: cos(θ_wind - 130°) · exp(-0.25 · v_wind), quantifying effective downwind mass transport."
+          },
+          {
+            term: "Base Value E[y]",
+            unit: "25.0 µg/m³",
+            definition: "The historical expected value of Ammonia in Delhi's urban background when no active landfill plumes are present."
+          }
         ]}
         actionableInsights={[
           "Enables municipal emergency operators to test 'worst-case' meteorological scenarios (e.g. winter night at 13°C, 1.2 m/s wind, 130° azimuth).",

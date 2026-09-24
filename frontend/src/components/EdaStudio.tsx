@@ -191,28 +191,86 @@ export const EdaStudio: React.FC = () => {
       <PageDescriptionCard
         pageTitle="Exploratory Data Analysis (EDA) & Diurnal Dynamics Studio"
         objective="This studio presents empirical temporal and directional distributions extracted from 27,800+ continuous ground monitoring records. It isolates how atmospheric boundary layer collapses and seasonal thermal inversions modulate ground toxicity."
-        methodology={[
+        visualElements={[
           {
-            title: "Diurnal Hourly Time-Series Aggregation",
-            details: "Computes 24-hour mean diurnal curves for NH₃, CO, PM2.5, and Benzene to uncover nocturnal trapping cycles."
+            name: "Sub-Tab Category Switcher (3 Perspectives)",
+            type: "Control",
+            description: "Top toggle pills switching between 24-Hour Diurnal Dynamics, Downwind Plume Sector, and Multi-Pollutant Correlation Matrix.",
+            axesOrEncoding: "Selected tab highlighted in dark charcoal with active glow.",
+            whatItShows: "Enables multi-angle exploratory analysis across diurnal, directional, and chemical synergy domains."
           },
           {
-            title: "Directional Downwind Sector Partitioning",
-            details: "Filters sensor readings by wind direction to contrast the 100°–160° direct Ghazipur plume corridor against background ambient air."
+            name: "24-Hour Diurnal Area Chart",
+            type: "Chart",
+            description: "Smooth multi-series area chart tracking hourly mean concentrations of Ammonia (NH₃), Carbon Monoxide (CO), PM2.5, and Benzene from 00:00 to 23:00.",
+            axesOrEncoding: "X-Axis: Hour of Day (0 to 23). Y-Axis: Concentration (µg/m³ for NH₃/PM2.5/Benzene, mg/m³ for CO). Crimson/slate gradients with shaded area fill.",
+            whatItShows: "Reveals the signature double-peak diurnal pattern: severe pre-dawn trapping (02:00–06:00 AM) and late evening accumulation (21:00–01:00 AM) driven by boundary layer contraction."
           },
           {
-            title: "Inter-Pollutant Cross-Correlation",
-            details: "Constructs Pearson correlation matrices to quantify co-emission synergies among organic volatile compounds, ammonia, and respirable particulates."
+            name: "Downwind Plume Sector Comparison (Bar Chart)",
+            type: "Chart",
+            description: "Grouped bar chart contrasting average pollutant levels under direct Ghazipur downwind conditions (100°–160°) against all other wind directions.",
+            axesOrEncoding: "X-Axis: NH₃, CO, PM2.5, Benzene. Y-Axis: Concentration. Crimson bars = Downwind; Grey bars = Other Sectors.",
+            whatItShows: "Quantifies the localized plume delta: +65.1% NH₃, +58.9% CO, +48.3% PM2.5, and +70.5% Benzene surges caused specifically by landfill transport."
           },
           {
-            title: "Planetary Boundary Layer Height (PBLH) Profiling",
-            details: "Models vertical dispersion capacity as nocturnal surface cooling caps the atmospheric mixing volume beneath 200 meters."
+            name: "Metric Delta Highlight Cards (4 Cards)",
+            type: "Widget",
+            description: "Four summary cards below the bar chart displaying exact percentage increases under direct plume exposure.",
+            axesOrEncoding: "Large crimson percentage typography with pollutant name micro-headers.",
+            whatItShows: "Instant statistical summary of localized chemical amplification under direct landfill wind vectors."
           }
         ]}
-        howToInterpret={[
-          "Switch Sub-Tabs (24-Hour Diurnal Dynamics vs Downwind Plume Sector): Notice the characteristic double-peaked diurnal profile.",
-          "Inspect Diurnal Inversion Peaks: Concentrations spike sharply between 02:00–06:00 AM (NH₃ reaches ~79.6 µg/m³) before solar radiation initiates convective mixing around 11:00 AM.",
-          "Check the Plume Sector Bar Chart: Direct Ghazipur winds trigger a +65.1% increase in NH₃, +58.9% in CO, and +70.5% in Benzene."
+        symbolsAndIcons={[
+          {
+            symbol: "📈",
+            label: "Diurnal Temporal Trend",
+            category: "Icon",
+            meaning: "Represents 24-hour cyclical hourly fluctuations governed by solar heating and nocturnal radiation cooling."
+          },
+          {
+            symbol: "💨",
+            label: "Plume Wind Vector",
+            category: "Icon",
+            meaning: "Signifies directional atmospheric advection carrying concentrated gases from the landfill to the ground sensor."
+          },
+          {
+            symbol: "🔴",
+            label: "Direct Downwind Plume Bar",
+            category: "Badge",
+            meaning: "Represents air quality measurements taken strictly when wind azimuth was aligned between 100° and 160°."
+          },
+          {
+            symbol: "⚪",
+            label: "Background Sector Bar",
+            category: "Badge",
+            meaning: "Represents baseline urban air quality measurements recorded when wind blew from all other non-landfill directions."
+          }
+        ]}
+        interactiveControls={[
+          {
+            control: "Analysis Sub-Tab Bar",
+            type: "Tab",
+            functionality: "Toggles between 24-Hour Diurnal Dynamics and Downwind Plume Sector analysis views.",
+            impactOnOutput: "Switches the primary chart display between the 24-hour continuous area chart and the comparative sector bar chart."
+          }
+        ]}
+        metricDefinitions={[
+          {
+            term: "µg/m³",
+            unit: "Concentration",
+            definition: "Micrograms of pollutant per cubic meter of ambient air (standard regulatory unit for NH₃, PM2.5, Benzene)."
+          },
+          {
+            term: "mg/m³",
+            unit: "Concentration",
+            definition: "Milligrams of pollutant per cubic meter of air (used for higher-volume gases like Carbon Monoxide CO)."
+          },
+          {
+            term: "Diurnal Cycle",
+            unit: "24-Hour",
+            definition: "A daily recurring meteorological cycle driven by solar radiation, surface temperature, and atmospheric stability."
+          }
         ]}
         actionableInsights={[
           "Confirms that human exposure risk is intensely skewed toward late-night and early morning hours when residents are asleep with windows closed.",

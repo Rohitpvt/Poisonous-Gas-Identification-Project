@@ -198,39 +198,127 @@ export const Overview: React.FC<OverviewProps> = ({ onExploreSimulator, onExplor
       <PageDescriptionCard
         pageTitle="Executive Overview & Multi-Sensor Fusion Architecture"
         objective="This page establishes the macro research framework, uniting high-resolution orbital satellite hyperspectral imaging (NASA EMIT, ESA EnMAP) with continuous ground-level ambient air monitoring (DPCC Anand Vihar). It contextualizes the massive scale of solid waste emissions across the Delhi-NCR capital region."
-        methodology={[
+        visualElements={[
           {
-            title: "Multi-Source Sensor Calibration",
-            details: "Synthesizes 27,800+ hourly ground telemetry points with orbital hyperspectral methane column retrievals (100–160° wind azimuth)."
+            name: "Hero Research Banner & Quick Actions",
+            type: "Panel",
+            description: "Top high-contrast dark card highlighting the project title, subtitle, and primary call-to-action buttons for direct scenario testing.",
+            axesOrEncoding: "Deep charcoal gradient with crimson ambient radial glow.",
+            whatItShows: "Immediate system overview and one-click navigation to the Plume Simulator and GIS Spatial Engine."
           },
           {
-            title: "Point-Source Quantification",
-            details: "Evaluates the 4 major municipal solid waste dumpsites (Ghazipur, Bhalswa, Okhla, Bandhwari) to isolate super-emitter dynamics."
+            name: "Executive KPI Metrics Matrix (4 Cards)",
+            type: "Widget",
+            description: "Four elevated metric summary cards providing high-level dataset and model performance figures at a glance.",
+            axesOrEncoding: "Large bold typography with category micro-labels (Total Ground Readings, Landfills Monitored, Peak Methane Plume, Best R²).",
+            whatItShows: "Summarizes the empirical scale: 27,800+ hourly sensor readings, 4 major dumpsites, 3,843.5 kg/hr peak methane emission, and R² = 0.8400 accuracy."
           },
           {
-            title: "Atmospheric Transport Bridge",
-            details: "Connects point emissions at the 65-meter landfill summit to continuous ground receptors located 2.8 km directly downwind."
+            name: "Three-Pillar Architectural Framework",
+            type: "Diagram",
+            description: "Three structured cards outlining the end-to-end data pipeline from orbital detection to ground validation.",
+            axesOrEncoding: "Card 1 (Satellite Remote Sensing), Card 2 (Atmospheric Transport), Card 3 (Ground CAAQMS Station).",
+            whatItShows: "How spaceborne observations connect mathematically with downwind wind vectors to validate continuous DPCC ground spikes."
           },
           {
-            title: "Regulatory Benchmark Integration",
-            details: "Aligns empirical readings against WHO air quality guidelines and CPCB National Ambient Air Quality Standards (NAAQS)."
+            name: "Landfill Super-Emitter Facility Registry",
+            type: "Table",
+            description: "Comparative facility cards detailing Ghazipur, Bhalswa, Okhla, and Bandhwari dumpsites.",
+            axesOrEncoding: "Site name, operational status pill, peak CH₄ flux, coordinates, and physical elevation characteristics.",
+            whatItShows: "Proves that Ghazipur is the dominant super-emitter in East Delhi due to its 65m height and anaerobic decomposition mass."
+          },
+          {
+            name: "Satellite Plume Detection Log Matrix",
+            type: "Table",
+            description: "A 6-column historical register of verified spaceborne hyperspectral methane plume observations.",
+            axesOrEncoding: "Columns: Observation UTC Timestamp, Landfill Target, Measured CH₄ Flux (kg/hr), Wind Vector (Speed @ Azimuth), Sensor Instrument, Target Gas.",
+            whatItShows: "Direct physical proof of spaceborne methane captures ranging from 1,850 kg/hr to over 4,890 kg/hr across Delhi dumpsites."
           }
         ]}
-        howToInterpret={[
-          "Examine the 4 Executive KPI Cards: They summarize the overall dataset magnitude, best-in-class predictive accuracy (R² = 0.840), and verified peak emission rates (3,843.5 kg/hr).",
-          "Analyze the Landfill Target Comparison Table: Notice that Ghazipur produces over 34% more CH₄ than Bhalswa and nearly double Okhla due to sheer height and anaerobic compaction.",
-          "Review the Satellite Detection Log: Every listed row is a verified spaceborne hyperspectral plume capture with exact timestamps and wind vectors."
+        symbolsAndIcons={[
+          {
+            symbol: "🔥",
+            label: "Ghazipur Landfill Focus",
+            category: "Marker",
+            meaning: "Identifies the primary active super-emitter solid waste mountain (over 65 meters high, emitting ~3,843.5 kg/hr CH₄)."
+          },
+          {
+            symbol: "🌋",
+            label: "Secondary Landfill Dumpsites",
+            category: "Marker",
+            meaning: "Marks other major municipal solid waste dumpsites in Delhi-NCR (Bhalswa in North Delhi, Okhla in South Delhi, Bandhwari in Gurugram)."
+          },
+          {
+            symbol: "📡",
+            label: "DPCC Ground Station",
+            category: "Marker",
+            meaning: "Represents the Delhi Pollution Control Committee Continuous Ambient Air Quality Monitoring Station (CAAQMS) at Anand Vihar (2.8 km from Ghazipur)."
+          },
+          {
+            symbol: "🛰️",
+            label: "Orbital Hyperspectral Sensor",
+            category: "Icon",
+            meaning: "Denotes spaceborne hyperspectral infrared imaging instruments (NASA EMIT on the ISS and Germany's ESA EnMAP satellite)."
+          },
+          {
+            symbol: "🟢",
+            label: "Green Methane Identifier",
+            category: "Badge",
+            meaning: "Highlights verified pure methane (CH₄) gas column absorption signatures retrieved from satellite spectrometers."
+          },
+          {
+            symbol: "⚡",
+            label: "Active Super-Emitter Status",
+            category: "Status",
+            meaning: "Designates landfill sites whose methane emission flux regularly exceeds the international super-emitter threshold (>1,000 kg/hr)."
+          }
+        ]}
+        interactiveControls={[
+          {
+            control: "Launch Plume Simulator CTA",
+            type: "Button",
+            functionality: "Switches the active workspace tab directly to the interactive Gaussian Plume Simulation Studio.",
+            impactOnOutput: "Loads real-time sliders for wind speed, temperature, and atmospheric stability."
+          },
+          {
+            control: "Explore GIS Spatial Engine CTA",
+            type: "Button",
+            functionality: "Navigates directly to the high-resolution GIS map view.",
+            impactOnOutput: "Opens the 2D geospatial map centered on the Ghazipur-Anand Vihar dispersion corridor."
+          }
+        ]}
+        metricDefinitions={[
+          {
+            term: "kg/hr",
+            unit: "Mass Flux",
+            definition: "Kilograms of methane emitted per hour from the landfill surface into the atmospheric boundary layer."
+          },
+          {
+            term: "R² (Score)",
+            unit: "0.00 – 1.00",
+            definition: "Coefficient of determination quantifying the proportion of variance in ground toxic gas concentrations successfully predicted by the ML model."
+          },
+          {
+            term: "Azimuth (°)",
+            unit: "Degrees",
+            definition: "Compass direction from which the wind is blowing (e.g. 130° represents a direct Southeast-to-Northwest vector from Ghazipur to Anand Vihar)."
+          },
+          {
+            term: "CAAQMS",
+            unit: "Ground Hub",
+            definition: "Continuous Ambient Air Quality Monitoring Station operating 24x7 automated regulatory gas analyzers."
+          }
         ]}
         actionableInsights={[
-          "Proves that Ghazipur is the dominant toxic point-source in East Delhi, requiring targeted bio-mining and methane capture infrastructure.",
-          "Demonstrates that ground sensor spikes at Anand Vihar are directly correlated with orbital plume detections under specific wind bearings.",
-          "Provides examiners and researchers with the high-level factual foundation supporting all subsequent modeling tabs."
+          "Confirms Ghazipur is Delhi's single largest point-source emitter of greenhouse and toxic trace gases.",
+          "Demonstrates that spaceborne hyperspectral satellites can reliably track episodic dumpsite methane flaring events.",
+          "Provides examiners and policy makers with verified multi-sensor evidence justifying bio-mining interventions."
         ]}
         dataSources={[
-          "NASA EMIT (ISS Hyperspectral)",
-          "ESA EnMAP (Orbital Imaging)",
-          "DPCC Continuous CAAQMS Hub",
-          "CPCB National Air Quality Database"
+          "NASA EMIT (ISS Hyperspectral Spectrometer)",
+          "ESA EnMAP (German Aerospace Hyperspectral Satellite)",
+          "DPCC Anand Vihar CAAQMS Telemetry Station",
+          "CPCB National Ambient Air Quality Registry"
         ]}
       />
     </div>

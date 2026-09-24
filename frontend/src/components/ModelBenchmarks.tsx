@@ -247,29 +247,97 @@ export const ModelBenchmarks: React.FC = () => {
       <PageDescriptionCard
         pageTitle="Multi-Gas Machine Learning Benchmarking & Predictive Performance"
         objective="This page presents a rigorous comparative evaluation of 8 machine learning and ensemble architectures trained to predict 1-hour ahead continuous concentrations and discrete acute hazard states across 9 distinct gaseous species."
-        methodology={[
+        visualElements={[
           {
-            title: "Multi-Target Regression Suite",
-            details: "Benchmarks Ridge, LASSO, ElasticNet, Random Forest, Extra Trees, Gradient Boosting, XGBoost, and LightGBM across 9 target pollutants."
+            name: "Task Switcher Tabs & Gas Filter Dropdown",
+            type: "Control",
+            description: "Top control bar allowing users to switch between Regression (Continuous Forecasts) and Classification (Hazard State Detection), with an interactive gas filter dropdown.",
+            axesOrEncoding: "Dropdown options: All Gases, Ammonia (NH₃), Carbon Monoxide (CO), PM2.5, PM10, Benzene, Toluene, NO2, SO2, Ozone.",
+            whatItShows: "Filters the benchmark leaderboard to evaluate specific model performance across individual chemical targets."
           },
           {
-            title: "Acute Hazard Classification",
-            details: "Evaluates threshold exceedance classification using Precision, Recall, F1-Score, and ROC-AUC to prevent false-negative public health alerts."
+            name: "Highest Achieved R² by Pollutant Bar Chart",
+            type: "Chart",
+            description: "A horizontal/vertical bar chart ranking all 9 pollutants by their highest achieved R² variance score across the ML suite.",
+            axesOrEncoding: "X-Axis: Gas Name. Y-Axis: Best R² Score (0.00 to 1.00). Brand crimson bars with algorithm labels (e.g. LightGBM, Ridge).",
+            whatItShows: "Highlights which pollutants are most predictable from meteorological-plume feature sets (PM2.5: 0.929, Benzene: 0.900, NH₃: 0.840)."
           },
           {
-            title: "Time-Series Train/Test Splitting",
-            details: "Employs strict temporal chronological splitting (80/20 train/test) to prevent look-ahead data leakage in lagged air quality predictors."
+            name: "Regression Benchmark Leaderboard Table",
+            type: "Table",
+            description: "A 6-column benchmarking matrix detailing Model Algorithm, Target Gas, R² Score, RMSE, MAE, and Best Model indicator.",
+            axesOrEncoding: "Columns: Model Algorithm, Target Task, R², RMSE, MAE, Best Model Badge. Green highlight rows = top performer.",
+            whatItShows: "Direct empirical comparison showing Ridge Regression and LightGBM outperforming complex deep networks due to L2 regularization."
           },
           {
-            title: "Hyperparameter Regularization & Tuning",
-            details: "Optimizes L2 penalty terms in Ridge Regression and tree depth/subsample ratios in LightGBM via 5-fold cross-validation."
+            name: "Classification Evaluation Radar / Bar Chart",
+            type: "Chart",
+            description: "Multi-metric bar chart comparing Random Forest, XGBoost, and LightGBM across Precision, Recall, and F1-Score.",
+            axesOrEncoding: "X-Axis: Model Name. Y-Axis: Score (0.00 to 1.00). Teal = Precision, Orange = Recall, Crimson = F1-Score.",
+            whatItShows: "Proves that ensemble classifiers achieve >99.6% recall, meaning almost zero false negatives during acute toxic surges."
           }
         ]}
-        howToInterpret={[
-          "Switch Task Tabs (Continuous Regression vs Hazard Classification): Review R² (variance explained), RMSE (root mean squared error), and MAE (mean absolute error).",
-          "Use the Pollutant Dropdown Filter: Filter by individual gas (e.g. Ammonia NH₃, Benzene, PM2.5, CO) to compare model performance per target.",
-          "Look for Green Badges: Indicates the best-performing model algorithm for that specific pollutant or classification task.",
-          "Check the Top Comparison Bar Chart: Visualizes the highest achieved R² score across all 9 pollutants (PM2.5: 0.929, Benzene: 0.900, NH₃: 0.840)."
+        symbolsAndIcons={[
+          {
+            symbol: "🏆",
+            label: "Best-in-Class Performer",
+            category: "Badge",
+            meaning: "Identifies the highest-ranked ML algorithm for a specific pollutant according to R² score or F1-Score."
+          },
+          {
+            symbol: "✅",
+            label: "Optimal Model Checkmark",
+            category: "Icon",
+            meaning: "Green checkmark highlighting the recommended production model row in the leaderboard table."
+          },
+          {
+            symbol: "⚡",
+            label: "Gradient Boosted Tree",
+            category: "Icon",
+            meaning: "Denotes decision tree ensemble algorithms (LightGBM, XGBoost, Random Forest) utilizing gradient boosting."
+          },
+          {
+            symbol: "📉",
+            label: "Linear Regularized Baseline",
+            category: "Icon",
+            meaning: "Represents L1/L2 penalized linear models (Ridge, LASSO, ElasticNet) evaluated as robust baseline benchmarks."
+          }
+        ]}
+        interactiveControls={[
+          {
+            control: "Task Mode Toggle (Regression vs Classification)",
+            type: "Tab",
+            functionality: "Switches between continuous numeric concentration predictions and binary acute hazard classification benchmarks.",
+            impactOnOutput: "Updates the primary leaderboard table to show R²/RMSE/MAE for Regression or Accuracy/Precision/Recall/ROC-AUC for Classification."
+          },
+          {
+            control: "Gas Target Filter Dropdown",
+            type: "Dropdown",
+            functionality: "Filters the regression leaderboard to display only the selected gaseous pollutant.",
+            impactOnOutput: "Isolates the 8 algorithms competing specifically on that target gas."
+          }
+        ]}
+        metricDefinitions={[
+          {
+            term: "R² (R-Squared)",
+            unit: "0.00 – 1.00",
+            definition: "Coefficient of determination measuring the percentage of variance explained (e.g. 0.8400 means 84.0% of ground NH₃ variation is explained by model features)."
+          },
+          {
+            term: "RMSE",
+            unit: "µg/m³ or mg/m³",
+            definition: "Root Mean Squared Error — penalizes large prediction outliers, measuring the standard deviation of model residuals."
+          },
+          {
+            term: "MAE",
+            unit: "µg/m³ or mg/m³",
+            definition: "Mean Absolute Error — the average magnitude of absolute forecasting errors."
+          },
+          {
+            term: "ROC-AUC",
+            unit: "0.00 – 1.00",
+            definition: "Area Under the Receiver Operating Characteristic Curve — evaluates classifier discrimination power across all decision thresholds."
+          }
         ]}
         actionableInsights={[
           "Demonstrates that regularized linear baselines (Ridge) and gradient boosted trees (LightGBM) provide superior generalization on lagged meteorological-plume feature sets.",

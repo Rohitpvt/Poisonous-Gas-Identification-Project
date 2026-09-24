@@ -566,29 +566,100 @@ export const HealthAdvisory: React.FC = () => {
       <PageDescriptionCard
         pageTitle="Public Health Early Warning, Emergency Hospital SOS & Safe Escape Routing"
         objective="This decision-support hub translates complex multi-gas ML forecasts into immediate life-saving public health interventions, demographic-specific clinical guidance, nearby tertiary hospital directory routing, and automated SMS broadcast payloads."
-        methodology={[
+        visualElements={[
           {
-            title: "Multi-Pollutant Clinical Risk Scoring",
-            details: "Synthesizes simultaneous NH₃, CO, and PM2.5 exposures into a unified 0–100 Hazard Index, applying clinical vulnerability multipliers for asthmatics (1.35x), elderly (1.30x), and children (1.25x)."
+            name: "Clinical Hazard Score Gauge & Demographics Selector",
+            type: "Widget",
+            description: "Top interactive panel with demographic profile buttons (General Public, Asthmatics, Children, Elderly, Outdoor Workers) and a dynamic 0–100 Clinical Risk Gauge.",
+            axesOrEncoding: "Risk gauge bar: 0–40 (Green Low), 40–70 (Amber Elevated), 70–100 (Red Critical Emergency).",
+            whatItShows: "Demonstrates that respiratory patients and children reach emergency triage thresholds at significantly lower toxic exposures due to physiological susceptibility."
           },
           {
-            title: "Emergency Healthcare Facility Directory",
-            details: "Catalogs nearby tertiary care centers (Max Super Speciality, LBS Hospital, Hedgewar Arogya Sansthan, Yashoda Kaushambi) with real-time ICU bed capacities and cryogenic oxygen storage."
+            name: "Clinical Intervention Actions Matrix",
+            type: "Panel",
+            description: "Four structured guidance cards detailing Masking & Barrier Protocols, Medical Countermeasures, Indoor Air Filtration, and Outdoor Activity Ceilings.",
+            axesOrEncoding: "Categorized actionable check-lists with clinical icons.",
+            whatItShows: "Prescribes exact medical protocols (N95/FFP3 masking, bronchodilator pre-loading, HEPA filtration) based on current gas levels."
           },
           {
-            title: "Directional Clean-Air Evacuation Navigator",
-            details: "Computes optimal upwind/crosswind escape routes to urban forest pockets (Sanjay Lake, Akshardham corridor) with up to 94% verified exposure reduction."
+            name: "Nearby Emergency Hospital & SOS Directory (4 Cards)",
+            type: "Table",
+            description: "Detailed catalog of 4 nearby emergency hospitals: Max Super Speciality, Lal Bahadur Shastri Govt Hospital, Dr. Hedgewar Arogya Sansthan, Yashoda Hospital.",
+            axesOrEncoding: "Cards display: Hospital Name, Travel Distance, 24x7 Emergency Contact, Oxygen Plant Capacity, Dedicated Respiratory ICU Beds, and Clinical Specialties.",
+            whatItShows: "Enables instant 1-click emergency hospital routing for acute toxic gas inhalation casualties."
           },
           {
-            title: "Automated Early Warning SMS Dispatcher",
-            details: "Generates formatted CAP-compliant (Common Alerting Protocol) emergency broadcast strings for instant dissemination to community phones."
+            name: "Dynamic 'Safe Escape Route' Navigator (4 Havens)",
+            type: "Panel",
+            description: "Interactive cards displaying 4 verified clean-air evacuation havens (Sanjay Lake, Mayur Vihar P3, Akshardham Riverbank, Surajmal Vihar).",
+            axesOrEncoding: "Cards display: Safe Zone Name, Bearing, Distance, Exposure Drop % (-88% to -94%), Green Cover Rating, and Step-by-Step Highway Route.",
+            whatItShows: "Provides residents in the downwind plume corridor with clear, verified escape routes toward fresh air pockets."
+          },
+          {
+            name: "Automated Emergency Broadcast SMS Dispatcher",
+            type: "Control",
+            description: "A live CAP-compliant SMS broadcast generator with interactive recipient phone input and dispatch button.",
+            axesOrEncoding: "Monospace text payload box with timestamp, affected zone, pollutant spikes, and emergency helpline.",
+            whatItShows: "Simulates automated municipal early warning broadcast delivery directly to community mobile devices."
           }
         ]}
-        howToInterpret={[
-          "Select a Demographic Profile (Asthma, Children, Elderly, Outdoor Workers): Watch the Health Hazard Score dynamically adjust based on clinical vulnerability.",
-          "Check the Clinical Actions Matrix: View immediate medical counter-measures (e.g. N95/FFP3 masking, bronchodilator preparedness, HEPA filtration).",
-          "Review the Emergency Hospital Directory: Direct one-click phone dialers, ICU bed availability, and hospital distance from the toxic corridor.",
-          "Inspect the Safe Escape Routes: Clear navigation paths directing residents away from downwind plume trajectories to clean-air island parks."
+        symbolsAndIcons={[
+          {
+            symbol: "🏥",
+            label: "Emergency Healthcare Facility",
+            category: "Icon",
+            meaning: "Designates hospitals equipped with dedicated toxic inhalation wards and centralized oxygen infrastructure."
+          },
+          {
+            symbol: "🚑",
+            label: "Respiratory ICU Beds",
+            category: "Icon",
+            meaning: "Count of available intensive care beds with mechanical ventilators for acute bronchospasm management."
+          },
+          {
+            symbol: "🛡️",
+            label: "Safe Clean-Air Haven",
+            category: "Zone",
+            meaning: "Designates upwind or riverbank green corridors offering significant atmospheric ventilation (>80% exposure reduction)."
+          },
+          {
+            symbol: "🚨",
+            label: "Severe Toxicity Alert",
+            category: "Status",
+            meaning: "Health risk score >= 80, indicating hazardous acute conditions requiring immediate outdoor evacuation and masking."
+          },
+          {
+            symbol: "📲",
+            label: "Emergency Broadcast Dispatch",
+            category: "Icon",
+            meaning: "Automated transmission of early warning SMS payloads via public safety telecom gateways."
+          }
+        ]}
+        interactiveControls={[
+          {
+            control: "Vulnerable Demographic Selector",
+            type: "Button",
+            functionality: "Applies clinical vulnerability multipliers (Asthma: 1.35x, Elderly: 1.30x, Children: 1.25x).",
+            impactOnOutput: "Recalculates the final composite Clinical Risk Score and adjusts recommended medical interventions."
+          },
+          {
+            control: "SMS Recipient Input & Dispatch Button",
+            type: "Button",
+            functionality: "Generates formatted emergency warning SMS string and simulates network transmission.",
+            impactOnOutput: "Displays green confirmation banner upon successful delivery to the specified mobile number."
+          }
+        ]}
+        metricDefinitions={[
+          {
+            term: "Health Hazard Score",
+            unit: "0 – 100",
+            definition: "Composite toxicological index synthesizing NH₃ (35%), CO (35%), and PM2.5 (30%) concentrations against WHO health limits."
+          },
+          {
+            term: "Exposure Drop (%)",
+            unit: "Percentage",
+            definition: "The percentage reduction in toxic gas concentration measured at the safe escape haven compared to the downwind plume epicenter."
+          }
         ]}
         actionableInsights={[
           "Bridges the vital gap between computational machine learning algorithms and real-world public health preservation.",

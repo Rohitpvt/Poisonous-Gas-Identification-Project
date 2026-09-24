@@ -377,28 +377,98 @@ export const ResearchInsights: React.FC = () => {
       <PageDescriptionCard
         pageTitle="Research Insights, Empirical Findings & Statistical Proof"
         objective="This page consolidates the definitive statistical, meteorological, and machine learning proofs generated throughout this research study. It answers critical examiner and mentor inquiries regarding source attribution, causal mechanisms, and dataset validations."
-        methodology={[
+        visualElements={[
           {
-            title: "Directional Wind-Corridor Isolation",
-            details: "Isolates the narrow 110°–150° downwind azimuth from Ghazipur to Anand Vihar, demonstrating a statistically significant +74.5% NH₃ surge compared to crosswind and upwind baselines."
+            name: "Dimension Navigation Tab Bar (5 Focus Areas)",
+            type: "Control",
+            description: "Top selection tabs allowing users to switch between the 5 core scientific proof pillars: Source Attribution, Satellite Plumes, Diurnal Inversion, ML Benchmarks, and Clean-Air Routing.",
+            axesOrEncoding: "Active pill highlighted with brand crimson accent.",
+            whatItShows: "Enables granular inspection of empirical proof for each distinct scientific research question."
           },
           {
-            title: "Planetary Boundary Layer & Inversion Dynamics",
-            details: "Analyzes nocturnal atmospheric trapping mechanics where shallow boundary layers (<200m) concentrate ground toxins between 02:00 and 06:00."
+            name: "Downwind vs Crosswind Sector Bar Chart",
+            type: "Chart",
+            description: "A grouped bar chart comparing Ammonia (NH₃) and Carbon Monoxide (CO) across 3 distinct directional wind sectors.",
+            axesOrEncoding: "X-Axis: Downwind Corridor (110°–150°), Crosswind Sector (0°–90°), Upwind Baseline (270°–330°). Y-Axis: Concentration (µg/m³ for NH₃, mg/m³ for CO).",
+            whatItShows: "Empirical proof of localized source attribution: NH₃ spikes by +74.5% (68.4 µg/m³) strictly when the wind blows from Ghazipur to Anand Vihar."
           },
           {
-            title: "Multi-Satellite Plume Validation",
-            details: "Correlates orbital hyperspectral plume captures (3,120–4,890 kg/hr CH₄) with ground CAAQMS continuous sensor records."
+            name: "Diurnal Inversion Peak Table & Metric Cards",
+            type: "Table",
+            description: "A chronological 5-stage time matrix tracking nocturnal boundary layer trapping from Midnight (00:00) to Night (20:00).",
+            axesOrEncoding: "Columns: Time of Day, NH₃ Mean, PM2.5 Mean, Atmospheric Inversion State.",
+            whatItShows: "Proves that peak toxic accumulation occurs between 02:00 AM and 06:00 AM (NH₃ reaches 79.8 µg/m³) when nocturnal boundary layer height falls below 200m."
           },
           {
-            title: "Predictive Multi-Pollutant Ensemble",
-            details: "Evaluates 8 machine learning architectures across 9 hazardous gases, achieving up to R² = 0.940 (Ammonia) and 93.4% acute hazard recall."
+            name: "Executive Proof Matrix (Summary Table)",
+            type: "Table",
+            description: "A comprehensive summary table at the bottom synthesizing the 5 core scientific findings with mathematical proof metrics.",
+            axesOrEncoding: "Columns: Scientific Focus Area, Core Hypothesis/Finding, Empirical Metric & Statistical Proof.",
+            whatItShows: "Provides examiners with quick, bulletproof citations proving landfill attribution, satellite emission rates, and 94% clean-air routing effectiveness."
           }
         ]}
-        howToInterpret={[
-          "Select each dimension tab (Source Attribution, Satellite Plumes, Diurnal Inversion, ML Benchmarks, Clean-Air Routing) to view interactive charts and structured mathematical proofs.",
-          "Check the Proof Data Tables: Compare downwind versus crosswind pollutant concentrations to verify localized source attribution.",
-          "Use the 'Download Complete Research Report (.docx)' button at the top right to export the full academic paper."
+        symbolsAndIcons={[
+          {
+            symbol: "🧭",
+            label: "Directional Wind Corridor",
+            category: "Icon",
+            meaning: "Represents the 110°–150° azimuth line connecting Ghazipur dumpsite directly to the Anand Vihar receptor station."
+          },
+          {
+            symbol: "🌙",
+            label: "Nocturnal Inversion Trap",
+            category: "Icon",
+            meaning: "Signifies pre-dawn meteorological conditions where radiational ground cooling creates a thermal ceiling trapping toxic landfill fumes."
+          },
+          {
+            symbol: "🧠",
+            label: "Machine Learning Intelligence",
+            category: "Icon",
+            meaning: "Denotes ensemble predictive models (Ridge Regression, LightGBM, XGBoost) evaluating 1-hour ahead gas concentrations."
+          },
+          {
+            symbol: "🛡️",
+            label: "Clean-Air Safe Havens",
+            category: "Badge",
+            meaning: "Marks certified urban green buffer zones (e.g. Sanjay Lake, Akshardham) where exposure is reduced by up to 94%."
+          },
+          {
+            symbol: "📥",
+            label: "Report Download Action",
+            category: "Icon",
+            meaning: "Triggers immediate direct client-side generation and download of the complete 7-page academic research paper (.docx)."
+          }
+        ]}
+        interactiveControls={[
+          {
+            control: "Research Dimension Selector Tabs",
+            type: "Tab",
+            functionality: "Toggles the active proof panel between 5 core research dimensions.",
+            impactOnOutput: "Dynamically renders relevant empirical data tables, statistical evidence cards, and bar charts."
+          },
+          {
+            control: "Download Research Paper Button",
+            type: "Button",
+            functionality: "Packages all empirical findings, statistical tables, and methodology into a structured Word (.docx) document.",
+            impactOnOutput: "Instantly downloads 'Landfill_Gas_Identification_Research_Paper.docx' to the user's computer."
+          }
+        ]}
+        metricDefinitions={[
+          {
+            term: "Surge Delta (%)",
+            unit: "Percentage",
+            definition: "The percentage increase in ground gas concentration observed under direct downwind conditions relative to upwind baseline levels."
+          },
+          {
+            term: "PBLH",
+            unit: "Meters (m)",
+            definition: "Planetary Boundary Layer Height — the depth of the lowest atmospheric layer directly influenced by Earth's surface heating and cooling."
+          },
+          {
+            term: "Pearson r",
+            unit: "-1.0 to +1.0",
+            definition: "Correlation coefficient measuring the linear relationship between satellite emission rates and ground sensor concentration spikes."
+          }
         ]}
         actionableInsights={[
           "Provides undeniable empirical evidence that Ghazipur solid waste facility directly drives toxic gas surges at Anand Vihar.",
