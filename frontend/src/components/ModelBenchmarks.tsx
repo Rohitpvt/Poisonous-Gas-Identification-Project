@@ -45,13 +45,13 @@ export const ModelBenchmarks: React.FC = () => {
         </div>
 
         {/* Task Switcher */}
-        <div className="stat-pill p-1 flex items-center gap-1 self-start">
+        <div className="stat-pill p-1 flex items-center gap-1 self-start bg-white rounded-full border border-black/5 shadow-sm">
           <button
             onClick={() => setTaskTab('regression')}
             className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
               taskTab === 'regression'
-                ? 'bg-surface-dark text-white'
-                : 'text-text-secondary hover:text-text-primary'
+                ? 'bg-[#171719] text-white shadow-sm font-semibold'
+                : 'text-[#55575c] hover:text-[#171719] hover:bg-black/[0.04]'
             }`}
           >
             Regression (1h Ahead Gas Forecasting)
@@ -60,8 +60,8 @@ export const ModelBenchmarks: React.FC = () => {
             onClick={() => setTaskTab('classification')}
             className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
               taskTab === 'classification'
-                ? 'bg-surface-dark text-white'
-                : 'text-text-secondary hover:text-text-primary'
+                ? 'bg-[#171719] text-white shadow-sm font-semibold'
+                : 'text-[#55575c] hover:text-[#171719] hover:bg-black/[0.04]'
             }`}
           >
             Classification (Hazardous Risk Episodes)

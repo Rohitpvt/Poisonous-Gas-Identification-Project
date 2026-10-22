@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: #ECEDEE;
+  --color-surface-light: #F4F5F5;
+  --color-surface-dark: #171719;
+  --color-surface-card: #FFFFFF;
+  --color-brand-primary: #E34A32;
+  --color-brand-accent: #F05A3C;
+  --color-text-primary: #232427;
+  --color-text-secondary: #55575c;
+  --color-text-muted: #8a8c91;
+  --color-border-light: rgba(0, 0, 0, 0.06);
+  --color-border-white: rgba(255, 255, 255, 0.7);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+}
+
 @layer base {
   body {
     background-color: #ECEDEE;

@@ -812,8 +812,8 @@ export const GisMap: React.FC = () => {
                     onClick={() => setSelectedSiteId(site.id)}
                     className={`w-full text-left p-2 rounded-xl text-xs font-medium flex items-center justify-between transition-all ${
                       selectedSiteId === site.id
-                        ? 'bg-surface-dark text-white font-semibold'
-                        : 'bg-surface-light hover:bg-white text-text-secondary'
+                        ? 'bg-[#171719] text-white font-semibold shadow-sm'
+                        : 'bg-[#F4F5F5] hover:bg-white text-[#55575c]'
                     }`}
                   >
                     <span className="flex items-center gap-2">

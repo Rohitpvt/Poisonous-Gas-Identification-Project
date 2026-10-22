@@ -35,13 +35,13 @@ export const EdaStudio: React.FC = () => {
         </div>
 
         {/* Sub-Navigation Pills */}
-        <div className="stat-pill p-1 flex items-center gap-1 self-start">
+        <div className="stat-pill p-1 flex items-center gap-1 self-start bg-white rounded-full border border-black/5 shadow-sm">
           <button
             onClick={() => setActiveSubTab('diurnal')}
             className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
               activeSubTab === 'diurnal'
-                ? 'bg-surface-dark text-white'
-                : 'text-text-secondary hover:text-text-primary'
+                ? 'bg-[#171719] text-white shadow-sm font-semibold'
+                : 'text-[#55575c] hover:text-[#171719] hover:bg-black/[0.04]'
             }`}
           >
             Diurnal Inversion Cycles
@@ -50,8 +50,8 @@ export const EdaStudio: React.FC = () => {
             onClick={() => setActiveSubTab('downwind')}
             className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
               activeSubTab === 'downwind'
-                ? 'bg-surface-dark text-white'
-                : 'text-text-secondary hover:text-text-primary'
+                ? 'bg-[#171719] text-white shadow-sm font-semibold'
+                : 'text-[#55575c] hover:text-[#171719] hover:bg-black/[0.04]'
             }`}
           >
             Downwind Plume Impact
