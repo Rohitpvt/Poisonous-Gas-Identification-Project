@@ -24,6 +24,7 @@ export const App: React.FC = () => {
           <Overview
             onExploreSimulator={() => setActiveTab('simulator')}
             onExploreMap={() => setActiveTab('gis-map')}
+            onExploreInsights={() => setActiveTab('insights')}
           />
         )}
         {activeTab === 'insights' && <ResearchInsights />}

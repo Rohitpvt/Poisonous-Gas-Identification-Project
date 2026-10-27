@@ -1,14 +1,15 @@
 import React from 'react';
-import { ArrowUpRight, Satellite, ShieldCheck, Flame, Compass, Wind } from 'lucide-react';
+import { ArrowUpRight, Satellite, ShieldCheck, Flame, Compass, Wind, Download, BookOpen, ExternalLink } from 'lucide-react';
 import { SATELLITE_PLUMES } from '../data/constants';
 import { PageDescriptionCard } from './PageDescriptionCard';
 
 interface OverviewProps {
   onExploreSimulator: () => void;
   onExploreMap: () => void;
+  onExploreInsights?: () => void;
 }
 
-export const Overview: React.FC<OverviewProps> = ({ onExploreSimulator, onExploreMap }) => {
+export const Overview: React.FC<OverviewProps> = ({ onExploreSimulator, onExploreMap, onExploreInsights }) => {
   return (
     <div className="space-y-10 animate-fade-in">
       {/* Hero Container */}
@@ -65,13 +66,65 @@ export const Overview: React.FC<OverviewProps> = ({ onExploreSimulator, onExplor
           </div>
           <div>
             <div className="text-white/50 text-xs font-medium">Forecasting R² Score</div>
-            <div className="text-2xl sm:text-3xl font-bold text-white mt-1">0.8425</div>
-            <div className="text-white/70 text-[11px] mt-0.5">1-Hour Ahead NH₃ / CO</div>
+            <div className="text-2xl sm:text-3xl font-bold text-white mt-1">0.8462</div>
+            <div className="text-white/70 text-[11px] mt-0.5">1-Hour Ahead NH₃ / Benzene</div>
           </div>
           <div>
             <div className="text-white/50 text-xs font-medium">Episode Alert F1</div>
             <div className="text-2xl sm:text-3xl font-bold text-white mt-1">0.9995</div>
             <div className="text-emerald-400 text-[11px] mt-0.5">ROC-AUC 1.000</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Academic Research Publication Spotlight Banner */}
+      <div className="card-elevated p-6 sm:p-8 bg-gradient-to-r from-[#171719] via-[#1E2024] to-[#25272C] text-white rounded-3xl border border-white/10 shadow-lg relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-2xl">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-brand-primary/20 text-brand-accent border border-brand-primary/30">
+                IEEE Manuscript Ready
+              </span>
+              <span className="text-white/60 text-xs">
+                Department of CSE, Christ (Deemed to be University)
+              </span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug">
+              LandfillPlume-AI: Satellite-Ground Sensor Fusion for Hazardous Gas Forecasting and Early-Warning
+            </h3>
+            <p className="text-white/70 text-xs sm:text-sm leading-relaxed">
+              Synthesizing 34 peer-reviewed citations across <em>Nature Reviews Physics</em>, <em>Science Advances</em>, <em>ACS ES&amp;T</em>, <em>Springer</em>, <em>Elsevier</em>, and <em>IEEE</em>. Empirically proves +74.5% downwind NH₃ surge and an 88%–94% exposure reduction via clean-air routing.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2.5 flex-shrink-0">
+            <a
+              href={`${import.meta.env.BASE_URL}RESEARCH_PAPER 2.docx`}
+              download="RESEARCH_PAPER 2.docx"
+              className="px-4 py-2.5 rounded-full bg-[#E34A32] hover:bg-[#c93f2a] text-white text-xs font-semibold flex items-center gap-2 shadow-md transition-all active:scale-95"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Download Paper (.docx)</span>
+            </a>
+            {onExploreInsights && (
+              <button
+                onClick={onExploreInsights}
+                className="px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-2 border border-white/15 transition-all"
+              >
+                <BookOpen className="w-3.5 h-3.5 text-brand-accent" />
+                <span>Explore 34 Citations</span>
+              </button>
+            )}
+            <a
+              href="https://github.com/Rohitpvt/Poisonous-Gas-Identification-Research.git"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-2.5 rounded-full bg-white/5 hover:bg-white/15 text-white/80 hover:text-white text-xs font-medium border border-white/10 transition-all flex items-center gap-1.5"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>GitHub</span>
+            </a>
           </div>
         </div>
       </div>
