@@ -101,10 +101,10 @@ export const ResearchInsights: React.FC = () => {
         {/* Action Button Strip */}
         <div className="flex flex-wrap items-center gap-2 self-start lg:self-center">
           <a
-            href={`${import.meta.env.BASE_URL}RESEARCH_PAPER 2.docx`}
-            download="RESEARCH_PAPER 2.docx"
+            href={`${import.meta.env.BASE_URL}RESEARCH_PAPER 3.docx`}
+            download="RESEARCH_PAPER 3.docx"
             className="btn-primary px-3.5 py-2 text-xs font-semibold flex items-center gap-1.5 cursor-pointer shadow-sm hover:opacity-90 active:scale-95 transition-all bg-[#E34A32] text-white rounded-full"
-            title="Download the updated 2-column IEEE formatted Word paper"
+            title="Download the updated 2-column IEEE formatted Word paper with native LaTeX equations"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Download IEEE Paper (.docx)</span>
@@ -717,8 +717,8 @@ export const ResearchInsights: React.FC = () => {
           {
             control: "Download IEEE Paper (.docx) Button",
             type: "Button",
-            functionality: "Initiates download of the IEEE research paper document (RESEARCH_PAPER 2.docx).",
-            impactOnOutput: "Downloads 'RESEARCH_PAPER 2.docx' directly to the client device."
+            functionality: "Initiates download of the IEEE research paper document (RESEARCH_PAPER 3.docx).",
+            impactOnOutput: "Downloads 'RESEARCH_PAPER 3.docx' directly to the client device."
           },
           {
             control: "BibTeX Copy Dialog",
