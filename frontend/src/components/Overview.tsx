@@ -78,22 +78,25 @@ export const Overview: React.FC<OverviewProps> = ({ onExploreSimulator, onExplor
       </div>
 
       {/* Academic Research Publication Spotlight Banner */}
-      <div className="card-elevated p-6 sm:p-8 bg-gradient-to-r from-[#171719] via-[#1E2024] to-[#25272C] text-white rounded-3xl border border-white/10 shadow-lg relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div 
+        className="card-dark p-6 sm:p-8 relative overflow-hidden border border-white/10 shadow-xl rounded-[28px]"
+        style={{ backgroundColor: '#171719', color: '#FFFFFF' }}
+      >
+        <div className="absolute top-0 right-0 w-72 h-72 bg-brand-primary/15 rounded-full blur-3xl pointer-events-none"></div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="space-y-2 max-w-2xl">
+          <div className="space-y-2.5 max-w-2xl">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-brand-primary/20 text-brand-accent border border-brand-primary/30">
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-brand-primary/25 text-[#FF7A59] border border-brand-primary/40">
                 IEEE Manuscript Ready
               </span>
-              <span className="text-white/60 text-xs">
+              <span className="text-white/70 text-xs">
                 Department of CSE, Christ (Deemed to be University)
               </span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug">
               LandfillPlume-AI: Satellite-Ground Sensor Fusion for Hazardous Gas Forecasting and Early-Warning
             </h3>
-            <p className="text-white/70 text-xs sm:text-sm leading-relaxed">
+            <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
               Synthesizing 34 peer-reviewed citations across <em>Nature Reviews Physics</em>, <em>Science Advances</em>, <em>ACS ES&amp;T</em>, <em>Springer</em>, <em>Elsevier</em>, and <em>IEEE</em>. Empirically proves +74.5% downwind NH₃ surge and an 88%–94% exposure reduction via clean-air routing.
             </p>
           </div>
@@ -110,9 +113,9 @@ export const Overview: React.FC<OverviewProps> = ({ onExploreSimulator, onExplor
             {onExploreInsights && (
               <button
                 onClick={onExploreInsights}
-                className="px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-2 border border-white/15 transition-all"
+                className="px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-2 border border-white/20 transition-all cursor-pointer"
               >
-                <BookOpen className="w-3.5 h-3.5 text-brand-accent" />
+                <BookOpen className="w-3.5 h-3.5 text-[#FF7A59]" />
                 <span>Explore 34 Citations</span>
               </button>
             )}
@@ -120,7 +123,7 @@ export const Overview: React.FC<OverviewProps> = ({ onExploreSimulator, onExplor
               href="https://github.com/Rohitpvt/Poisonous-Gas-Identification-Research.git"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3.5 py-2.5 rounded-full bg-white/5 hover:bg-white/15 text-white/80 hover:text-white text-xs font-medium border border-white/10 transition-all flex items-center gap-1.5"
+              className="px-3.5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-medium border border-white/20 transition-all flex items-center gap-1.5"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               <span>GitHub</span>
