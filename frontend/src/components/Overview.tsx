@@ -103,12 +103,12 @@ export const Overview: React.FC<OverviewProps> = ({ onExploreSimulator, onExplor
 
           <div className="flex flex-wrap items-center gap-2.5 flex-shrink-0">
             <a
-              href={`${import.meta.env.BASE_URL}RESEARCH_PAPER 3.docx`}
-              download="RESEARCH_PAPER 3.docx"
+              href={`${import.meta.env.BASE_URL}RESEARCH_PAPER.pdf`}
+              download="RESEARCH_PAPER.pdf"
               className="px-4 py-2.5 rounded-full bg-[#E34A32] hover:bg-[#c93f2a] text-white text-xs font-semibold flex items-center gap-2 shadow-md transition-all active:scale-95"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Download Paper (.docx)</span>
+              <span>Download Paper (.pdf)</span>
             </a>
             {onExploreInsights && (
               <button

@@ -101,13 +101,13 @@ export const ResearchInsights: React.FC = () => {
         {/* Action Button Strip */}
         <div className="flex flex-wrap items-center gap-2 self-start lg:self-center">
           <a
-            href={`${import.meta.env.BASE_URL}RESEARCH_PAPER 3.docx`}
-            download="RESEARCH_PAPER 3.docx"
+            href={`${import.meta.env.BASE_URL}RESEARCH_PAPER.pdf`}
+            download="RESEARCH_PAPER.pdf"
             className="btn-primary px-3.5 py-2 text-xs font-semibold flex items-center gap-1.5 cursor-pointer shadow-sm hover:opacity-90 active:scale-95 transition-all bg-[#E34A32] text-white rounded-full"
-            title="Download the updated 2-column IEEE formatted Word paper with native LaTeX equations"
+            title="Download the updated 2-column IEEE formatted research paper PDF with native LaTeX equations"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Download IEEE Paper (.docx)</span>
+            <span>Download Paper (.pdf)</span>
           </a>
 
           <a
@@ -715,10 +715,10 @@ export const ResearchInsights: React.FC = () => {
             impactOnOutput: "Dynamically renders relevant empirical data tables, statistical evidence cards, bar charts, and literature entries."
           },
           {
-            control: "Download IEEE Paper (.docx) Button",
+            control: "Download Paper (.pdf) Button",
             type: "Button",
-            functionality: "Initiates download of the IEEE research paper document (RESEARCH_PAPER 3.docx).",
-            impactOnOutput: "Downloads 'RESEARCH_PAPER 3.docx' directly to the client device."
+            functionality: "Initiates download of the IEEE research paper document (RESEARCH_PAPER.pdf).",
+            impactOnOutput: "Downloads 'RESEARCH_PAPER.pdf' directly to the client device."
           },
           {
             control: "BibTeX Copy Dialog",
